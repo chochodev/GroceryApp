@@ -1,0 +1,80 @@
+{% extends 'main.html' %}
+{% block stylesheet %}{{ url_for('static', filename='css/home.css') }}{% endblock %}
+{% set show_navbar = True %}
+
+{% block content %}
+<section id='home' class='w-full'>
+  <section class="order-now-section flex-s-c">
+    <div class="order-now-info flex-c-s dir-col">
+      <h1 class="title header-xlx">Order Your Product Easy & Fast!</h1>
+      <p class='info w-600 text-md'>Edenfresh is a global leader in online food delivery, connecting consumers through its platform.</p>
+      <a href="products.html" class="button button-md">Go to Menu</a>
+    </div>
+    <img src="{{ url_for('static', filename='images/logo_gif.gif') }}" alt="" class="home-gif" />
+  </section>
+
+  <section class="why-us flex-tc flex-c-c dir-col">
+    <h1 class="title">Why Are We the Best?</h1>
+    <p class="info text-md w-600">
+      Why are we the best? Because we prioritize quality, customer satisfaction, and passion for what we do in everything we do. We strive to provide an exceptional experience and exceed our customers' expectations in every aspect of our business.
+    </p>
+    <section class="why-us-3 h-max flex-c-c">
+      <article class="content flex-c-sb dir-col">
+        <div class="image-div">
+          <img src="{{ url_for('static', filename='images/free_delivery.jpeg') }}" alt="" class="why-us-image" />
+        </div>
+        <h1 class="why-us-title">Free Delivery</h1>
+        <p class="info">
+          Free delivery is a benefit offered to our customers, allowing them to receive ordered products without additional transportation costs. With free delivery, we aim to provide a more accessible and convenient shopping experience for our customers.
+        </p>
+      </article>
+      <article class="content flex-c-sb dir-col">
+        <div class="image-div">
+          <img src="{{ url_for('static', filename='images/healthy_food.jpeg') }}" alt="" class="why-us-image" />
+        </div>
+        <h1 class="why-us-title">Healthy Products</h1>
+        <p class="info">
+          Healthy products from local producers are an excellent option for those who want to have a balanced and sustainable diet.
+        </p>
+      </article>
+      <article class="content flex-c-sb dir-col">
+        <div class="image-div"><img src="{{ url_for('static', filename='images/WhatsApp Image 2023-05-17 at 14.21.14.jpeg') }}" class="why-us-image" /></div>
+        <h1 class="why-us-title">Online Orders</h1>
+        <p class="info">
+          Online orders provide a convenient and accessible way to purchase desired products from the comfort of your own home or anywhere you have an internet connection.
+        </p>
+      </article>
+    </section>
+  </section>
+
+  <section class="benefits-container">
+    <section class="benefits flex-c-c">
+      <img src="{{ url_for('static', filename='images/comanda_acum_logo.jpeg') }}" alt="" class="benefit-image" />
+      <div>
+        <h1 class="title header-xlx">Order Anywhere, Anytime!</h1>
+        <p class="info w-600 text-md">
+          Regardless of your location, we are here towe are here to offer you a convenient and accessible shopping experience. Order anywhere and anytime and enjoy the comfort and flexibility of our services!
+        </p>
+      </div>
+    </section>
+    <section class="benefits flex-c-c">
+      <div>
+        <h1 class="title header-xlx">Deliver your products with the utmost safety!</h1>
+        <p class="info w-600 text-md">
+          We take responsibility for protecting and maintaining the integrity of the products throughout the delivery process, regardless of distance or destination. We strive to deliver your products with the highest possible safety so that you can enjoy a worry-free shopping experience.
+        </p>
+      </div>
+      <img src="{{ url_for('static', filename='images/livreaza_logo.jpeg') }}" alt="" class="benefit-image" />
+    </section>
+    <section class="benefits flex-c-c">
+      <img src="{{ url_for('static', filename='images/urmareste_logo.jpeg') }}" alt="" class="benefit-image" />
+      <div>
+        <h1 class="title header-xlx">Track your order in the easiest way!</h1>
+        <p class="info w-600 text-md">
+          With us, you have the possibility to track the status of your orders in the easiest way possible. Once you have placed an order, we provide you with an intuitive and user-friendly tracking system. All you have to do is access your account and go to the dedicated section for your orders.
+        </p>
+      </div>
+    </section>
+  </section>
+</section>
+  {% endblock %}

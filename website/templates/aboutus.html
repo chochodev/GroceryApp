@@ -1,0 +1,47 @@
+{% extends "main.html" %}
+{% block stylesheet %}{{ url_for('static', filename='css/aboutus.css') }}{% endblock %}
+{% block title %}Authentication{% endblock %}
+{% set show_navbar = True %}
+
+{% block content %}
+
+<section id="aboutus" class="w-full flex-c-c dir-col">
+    <h1 class="title header-lg">About Us</h1>
+
+    <p class="info">Welcome to Edenfresh! We are dedicated to providing you with the best [product/service] available in the market. Our mission is to [describe the mission and purpose of your website/business]</p>
+
+    <p class="info">At Edenfresh, we believe in [core value/belief]. We strive to [describe your commitment to delivering quality, customer satisfaction, or any other key aspect of your business]. With our [product/service], we aim to [describe the benefits or solutions your product/service offers to customers]</p>
+
+    <h2 class="header text-md">Our Team</h2>
+
+    <p class="info">Behind Edenfresh is a team of passionate and talented individuals who are dedicated to delivering excellence. Our team is comprised of [describe the roles and expertise of team members, highlighting their qualifications and experience]. Together, we work tirelessly to ensure that your experience with Edenfresh is nothing short of exceptional</p>
+
+    <h2 class="header text-md">Why Choose Us?</h2>
+
+    <p class="info">Quality Assurance: We are committed to delivering the highest quality food/fruits. Our team meticulously selects the finest materials and utilizes advanced techniques to ensure durability, reliability, and superior performance</p>
+
+    <p class="info">Customer Satisfaction: Your satisfaction is our top priority. We go above and beyond to provide exceptional customer service and support. We value your feedback and continuously strive to improve our products and services based on your needs</p>
+
+    <p class="info">Innovation: We stay ahead of the curve by embracing innovation and leveraging the latest technologies and trends. Our continuous pursuit of improvement enables us to offer cutting-edge food/fruits that are at the forefront of the industry</p>
+
+    <p class="info">Competitive Pricing: We believe that everyone deserves access to affordable food/fruits. We strive to offer competitive pricing without compromising on quality, ensuring that you get the best value for your investment</p>
+
+    <p class="info">Sustainability: We are committed to promoting sustainability and minimizing our environmental impact. We take proactive measures to reduce waste, conserve resources, and source materials from eco-friendly suppliers</p>
+
+    <p class="info">Trust and Reliability: With a strong track record of customer satisfaction and positive reviews, we have earned the trust and loyalty of our customers. You can rely on us to deliver on our promises and provide a seamless shopping experience</p>
+
+    <p class="info">Community Engagement: We actively engage with our community and give back through various initiatives. We believe in making a positive difference and supporting causes that align with our values</p>
+
+    <h2 class="header text-md">Our Commitment</h2>
+
+    <p class="info">At Edenfresh, we are dedicated to maintaining the highest standards of integrity, professionalism, and ethical conduct. We are transparent in our business practices and strive to build long-lasting relationships with our customers based on trust and mutual respect</p>
+
+    <h2 class="header text-md">Contact Us</h2>
+
+    <p class="info">We value your feedback, questions, and suggestions. If you have any inquiries or need assistance, our friendly and knowledgeable customer support team is here to help. You can reach us through michochoprogrammer@gmail.com</p>
+
+    <p class="info">Thank you for choosing Edenfresh. We look forward to serving you and exceeding your expectations with our exceptional food/fruits. Join us on this exciting journey as we eat and stay healthy together.</p>
+
+</section>
+
+{% endblock %}

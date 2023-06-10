@@ -1,0 +1,91 @@
+{% extends "main.html" %}
+{% block stylesheet %}{{ url_for('static', filename='css/menu.css') }}{% endblock %}
+{% block title %}Authentication{% endblock %}
+{% set show_navbar = True %}
+
+{% block content %}
+<section id="menu" class="w-full flex-c-c dir-col">
+    <h1 class="title header-lg">Discover Items</h1>
+    <form class="search-form" class="w-full flex-c-c">
+      <input name="item" class="input" type="text" placeholder="Enter goods to search" required/>
+      <button class="search-cta button">Search</button>
+    </form>
+    <!-- --------------------PRODUCTS----------------- -->
+    <p class="text-sm w-600">Are you allergic to something? Select the products you are allergic to, and they will disappear! <a href="{{ url_for('views.allergy') }}" class="allergy-link">here</a>
+    </p>
+    <section class="products-container w-full flex-c-se">
+        <div class="product">
+            <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="product-image" />
+            <div class="product-info flex dir-col">
+                <p class="name w-600 header-md">Red Onion</p>
+                <p class="w-600">Price: $5.10/kg</p>
+                <div class="quantity-container w-full">
+                    <label for="quantity-input" class="w-600">Quantity:</label>
+                    <input type="number" class="quantity-input w-600" min="1" step="1" />
+                </div>
+                <p id="totalPrice w-full" class="w-600">Total price: $0</p>
+            </div>
+            <form class="negotiation-form w-full flex-c-c">
+                <input type="number" class="negotiation-input" min="0" step="1" placeholder="Enter negotiated price" />
+                <button class="negotiation-button button">Offer</button>
+                <p id="negotiationResult"></p>
+            </form>
+        </div>
+        <div class="product">
+            <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="product-image" />
+            <div class="product-info flex dir-col">
+                <p class="name w-600 header-md">Red Onion</p>
+                <p class="w-600">Price: $5.10/kg</p>
+                <div class="quantity-container w-full">
+                    <label for="quantity-input" class="w-600">Quantity:</label>
+                    <input type="number" class="quantity-input w-600" min="1" step="1" />
+                </div>
+                <p id="totalPrice w-full" class="w-600">Total price: $0</p>
+            </div>
+            <form class="negotiation-form w-full flex-c-c">
+                <input type="number" class="negotiation-input" min="0" step="1" placeholder="Enter negotiated price" />
+                <button class="negotiation-button button">Offer</button>
+                <p id="negotiationResult"></p>
+            </form>
+        </div>
+        <div class="product">
+            <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="product-image" />
+            <div class="product-info flex dir-col">
+                <p class="name w-600 header-md">Red Onion</p>
+                <p class="w-600">Price: $5.10/kg</p>
+                <div class="quantity-container w-full">
+                    <label for="quantity-input" class="w-600">Quantity:</label>
+                    <input type="number" class="quantity-input w-600" min="1" step="1" />
+                </div>
+                <p id="totalPrice w-full" class="w-600">Total price: $0</p>
+            </div>
+            <form class="negotiation-form w-full flex-c-c">
+                <input type="number" class="negotiation-input" min="0" step="1" placeholder="Enter negotiated price" />
+                <button class="negotiation-button button">Offer</button>
+                <p id="negotiationResult"></p>
+            </form>
+        </div>
+        <div class="product">
+            <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="product-image" />
+            <div class="product-info flex dir-col">
+                <p class="name w-600 header-md">Red Onion</p>
+                <p class="w-600">Price: $5.10/kg</p>
+                <div class="quantity-container w-full">
+                    <label for="quantity-input" class="w-600">Quantity:</label>
+                    <input type="number" class="quantity-input w-600" min="1" step="1" />
+                </div>
+                <p id="totalPrice w-full" class="w-600">Total price: $0</p>
+            </div>
+            <form class="negotiation-form w-full flex-c-c">
+                <input type="number" class="negotiation-input" min="0" step="1" placeholder="Enter negotiated price" />
+                <button class="negotiation-button button">Offer</button>
+                <p id="negotiationResult"></p>
+            </form>
+        </div>
+    </section>
+</section>
+{% endblock %}
+
+
+{% block js %}
+{% endblock %}

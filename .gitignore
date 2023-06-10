@@ -1,0 +1,6 @@
+env/
+__pycache__/
+instance/
+build/
+website/static/fontawesome/
+.env

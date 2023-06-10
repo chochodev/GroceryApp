@@ -1,0 +1,154 @@
+{% extends 'main.html' %}
+{% block stylesheet %}{{ url_for('static', filename='css/cart.css') }}{% endblock %}
+{% set show_navbar = True %}
+
+{% block content %}
+
+<div class="cart-page" class="w-full flex-c-c flex-tc dir-col">
+  <h1 class="w-max header-lg">Cart</h1>
+  <p class="info w-max w-600">All your cart items start here until you remove or buy them.</p>
+</div>
+<section id="cart" class="w-full flex-c-sb">
+
+  <div class="product-list w-full flex-c-se">
+    <div class="product h-max flex dir-col">
+      <div class="description w-full flex dir-col">
+        <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="img w-full"/>
+        <div class="product-info w-full flex-jsb">
+            <div class="title">
+                <h3 class="name w-600">Red Onion</h3>
+                <span class="text-sm w-600">In Stock</span>
+            </div>
+            <div class="price flex dir-col">
+                <span class="text-xsm w-600">&#8358;100<small> X 2</small></span>
+                <span class="text-md w-700">&#8358;200</span>
+            </div>
+        </div>
+      </div>
+
+      <div class="func">
+          <div class="amount flex-c-se flex-tc">
+              <button class="link text-md">-</button>
+              <span>2</span>
+              <button class="link text-md">+</button>
+          </div>
+
+          <div class="cta-div h-max w-full flex-c-sb flex-tc">
+              <a href="" class="cta one flex-c-se w-600">
+                  <i class="icon fa fa-trash"></i>
+                  <span class="text-sm">Remove</span>
+              </a>
+              <a href="" class="cta two button flex-c-se">
+                <i class="icon2 fa fa-heart-o"></i>
+                  <span class="text-sm">Buy Now</span>
+              </a>
+          </div>
+      </div>
+    </div>
+    <div class="product h-max flex dir-col">
+      <div class="description w-full flex dir-col">
+        <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="img w-full"/>
+        <div class="product-info w-full flex-jsb">
+            <div class="title">
+                <h3 class="name w-600">Red Onion</h3>
+                <span class="text-sm w-600">In Stock</span>
+            </div>
+            <div class="price flex dir-col">
+                <span class="text-xsm w-600">&#8358;100<small> X 2</small></span>
+                <span class="text-md w-700">&#8358;200</span>
+            </div>
+        </div>
+      </div>
+
+      <div class="func">
+          <div class="amount flex-c-se flex-tc">
+              <button class="link text-md">-</button>
+              <span>2</span>
+              <button class="link text-md">+</button>
+          </div>
+
+          <div class="cta-div h-max w-full flex-c-sb flex-tc">
+              <a href="" class="cta one flex-c-se w-600">
+                  <i class="icon fa fa-trash"></i>
+                  <span class="text-sm">Remove</span>
+              </a>
+              <a href="" class="cta two button flex-c-se">
+                <i class="icon2 fa fa-heart-o"></i>
+                  <span class="text-sm">Buy Now</span>
+              </a>
+          </div>
+      </div>
+    </div>
+    <div class="product h-max flex dir-col">
+      <div class="description w-full flex dir-col">
+        <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="img w-full"/>
+        <div class="product-info w-full flex-jsb">
+            <div class="title">
+                <h3 class="name w-600">Red Onion</h3>
+                <span class="text-sm w-600">In Stock</span>
+            </div>
+            <div class="price flex dir-col">
+                <span class="text-xsm w-600">&#8358;100<small> X 2</small></span>
+                <span class="text-md w-700">&#8358;200</span>
+            </div>
+        </div>
+      </div>
+
+      <div class="func">
+          <div class="amount flex-c-se flex-tc">
+              <button class="link text-md">-</button>
+              <span>2</span>
+              <button class="link text-md">+</button>
+          </div>
+
+          <div class="cta-div h-max w-full flex-c-sb flex-tc">
+              <a href="" class="cta one flex-c-se w-600">
+                  <i class="icon fa fa-trash"></i>
+                  <span class="text-sm">Remove</span>
+              </a>
+              <a href="" class="cta two button flex-c-se">
+                <i class="icon2 fa fa-heart-o"></i>
+                  <span class="text-sm">Buy Now</span>
+              </a>
+          </div>
+      </div>
+    </div>
+    <div class="product h-max flex dir-col">
+      <div class="description w-full flex dir-col">
+        <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="img w-full"/>
+        <div class="product-info w-full flex-jsb">
+            <div class="title">
+                <h3 class="name w-600">Red Onion</h3>
+                <span class="text-sm w-600">In Stock</span>
+            </div>
+            <div class="price flex dir-col">
+                <span class="text-xsm w-600">&#8358;100<small> X 2</small></span>
+                <span class="text-md w-700">&#8358;200</span>
+            </div>
+        </div>
+      </div>
+
+      <div class="func">
+          <div class="amount flex-c-se flex-tc">
+              <button class="link text-md">-</button>
+              <span>2</span>
+              <button class="link text-md">+</button>
+          </div>
+
+          <div class="cta-div h-max w-full flex-c-sb flex-tc">
+              <a href="" class="cta one flex-c-se w-600">
+                  <i class="icon fa fa-trash"></i>
+                  <span class="text-sm">Remove</span>
+              </a>
+              <a href="" class="cta two button flex-c-se">
+                <i class="icon2 fa fa-heart-o"></i>
+                  <span class="text-sm">Buy Now</span>
+              </a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+{% endblock %}

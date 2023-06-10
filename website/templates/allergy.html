@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% block stylesheet %}{{ url_for('static', filename='css/allergy.css') }}{% endblock %}
+{% set show_navbar = True %}
+
+{% block content %}
+
+<section id="allergy" class="w-full flex-c-c dir-col">
+  <h1 class="title header-lg">Allergies</h1>
+  <form class="search-form" class="w-full flex-c-c">
+    <input name="allergy" class="input" type="text" placeholder="Enter your allergies seperated by comma" required/>
+    <button class="search-cta button">Search</button>
+  </form>
+
+  <div class="allergies w-full flex-c-c dir-col">
+    <div class="product w-full flex-ts" data-allergens="proteins">
+      <h3 class="title">Red Onion</h3>
+      <p class="info text-sm w-600">
+        <b>Properties:</b> Red onion contains all the vitamins from the B group, vitamin C, as well as several important minerals for the body: phosphorus, sodium, calcium, magnesium, zinc, iron, and chromium.
+      </p>
+      <p class="text-sm"><b>Allergens:</b> proteins</p>
+    </div>
+    <div class="product w-full flex-ts" data-allergens="pollen, proteins">
+      <h3 class="title">Green Apples</h3>
+      <p class="info text-sm w-600">
+        <b>Properties:</b> Green apples are rich in fiber and can help reduce cholesterol levels in the blood. They also contain antioxidant substances that help prevent skin cancer.
+      </p>
+      <p class="text-sm"><b>Allergens:</b> pollen, proteins</p>
+    </div>
+    <div class="product w-full flex-ts" data-allergens="pollen, proteins">
+      <h3 class="title">Pears</h3>
+      <p class="info text-sm w-600">
+        <b>Properties:</b> Pears are extremely healthy, having a high content of fiber, vitamins, as well as valuable antioxidants that protect the body and strengthen the immune system.
+      </p>
+      <p class="text-sm"><b>Allergens:</b> pollen, proteins</p>
+    </div>
+    <div class="product w-full flex-ts" data-allergens="carbohydrates, glucose">
+      <h3 class="title">Blackberries</h3>
+      <p class="info text-sm w-600">
+        <b>Properties:</b> One serving of blackberries provides approximately half of the recommended daily intake of antioxidant vitamin C. Blackberries are also a source of vitamin K and offer modest amounts of potassium, magnesium, vitamin A, iron, and calcium.
+      </p>
+      <p class="text-sm"><b>Allergens:</b> fructose, glucose, carbohydrates, sucrose</p>
+    </div>
+    <div class="product w-full flex-ts" data-allergens="lactose, proteins">
+      <h3 class="title">Smoked Cheese</h3>
+      <p class="info text-sm w-600">
+        <b>Properties:</b> Smoked cheese is a highly nutritious and biologically valuable food due to its content of proteins, lipids, vitamins, and minerals.
+      </p>
+      <p class="text-sm"><b>Allergens:</b> lactose, proteins, lipids</p>
+    </div>
+  </div>  
+</section>
+
+{% endblock %}

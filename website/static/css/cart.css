@@ -1,0 +1,139 @@
+.cart-page > * {
+  color: var(--text-clr);
+  margin: 0 auto;
+}
+
+#cart {
+  padding: .5rem;
+  gap: .5rem;
+}
+
+#cart .product-list {
+  gap: 1rem;
+  padding: .5em 1em;
+  background: var(--main-clr);
+  flex-wrap: wrap;
+}
+
+
+/* CART ITEMS */
+#cart .product-list .product {
+  gap: 1em;
+  max-width: 16rem;
+  width: 100%;
+  background: var(--primary-bg-clr);
+  border-radius: .5rem;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  #cart .product-list .product {
+    max-width: 12rem;
+  }
+}
+
+#cart .product-list .product .description .img {
+  height: 10rem;
+  object-fit: cover;
+  box-shadow: var(--sh);
+}
+
+#cart .product-list .product .description .product-info {
+  padding: .5rem;
+}
+
+/* TITLE */
+#cart .product-list .product .description .title {
+  width:max-content;
+  height: 100%;
+  padding: .25em .5em;
+}
+
+#cart .product-list .product .description .title .name {
+  color: var(--text-clr);
+}
+
+/* PRICE */
+#cart .product-list .product .description .price {
+  color: var(--text-light);
+}
+
+#cart .product-list .product .description .price > span:first-child small {
+  font-size: .7em;
+  color: var(--text-light);
+}
+
+#cart .product-list .product .description .price > span:last-child {
+  color: var(--text);
+}
+
+/*===================================================*/
+/* FUNC */
+#cart .product-list .product .func {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: .5em;
+}
+
+#cart .product-list .product .func .amount {
+  width: 6em;
+  height: max-content;
+  gap: .5rem;
+  padding: .25em;
+  font-weight: 600;
+}
+
+#cart .product-list .product .func .amount button {
+  width: 2em;
+  height: 2em;
+  padding: 0;
+  background: var(--main-clr);
+  font-weight: 600;
+  border-radius: .25em;
+  cursor: pointer;
+}
+
+#cart .product-list .product .func .cta-div {
+  padding: 1rem .25rem;
+  height: 3rem;
+}
+
+#cart .product-list .product .func .cta-div .cta {
+  position: relative;
+  padding: .25em;
+  width: max-content;
+  border-radius: .25em;
+  border: 1px solid var(--text-light);
+  box-shadow: var(--sh);
+}
+
+#cart .product-list .product .func .cta-div .cta .icon {
+  width: max-content;
+  color: var(--red);
+  font-size: 1.2em;
+}
+#cart .product-list .product .func .cta-div .cta.two {
+  gap: .5rem;
+  padding: .5rem;
+}
+#cart .product-list .product .func .cta-div .cta.two span {
+  color: white;
+}
+#cart .product-list .product .func .cta-div .cta.one:hover span {
+  display: block;
+}
+#cart .product-list .product .func .cta-div .cta.one span {
+  position: absolute;
+  left: 2rem;
+  background: var(--red);
+  color: white;
+  padding: .25rem .5rem;
+  border-radius: .25rem;
+  display: none;
+}
+
+#cart .product-list .product .func .cta-div .cta .icon2 {
+  color: white;
+  font-size: 1.2em;
+}

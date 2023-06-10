@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <link rel="stylesheet" href="{% block stylesheet %}{% endblock %}" />
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/logo.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/includes/navbar.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/includes/footer.css') }}" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/solid.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/brands.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/fontawesome.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/v4-shims.css') }}" />
+
+    <title>{% block title %}Home{% endblock %}</title>
+  </head>
+  <body>
+    {% if show_navbar %}
+    {% include 'includes/navbar.html' %}
+    {% endif %}
+    
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+    <div class="alert error w-full flex-tc">
+      <p class='message text-sm w-600'>{{ message }}</p>
+      <button type="button" class="close button" data-dismiss="alert">
+        <i aria-hidden="true" class="fa fa-close icon"></i>
+      </button>
+    </div>
+    {% else %}
+    <div class="alert success w-full flex-tc">
+      <p class='message text-sm w-600'>{{ message }}</p>
+      <button type="button" class="close button" data-dismiss="alert">
+        <i aria-hidden="true" class="fa fa-close icon"></i>
+      </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+    <main class="container">
+      {% block content %} {% endblock %}
+    </main>
+    
+    {% include 'includes/footer.html' %}
+
+    {% block js %}
+    
+    {% endblock %}
+  </body>
+</html>

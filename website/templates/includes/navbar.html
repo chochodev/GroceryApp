@@ -1,0 +1,73 @@
+<header id="navbar">
+    <nav class='auth-navbar w-full flex-c-sb'>
+        <div class="logo flex-c-c">
+            <h3 class="logo-title">
+                <a href="index.html" class='header-lg'>Edenfresh</a>
+            </h3>
+            {% include 'assets/logo.html' %}
+        </div>
+        <div class="menu-list flex-c-sb">
+            <div class="items-2 flex-ac screen-md">
+                <a href="{{ url_for('views.home') }}" class="link text-md w-600 button-md">Home</a>
+
+                {# Hides these buttons if user is not Logged in #}
+                {% if not user %}
+                <a href="{{ url_for('views.menu') }}" class="link text-md w-600 button-md">Menu</a>
+                <a href="{{ url_for('views.cart') }}" class="link text-md w-600 button-md">Order Now</a>
+                <a href="{{ url_for('views.allergy') }}" class="link text-md w-600 button-md">Allergy</a>
+                {% endif %}
+
+                <a href="{{ url_for('views.aboutus') }}" class="link text-md w-600 button-md">About Us</a>
+
+                {# Hides these buttons if user is not Logged in #}
+                {% if not user %}
+                <a href="{{ url_for('auth.logout') }}" class="link text-md w-600 button-md">Logout</a>
+                {% endif %}
+
+                {# Hides these buttons if user is Logged in #}
+                {% if user %}
+                <button class="signin-button link text-md w-600 button button-sm">Login</button>
+                <button class="signup-button link text-md w-600 button button-sm">SignUp</button>
+                {% endif %}
+            </div>
+            <div class="screen-sm"></div>
+            <button id="menu-bar-btn" class="menu-bar screen-sm">
+                <i id="bars-icon" class="icon fa fa-bars text-lg"></i>
+                <i id="close-icon" class="icon close fa fa-times text-lg"></i>
+            </button>
+        </div>
+    </nav>
+
+    <nav id="menu-list" class="menu-list-2 close flex dir-col screen-sm">
+        <div class="items flex dir-col">
+            <a href="{{ url_for('views.home') }}" class="link text-md w-600 button-md">Home</a>
+
+            {# Hides these buttons if user is not Logged in #}
+            {% if user.is_authenticated %}
+            <a href="{{ url_for('views.menu') }}" class="link text-md w-600 button-md">Menu</a>
+            <a href="{{ url_for('views.cart') }}" class="link text-md w-600 button-md">Order Now</a>
+            <a href="{{ url_for('views.allergy') }}" class="link text-md w-600 button-md">Allergy</a>
+            {% endif %}
+
+            <a href="{{ url_for('views.aboutus') }}" class="link text-md w-600 button-md">About Us</a>
+
+            {# Hides these buttons if user is not Logged in #}
+            {% if user.is_authenticated %}
+            <a href="{{ url_for('auth.logout') }}" class="link text-md w-600 button-md">Logout</a>
+            {% endif %}
+
+            {# Hides these buttons if user is Logged in #}
+            {% if not user.is_authenticated %}
+            <a href="{{ url_for('auth.signin') }}" class="signin-button text-md w-600 button-md">Login</a>
+            <a href="{{ url_for('auth.signin') }}" class="signup-button text-md w-600 button-md">SignUp</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- BACKGROUND OVERLAY ON FOCUS OF SIGNIN AND SIGNUP FORM -->
+    <div id="signing-background-overlay"></div>
+</header>
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+{% endblock %}

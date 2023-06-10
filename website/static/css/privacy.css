@@ -1,0 +1,23 @@
+#privacy {
+    padding: 2rem calc(2vw + 2.5rem);
+    gap: 1rem;
+}
+
+#privacy > * {
+    max-width: 50rem;
+}
+
+#privacy > .title,
+#privacy > .header {
+    color: var(--text-clr);
+}
+
+#privacy > .header {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+#privacy .info {
+    color: var(--text-clr);
+    font-weight: 600;
+}

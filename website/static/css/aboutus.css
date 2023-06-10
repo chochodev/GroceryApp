@@ -1,0 +1,23 @@
+#aboutus {
+    padding: 2rem calc(2vw + 2.5rem);
+    gap: 1rem;
+}
+
+#aboutus > * {
+    max-width: 50rem;
+}
+
+#aboutus > .title,
+#aboutus > .header {
+    color: var(--text-clr);
+}
+
+#aboutus > .header {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+#aboutus .info {
+    color: var(--text-clr);
+    font-weight: 600;
+}

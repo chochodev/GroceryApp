@@ -1,0 +1,119 @@
+#menu {
+    padding: calc(2vw + .5rem);
+    gap: 1rem;
+}
+
+#menu > .title {
+    color: var(--text-clr);
+}
+
+#menu .search-form {
+    padding: .5rem 0;
+}
+
+#menu .search-form .input {
+    width: max-content;
+    min-width: 18rem;
+    padding: 0 .5rem;
+    height: 2.25rem;
+    border-radius: .25rem;
+    border: 2px solid var(--primary-clr);
+}
+
+#menu .search-form .search-cta {
+    border-radius: .25rem;
+    height: 2.25rem;
+    padding: 0 .5rem;
+}
+
+#menu .allergy-link {
+    color: var(--text-clr);
+    padding: 0 .25rem;
+    margin: 0;
+}
+
+#menu .allergy-link:hover {
+    text-decoration: underline;
+}
+
+/* PRODUCTS SECTION */
+#menu .products-container {
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+#menu .products-container .product {
+    max-height: 25rem;
+    width: 20rem;
+    background: var(--primary-bg-clr);
+    border-radius: .5rem;
+    overflow: hidden;
+}
+
+#menu .products-container .product .product-info {
+    gap: .25rem;
+    padding: .5rem;
+}
+
+#menu .products-container .product .product-image {
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;;
+}
+
+#menu .products-container .product .name {
+    color: var(--text-clr);
+    margin: 0 auto 1rem;
+}
+
+#menu .products-container .product .quantity-input {
+    background: rgba(255, 255, 255, 0.5);
+    width: 2.5rem;
+    max-width: max-content;
+    height: 1.5rem;
+    border-bottom: 1px solid #000000;
+    border-radius: .25rem;
+    text-align: center;
+}
+
+#menu .products-container .product .negotiation-form {
+    margin-top: 2rem;
+    gap: .5rem;
+    padding: 0 1rem;
+    flex-wrap: wrap;
+}
+
+#menu .products-container .product .negotiation-input {
+    width: max-content;
+    min-width: 10rem;
+    padding: 0 .5rem;
+    height: 2.25rem;
+    border-radius: .25rem;
+    border: 2px solid var(--primary-clr);
+}
+
+#menu .products-container .product .negotiation-input:focus {
+    border: 2px solid var(--text-clr);
+}
+
+#menu .products-container .product .negotiation-button {
+    height: 2.25rem;
+    border-radius: .25rem;
+    padding: 0 .5rem;
+}
+
+
+@media (max-width: 768px) {
+    #menu .products-container {
+        gap: .5rem;
+    }
+    #menu .products-container .product {
+        width: 17rem;
+    }
+
+    #menu .products-container .product .negotiation-form {
+        margin-top: .8rem;
+        margin-bottom: .5rem;
+    }
+}

@@ -1,0 +1,44 @@
+#allergy {
+    padding: calc(2vw + .5rem);
+    gap: 1rem;
+}
+
+#allergy > .title {
+    color: var(--text-clr);
+}
+
+#allergy .search-form {
+    padding: .5rem 0;
+}
+
+#allergy .search-form .input {
+    width: max-content;
+    min-width: 18rem;
+    padding: 0 .5rem;
+    height: 2.25rem;
+    border-radius: .25rem;
+    border: 2px solid var(--primary-clr);
+}
+
+#allergy .search-form .search-cta {
+    border-radius: .25rem;
+    height: 2.25rem;
+    padding: 0 .5rem;
+}
+
+/* PRODUCT */
+#allergy .allergies {
+    gap: .75rem;
+}
+#allergy .product {
+    max-width: 66rem;
+    padding: .5rem;
+    height: max-content;
+    background: var(--primary-bg-clr);
+    border-radius: .5rem;
+}
+
+#allergy .product .info,
+#allergy .product .title {
+    color: var(--text-clr);
+}

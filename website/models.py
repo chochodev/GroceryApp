@@ -1,3 +1,4 @@
+from flask import current_app
 from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
@@ -35,14 +36,19 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(50))
     username = db.Column(db.String(15), unique=True, nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
+    email_verified = db.Column(db.Boolean, default=False)
     gender = db.Column(db.String(15))
     password = db.Column(db.String(50), nullable=False)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     allergies = db.relationship('Allergy', secondary=user_allergy_association, backref=db.backref('users', lazy='dynamic'))
 
-    def get_token(self, expires_sec=300):
-        serial = Serializer(current_app.config['SECRET_KEY'], expires_sec=expires_sec)
-        return serial.dumps({'user_id':user.id}).decode('utf-8')
+    # def generate_confirmation_token(self):
+    #     serial = Serializer(current_app.config['SECRET_KEY'])
+    #     return serial.dumps({'user_email':self.email}).decode('utf-8')
+
+    # def get_token(self, expires_sec=300):
+    #     serial = Serializer(current_app.config['SECRET_KEY'], expires_sec=expires_sec)
+    #     return serial.dumps({'user_id':self.id}).decode('utf-8')
     
     @staticmethod
     def verify_token(token):

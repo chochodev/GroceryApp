@@ -2,3 +2,6 @@ flask
 flask-login
 flask-sqlalchemy
 Flask-Migrate
+flask-bcrypt
+flask-mail
+itsdangerous

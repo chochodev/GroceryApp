@@ -1,4 +1,4 @@
-.cart-page > * {
+#cart-page > * {
   color: var(--text-clr);
   margin: 0 auto;
 }
@@ -76,24 +76,27 @@
   gap: .5em;
 }
 
-#cart .product-list .product .func .amount {
-  width: 6em;
-  height: max-content;
-  gap: .5rem;
-  padding: .25em;
-  font-weight: 600;
-}
-
-#cart .product-list .product .func .amount button {
-  width: 2em;
-  height: 2em;
-  padding: 0;
+/* STATUS */
+#cart .product-list .product .func .status {
+  padding: .5rem .25rem;
+  margin: 0 .25rem;
+  border-radius: .25rem;
   background: var(--main-clr);
-  font-weight: 600;
-  border-radius: .25em;
-  cursor: pointer;
 }
 
+#cart .product-list .product .func .status p.good {
+  color: var(--green);
+}
+
+#cart .product-list .product .func .status p.pending {
+  color: #505050;
+}
+
+#cart .product-list .product .func .status p.err {
+  color: var(--red);
+}
+
+/* CALL TO ACTION BUTTONS */
 #cart .product-list .product .func .cta-div {
   padding: 1rem .25rem;
   height: 3rem;

@@ -1,0 +1,35 @@
+#create-product {
+    min-height: 100vh;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+/* FOR PRODUCT TITLE */
+#create-product .title {
+    margin: 2rem 1rem;
+}
+
+/* FOR PRODUCT FORM */
+#create-product .product-form {
+    padding: .5rem 0;
+    gap: 1rem;
+}
+
+#create-product .product-form .input {
+    width: max-content;
+    min-width: 18rem;
+    padding: 0 .5rem;
+    height: 2.25rem;
+    border-radius: .25rem;
+    border: 2px solid var(--primary-clr);
+}
+
+#create-product .product-form .input:focus {
+    border: none;
+    box-shadow: 0 0 2px 3px rgba(185, 17, 96, .25);
+}
+
+#create-product .product-form .product-cta {
+    padding: .5rem;
+    border-radius: .25rem;
+}

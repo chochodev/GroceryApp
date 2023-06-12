@@ -1,0 +1,73 @@
+{% extends "main.html" %}
+{% block stylesheet %}{{ url_for('static', filename='css/auth.css') }}{% endblock %}
+{% block title %}Authentication{% endblock %}
+
+
+{% block content %}
+
+<div id="authentication" class="authentication w-full flex-c-s dir-col">
+    {# {% with messages = get_flashed_messages(with_categories=true) %} 
+    {% if messages %} 
+    {% for category, message in messages %} 
+        {% if category == 'error' %}
+        <div class="alert error w-full flex-tc">
+        <p class='message text-sm w-600'>{{ message }}</p>
+        <button type="button" class="close button" data-dismiss="alert">
+            <i aria-hidden="true" class="fa fa-close icon"></i>
+        </button>
+        </div>
+        {% else %}
+        <div class="alert success w-full flex-tc">
+        <p class='message text-sm w-600'>{{ message }}</p>
+        <button type="button" class="close button" data-dismiss="alert">
+            <i aria-hidden="true" class="fa fa-close icon"></i>
+        </button>
+        </div>
+        {% endif %} 
+    {% endfor %} 
+    {% endif %} 
+    {% endwith %} #}
+
+
+    <div id="signin" class="form flex-c-c dir-col">
+        <!-- LOGIN FORM -->
+        <form method="POST" action="/auth/signin" class='signin-form w-full flex-c-c dir-col' >
+            <h3 class="title text-lg w-600">Login account</h3>
+
+            <!-- LOGIN INPUTS SECTION -->
+            <div class="input">
+                <i class="icon fa fa-send-o"></i>
+                <input name="email" class="email" type="email" placeholder="(Email)" required/>
+            </div>
+            <div class="input">
+                <i class="icon fa fa-lock"></i>
+                <input name="password" class="name" type="password" placeholder="(Password)" required/>
+            </div>
+
+            <!-- KEEP USER LOGGED IN SECTION-->
+            <div class="input">
+                <input name="login-remember" class="checkbox" type="checkbox" />
+                <small class="check-info">Keep me logged in for a week.</small>
+            </div>
+
+            <!-- SUBMIT BUTTON ( TO LOG IN ) -->
+            <button type="submit" id="signin-submit" class="submit text-sm w-600" name="signin">Sign In</button>
+        </form>
+
+        <!-- FORGET PASSWORD SECTION -->
+        <form method='POST' action='/forgetpassword' class='forget-password-container w-full flex-c-c dir-col'>
+            <small class="check-info w-600">Forget password?</small>
+            <div id="forget_password_form" class="input">
+                <input id="forget_password_email" name="forget_password_email" class="email w-full" type="email" placeholder="(Enter valid email)" />
+                <button type='submit' class="submit-forgetpassword text-sm w-600" name="forget_password_form">Request</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+<!-- LINK TO JS FILE -->
+{% block js %}
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

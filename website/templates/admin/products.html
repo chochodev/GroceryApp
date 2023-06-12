@@ -1,0 +1,71 @@
+{% extends 'admin/main.html' %}
+{% block stylesheet %}{{ url_for('static', filename='css/admin/products.css') }}{% endblock %}
+{% block content %}
+
+    <section id="products" class="w-full flex-as dir-col">
+        <!-- SEARCH FORM -->
+        <form class="search-form" class="h-max w-full flex-c-s">
+            <input name="search-input" class="search-input" type="text" placeholder="Search" required/>
+            <button class="search-cta button">
+                <i class="fa fa-search icon"></i>
+            </button>
+        </form>
+
+        <section class="main w-full flex-c-s dir-col">
+            <!-- MAIN HEADER -->
+            <div class="title-section w-full flex dir-col">
+                <h2 class="title header-md">Products</h2>
+                <p class="text text-sm">15 New Notifications</p>
+            </div>
+            <div class="product-contents w-full flex-ac dir-col">
+                <!-- PRODUCTS CATEGORY -->
+                <div class="product-links w-full flex-ac">
+                    <button id="all-products-button" class="link w-max flex-c-c dir-col w-600 active">All Products</button>
+                    <button id="unapproved-products-button" class="link w-max flex-c-c dir-col w-600">Unapproved</button>
+                    <a href="{{ url_for('admin.product') }}" id="approved-products-button" class="button button-sm w-max flex-c-c dir-col w-600">New Product</a>
+                </div>
+
+                <!-- PRODUCTS HEADER -->
+                <table class="products-table w-full flex dir-col">
+                    <thead class="products-header">
+                        <tr class="products-header-items w-full">
+                            <th class="text-sm w-600">Name</th>
+                            <th class="text-sm w-600">Description</th>
+                            <th class="text-sm w-600">Price/kg</th>
+                            <th class="text-sm w-600">Max Price</th>
+                            <th class="text-sm w-600">Amount Sold</th>
+                        </tr>
+                    </thead>
+
+                    <!-- PRODUCTS -->
+                    <tbody id="all-products" class="products w-full flex-ac dir-col">
+                        <tr class="product w-full">
+                            <td class="text-sm">Red Onion</td>
+                            <td class="text-sm">It has some of this made up vitamin and minerals</td>
+                            <td class="text-sm">$30</td>
+                            <td class="text-sm">$24</td>
+                            <td class="text-sm">24kg</td>
+                        </tr>
+                        <tr class="product w-full">
+                            <td class="text-sm">Red Onion</td>
+                            <td class="text-sm">It has some of this made up vitamin and minerals</td>
+                            <td class="text-sm">$30</td>
+                            <td class="text-sm">$24</td>
+                            <td class="text-sm">24kg</td>
+                        </tr>
+                        <tr class="product w-full">
+                            <td class="text-sm">Red Onion</td>
+                            <td class="text-sm">It has some of this made up vitamin and minerals</td>
+                            <td class="text-sm">$30</td>
+                            <td class="text-sm">$24</td>
+                            <td class="text-sm">24kg</td>
+                        </tr>
+                    </tbody>
+                </table>
+                    
+        </section>
+    </section>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

@@ -33,7 +33,6 @@
 #navbar .menu-list .link:hover,
 #navbar .menu-list-2 .link:hover {
     background: var(--link-bg-hover);
-    /* box-shadow: 0 0 2px 3px rgba(185, 17, 96, 0.45); */
     transition: .1s ease-in-out !important;
 }
 
@@ -54,6 +53,7 @@
     background: var(--cta-clr) !important;
 }
 
+/* MENU-BAR */
 #navbar .menu-list .menu-bar .icon {
     border-radius: .25rem;
     padding: .45rem .65rem;

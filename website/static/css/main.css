@@ -4,7 +4,7 @@
   --primary-clr: #f178a0;
   --primary-bg-clr: #ffc8da;
   
-  --cta-clr: #b91160;
+  --cta-clr: rgb(185, 17, 96);
   --cta-hover: #c61f6d;
   --cta-hover-2: #f178a0;
   --cta-ghost: #ffd2e5;
@@ -12,7 +12,8 @@
   --cta-border: #ffd2e5;
 
   --text-clr: #b91160;
-  --red: #b91135;
+  --onPrimary-clr: #f4dce7;
+  --red: #eb3c3cc0;
   --green: #11b968;
   /* --link-clr: #556CD6; */
 
@@ -109,6 +110,7 @@ body {
 
 body > .alert {
   position: relative;
+  z-index: 20;
   padding: .5rem;
   display: flex;
   width: 100%;
@@ -136,7 +138,7 @@ body > .alert .close:hover {
   background: #d1d1d190;
 }
 
-body > .alert.danger {
+body > .alert.error {
   background: var(--red);
 }
 

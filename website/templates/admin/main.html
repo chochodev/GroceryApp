@@ -24,34 +24,67 @@
 
   </head>
   <body>
+    {# HEADER SECTION #}
     <header id="admin-navbar" class="w-max flex-s-s dir-col">
         <button id="menu-bar-btn" class="menu-bar screen-sm">
             <i id="bars-icon" class="icon fa fa-bars text-lg"></i>
             <i id="close-icon" class="icon close fa fa-times text-lg"></i>
         </button>
+
+        {# NAVBAR SECTION #}
         <nav id="nav-contents" class="nav-contents close h-full flex-s-s dir-col">
-            <div class="logo flex-c-c">
-                <h3 class="logo-title">
-                    <a href="index.html" class='header-md'>Edenfresh</a>
-                </h3>
-                {% include 'assets/logo.html' %}
-            </div>
-            <div class="nav-items w-full flex-js dir-col">
-                <a href="{{ url_for('admin.dashboard') }}" {% if endpoint == 'dashboard' %} class="link w-full active text-md w-600 button-md" {% else %} class="link w-full text-md w-600 button-md" {% endif %}>Dashboard</a>
-                <a href="{{ url_for('admin.orders') }}" {% if endpoint == 'orders' %} class="link w-full active text-md w-600 button-md" {% else %} class="link w-full text-md w-600 button-md" {% endif %}>Orders</a>
-                <a href="{{ url_for('admin.customers') }}" {% if endpoint == 'customers' %} class="link w-full active text-md w-600 button-md" {% else %} class="link w-full text-md w-600 button-md" {% endif %}>Customers</a>
-                <a href="{{ url_for('admin.products') }}" {% if endpoint == 'products' %} class="link w-full active text-md w-600 button-md" {% else %} class="link w-full text-md w-600 button-md" {% endif %}>Products</a>
-            </div>
+          {# LOGO && TITLE SECTION #}
+          <div class="logo flex-c-c">
+              <h3 class="logo-title">
+                  <a href="index.html" class='header-md'>Edenfresh</a>
+              </h3>
+              {% include 'assets/logo.html' %}
+          </div>
+          {# NAV LINKS #}
+          <div class="nav-items w-full flex-js dir-col">
+              <a href="{{ url_for('admin.dashboard') }}" {% if endpoint == 'dashboard' %} class="link w-full active text-md w-600 button-md" {% else %} class="link w-full text-md w-600 button-md" {% endif %}>Dashboard</a>
+              <a href="{{ url_for('admin.orders') }}" {% if endpoint == 'orders' %} class="link w-full active text-md w-600 button-md" {% else %} class="link w-full text-md w-600 button-md" {% endif %}>Orders</a>
+              <a href="{{ url_for('admin.customers') }}" {% if endpoint == 'customers' %} class="link w-full active text-md w-600 button-md" {% else %} class="link w-full text-md w-600 button-md" {% endif %}>Customers</a>
+              <a href="{{ url_for('admin.products') }}" {% if endpoint == 'products' %} class="link w-full active text-md w-600 button-md" {% else %} class="link w-full text-md w-600 button-md" {% endif %}>Products</a>
+          </div>
         </nav>
     </header>
+
+    {# FLASHED MESSAGES #}
+    {% with messages = get_flashed_messages(with_categories=true) %} 
+    {% if messages %} 
+    {% for category, message in messages %} 
+    {% if category == 'error' %}
+    {# ERROR CATEGORY MESSAGES #}
+    <div class="alert error w-full flex-tc">
+      <p class='message text-sm w-600'>{{ message }}</p>
+      <button type="button" id="flashed-messages-close-btn" class="close button" data-dismiss="alert">
+        <i aria-hidden="true" class="fa fa-close icon"></i>
+      </button>
+    </div>
+    {% else %}
+    {# SUCCESS CATEGORY MESSAGES #}
+    <div class="alert success w-full flex-tc">
+      <p class='message text-sm w-600'>{{ message }}</p>
+      <button type="button" id="flashed-messages-close-btn" class="close button" data-dismiss="alert">
+        <i aria-hidden="true" class="fa fa-close icon"></i>
+      </button>
+    </div>
+    {% endif %} 
+    {% endfor %} 
+    {% endif %} 
+    {% endwith %}
 
     <!-- BACKGROUND OVERLAY ON FOCUS -->
     <div id="signing-background-overlay"></div>
 
+    {# PAGE CONTENTS #}
     {% block content %}
     {% endblock %}
 
+    {# JS BLOCK #}
     <script src="{{ url_for('static', filename='js/admin/main.js') }}"></script>
+    {# PAGE JS CONTENT #}
     {% block js %}
     {% endblock %}
   </body>

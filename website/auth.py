@@ -153,7 +153,7 @@ def signin():
             flash('User with email does not exist!', category='error')
     return render_template('auth/signin.html', endpoint='signin')
 
-@auth.route('/logout', methods=['POST'])
+@auth.route('/logout', methods=['GET', 'POST'])
 @login_required
 def logout():
     # Gets logged in user and flashes a message

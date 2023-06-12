@@ -1,3 +1,19 @@
+//---------------------- FOR REMOVING FLASHED MESSAGES
+const closeMessagesBtn = document.getElementById('flashed-messages-close-btn');
+const parentCloseMessagesBtn = closeMessagesBtn.parentNode;
+
+// Removes Flashed messages on click of the close button
+closeMessagesBtn.addEventListener('click', () => {
+    parentCloseMessagesBtn.remove();
+});
+
+// Removes Flashed messages after 5 seconds (5000 milliseconds)
+setTimeout(() => {
+    parentCloseMessagesBtn.remove();
+}, 5000);
+
+
+//---------------------- FOR HANDLING MENU BAR TOGGLE ON SMALL SCREEN
 const bgOverlay = document.getElementById('signing-background-overlay');
 
 // REMOVE STYLES AT VIEWPORT
@@ -5,7 +21,6 @@ if (window.innerWidth > 680) {
     bgOverlay.classList.remove('show-signing-background-overlay');
     console.log('above viewport')
 }
-
 
 // FOR THE TOGGLING TO MENUBAR TOGGLE MENU LIST
 

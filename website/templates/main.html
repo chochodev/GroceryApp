@@ -29,13 +29,14 @@
     {% include 'includes/navbar.html' %}
     
     {# FLASHED MESSAGES #}
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %} {% if category ==
-    'error' %}
+    {% with messages = get_flashed_messages(with_categories=true) %} 
+    {% if messages %} 
+    {% for category, message in messages %} 
+    {% if category == 'error' %}
     {# ERROR CATEGORY MESSAGES #}
     <div class="alert error w-full flex-tc">
       <p class='message text-sm w-600'>{{ message }}</p>
-      <button type="button" class="close button" data-dismiss="alert">
+      <button type="button" id="flashed-messages-close-btn" class="close button" data-dismiss="alert">
         <i aria-hidden="true" class="fa fa-close icon"></i>
       </button>
     </div>
@@ -43,11 +44,14 @@
     {# SUCCESS CATEGORY MESSAGES #}
     <div class="alert success w-full flex-tc">
       <p class='message text-sm w-600'>{{ message }}</p>
-      <button type="button" class="close button" data-dismiss="alert">
+      <button type="button" id="flashed-messages-close-btn" class="close button" data-dismiss="alert">
         <i aria-hidden="true" class="fa fa-close icon"></i>
       </button>
     </div>
-    {% endif %} {% endfor %} {% endif %} {% endwith %}
+    {% endif %} 
+    {% endfor %} 
+    {% endif %} 
+    {% endwith %}
 
     {# DISPLAYING PAGE CONTENTS #}
     <main class="container">
@@ -58,6 +62,8 @@
     {% include 'includes/footer.html' %}
 
     {# INCLUDES PAGE JAVASCRIPT #}
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {# PAGE JS CONTENT #}
     {% block js %}
     {% endblock %}
   </body>

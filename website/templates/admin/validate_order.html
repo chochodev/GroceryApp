@@ -1,14 +1,14 @@
 {% extends 'main.html' %}
-{% block stylesheet %}{{ url_for('static', filename='css/cart.css') }}{% endblock %}
+{% block stylesheet %}{{ url_for('static', filename='css/admin/validate_order.css') }}{% endblock %}
 {% set show_navbar = True %}
 
 {% block content %}
 
-<div id="cart-page" class="w-full flex-c-c flex-tc dir-col">
+<div id="validate-order-page" class="w-full flex-c-c flex-tc dir-col">
   <h1 class="w-max header-lg">Cart</h1>
   <p class="info w-max w-600">All your cart items start here until you remove or buy them.</p>
 </div>
-<section id="cart" class="w-full flex-c-sb">
+<section id="validate-order" class="w-full flex-c-sb">
 
   <div class="product-list w-full flex-c-se">
     <div class="product h-max flex dir-col">
@@ -27,9 +27,6 @@
       </div>
 
       <div class="func">
-        <div class="status">
-          <p class="good text-sm w-600">Accepted, your groceries are on the way</p>
-        </div>
         <div class="cta-div h-max w-full flex-c-sb flex-tc">
             <a href="" class="cta one flex-c-se w-600">
                 <i class="icon fa fa-trash"></i>
@@ -37,7 +34,7 @@
             </a>
             <a href="" class="cta two button flex-c-se">
               <i class="icon2 fa fa-heart-o"></i>
-                <span class="text-sm">Buy Again</span>
+                <span class="text-sm">Approve</span>
             </a>
         </div>
       </div>
@@ -58,9 +55,6 @@
       </div>
 
       <div class="func">
-        <div class="status">
-          <p class="pending text-sm w-600">Pending, we will evaluate your order shortly</p>
-        </div>
         <div class="cta-div h-max w-full flex-c-sb flex-tc">
             <a href="" class="cta one flex-c-se w-600">
                 <i class="icon fa fa-trash"></i>
@@ -68,7 +62,7 @@
             </a>
             <a href="" class="cta two button flex-c-se">
               <i class="icon2 fa fa-heart-o"></i>
-                <span class="text-sm">Buy Again</span>
+                <span class="text-sm">Approve</span>
             </a>
         </div>
       </div>
@@ -89,9 +83,6 @@
       </div>
 
       <div class="func">
-        <div class="status">
-          <p class="err text-sm w-600">Rejected, please try buying again right now</p>
-        </div>
         <div class="cta-div h-max w-full flex-c-sb flex-tc">
             <a href="" class="cta one flex-c-se w-600">
                 <i class="icon fa fa-trash"></i>
@@ -99,7 +90,7 @@
             </a>
             <a href="" class="cta two button flex-c-se">
               <i class="icon2 fa fa-heart-o"></i>
-                <span class="text-sm">Buy Again</span>
+                <span class="text-sm">Approve</span>
             </a>
         </div>
       </div>

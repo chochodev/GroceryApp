@@ -11,7 +11,7 @@
                 <a href="{{ url_for('views.home') }}" {% if endpoint == 'home' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Home</a>
 
                 {# Hides these buttons if user is not Logged in #}
-                {% if user.is_authenticated %}
+                {% if user and user.is_authenticated %}
                 <a href="{{ url_for('views.menu') }}" {% if endpoint == 'menu' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Menu</a>
                 <a href="{{ url_for('views.cart') }}" {% if endpoint == 'cart' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Order Now</a>
                 <a href="{{ url_for('views.allergy') }}" {% if endpoint == 'allergy' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Allergy</a>
@@ -20,14 +20,14 @@
                 <a href="{{ url_for('views.aboutus') }}" {% if endpoint == 'aboutus' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>About Us</a>
 
                 {# Hides these buttons if user is not Logged in #}
-                {% if user.is_authenticated %}
-                <a href="{{ url_for('auth.logout') }}" {% if endpoint == 'logout' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Logout</a>
+                {% if user and user.is_authenticated %}
+                <a href="{{ url_for('auth.logout') }}" class="link text-md w-600 button-md">Logout</a>
                 {% endif %}
 
-                {# Hides these buttons if user is Logged in #}
-                {% if not user.is_authenticated %}
-                <button class="signin-button link text-md w-600 button button-sm">Login</button>
-                <button class="signup-button link text-md w-600 button button-sm">SignUp</button>
+                {# Hides these buttons if user is not Logged in and Shows these buttons in signin or signup page #}
+                {% if (user and not user.is_authenticated) or endpoint in ['signin', 'signup'] %}
+                <a href="{{ url_for('auth.signin') }}" class="signin-button link text-md w-600 button button-sm">Login</a>
+                <a href="{{ url_for('auth.signup') }}" class="signin-button link text-md w-600 button button-sm">SignUp</a>
                 {% endif %}
             </div>
             <div class="screen-sm"></div>
@@ -43,7 +43,7 @@
             <a href="{{ url_for('views.home') }}" {% if endpoint == 'home' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Home</a>
 
             {# Hides these buttons if user is not Logged in #}
-            {% if user.is_authenticated %}
+            {% if user and user.is_authenticated %}
             <a href="{{ url_for('views.menu') }}" {% if endpoint == 'menu' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Menu</a>
             <a href="{{ url_for('views.cart') }}" {% if endpoint == 'cart' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Order Now</a>
             <a href="{{ url_for('views.allergy') }}" {% if endpoint == 'allergy' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Allergy</a>
@@ -52,14 +52,14 @@
             <a href="{{ url_for('views.aboutus') }}" {% if endpoint == 'aboutus' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>About Us</a>
 
             {# Hides these buttons if user is not Logged in #}
-            {% if user.is_authenticated %}
+            {% if user and user.is_authenticated %}
             <a href="{{ url_for('auth.logout') }}" {% if endpoint == 'logout' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Logout</a>
             {% endif %}
 
-            {# Hides these buttons if user is Logged in #}
-            {% if not user.is_authenticated %}
+            {# Hides these buttons if user is not Logged in and Shows these buttons in signin or signup page #}
+            {% if (user and user.is_authenticated) or endpoint in ['signin', 'signup'] %}
             <a href="{{ url_for('auth.signin') }}" class="signin-button text-md w-600 button-md">Login</a>
-            <a href="{{ url_for('auth.signin') }}" class="signup-button text-md w-600 button-md">SignUp</a>
+            <a href="{{ url_for('auth.signup') }}" class="signup-button text-md w-600 button-md">SignUp</a>
             {% endif %}
         </div>
     </nav>

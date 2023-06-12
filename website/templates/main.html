@@ -20,13 +20,14 @@
     <title>{% block title %}Home{% endblock %}</title>
   </head>
   <body>
-    {% if show_navbar %}
+    {# INCLUDE NAVBAR #}
     {% include 'includes/navbar.html' %}
-    {% endif %}
     
+    {# FLASHED MESSAGES #}
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %} {% if category ==
     'error' %}
+    {# ERROR CATEGORY MESSAGES #}
     <div class="alert error w-full flex-tc">
       <p class='message text-sm w-600'>{{ message }}</p>
       <button type="button" class="close button" data-dismiss="alert">
@@ -34,6 +35,7 @@
       </button>
     </div>
     {% else %}
+    {# SUCCESS CATEGORY MESSAGES #}
     <div class="alert success w-full flex-tc">
       <p class='message text-sm w-600'>{{ message }}</p>
       <button type="button" class="close button" data-dismiss="alert">
@@ -42,14 +44,16 @@
     </div>
     {% endif %} {% endfor %} {% endif %} {% endwith %}
 
+    {# DISPLAYING PAGE CONTENTS #}
     <main class="container">
       {% block content %} {% endblock %}
     </main>
     
+    {# INCLUDES FOOTER #}
     {% include 'includes/footer.html' %}
 
+    {# INCLUDES PAGE JAVASCRIPT #}
     {% block js %}
-    
     {% endblock %}
   </body>
 </html>

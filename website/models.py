@@ -5,31 +5,24 @@ from sqlalchemy.sql import func
 from itsdangerous import URLSafeTimedSerializer as Serializer
 
 
-cart_product_association = db.Table('cart_product_association',
-    db.Column('cart_id', db.Integer, db.ForeignKey('cart.id'), primary_key=True),
-    db.Column('product_id', db.Integer, db.ForeignKey('product.id'), primary_key=True)
-)
-
-user_allergy_association = db.Table('user_allergy_association',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-    db.Column('allergy_id', db.Integer, db.ForeignKey('allergy.id'), primary_key=True)
-)
-
-
-class Allergy(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(150))
-
-class Cart(db.Model):
+class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    products = db.relationship('Product', secondary=cart_product_association, backref=db.backref('carts', lazy='dynamic'))
+    products = db.relationship('Product', backref='order')
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(150))
-    price = db.Column(db.String(150))
-    allergy_desc = db.Column(db.String(300))
+    name = db.Column(db.String(150), nullable=False)
+    allergic_desc = db.Column(db.String(350), nullable=False)
+    normal_price = db.Column(db.String(150), nullable=False)
+    min_price = db.Column(db.String(150), nullable=False)
+    cart_id = db.Column(db.Integer, db.ForeignKey('order.id'))
+
+    def __init__(self):
+        self.name = name
+    
+    def __repr__(self):
+        return f"User('{self.name}', '{self.allergic_desc[0:30]}')"
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -37,27 +30,11 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(15), unique=True, nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
     email_verified = db.Column(db.Boolean, default=False)
+    phone = db.Column(db.Integer, unique=True)
     gender = db.Column(db.String(15))
     password = db.Column(db.String(50), nullable=False)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
-    allergies = db.relationship('Allergy', secondary=user_allergy_association, backref=db.backref('users', lazy='dynamic'))
 
-    # def generate_confirmation_token(self):
-    #     serial = Serializer(current_app.config['SECRET_KEY'])
-    #     return serial.dumps({'user_email':self.email}).decode('utf-8')
-
-    # def get_token(self, expires_sec=300):
-    #     serial = Serializer(current_app.config['SECRET_KEY'], expires_sec=expires_sec)
-    #     return serial.dumps({'user_id':self.id}).decode('utf-8')
-    
-    @staticmethod
-    def verify_token(token):
-        serial = Serializer(current_app.config['SECRET_KEY'])
-        try:
-            user_id = serial.loads(token)['user_id']
-        except:
-            return None
-        return User.query.get(user_id)
     
     def __repr__(self):
         return f"User('{self.name}', '{self.username}', '{self.email}')"

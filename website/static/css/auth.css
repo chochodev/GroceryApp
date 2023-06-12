@@ -98,7 +98,7 @@
     background: var(--link-bg-hover);
 }
 
-
+/* FOR THE BLUR BACKGROUND SECTION */
 #signing-background-overlay {
     display: none;
     position: absolute;
@@ -117,25 +117,14 @@
     display: block !important;
 }
 
-.un-signup {
-    display: flex !important;
-}
-
-.un-signin {
-    display: flex !important;
-}
-
+/* FOR THE FORM SECTION */
 #signup.form,
 #signin.form {
     width: 30vw;
     min-width: 30em;
-    display: none;
-    flex-direction: column;
     gap: 1em;
     padding: 1em 3em;
     margin: 1rem 3rem;
-    justify-content: center;
-    align-items: center;
     background: var(--surface-clr);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);

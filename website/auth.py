@@ -57,7 +57,7 @@ def confirm_email(token):
         login_user(new_user)
         return redirect(url_for('views.home'))
 
-@auth.route('/signup', methods=['GET', 'POST'], endpoint='signup')
+@auth.route('/signup', methods=['GET', 'POST'])
 def signup():
     # Checks if request is POST
     if request.method == 'POST':
@@ -67,15 +67,17 @@ def signup():
             name = data.get('name')
             username = data.get('username')
             email = data.get('email')
+            phone = data.get('phone')
             gender = data.get('gender')
             password = data.get('password')
             return jsonify({'message': 'Post request was received successfully'})
 
         else:
             # Retrieves data from HTML form
-            email = request.form.get('email')
             name = request.form.get('name')
             username = request.form.get('username')
+            email = request.form.get('email')
+            phone = request.form.get('phone')
             gender = request.form.get('gender')
             password = request.form.get('password')
 
@@ -94,15 +96,30 @@ def signup():
             # Encrypts the password and saves it in a variable
             hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
             # Saves user with the retrieved data to a variable
-            new_user = User(email=email, name=name, username=username, gender=gender, password=hashed_password)
+            new_user = User(email=email, name=name, username=username, phone=phone, gender=gender, password=hashed_password)
             
+            ##########-------------- FOR PRODUCTION ---------------##########
             # Send the confirmation email
-            send_confirmation_email(new_user)
+            # send_confirmation_email(new_user)
+            # END BLOCK
 
-    return render_template('auth.html')
+            ##########-------------- FOR DEVELOPMENT ---------------##########
+            # Adds new user to database
+            if new_user:
+                db.session.add(new_user)
+                db.session.commit()
+
+                # Flashes success message and redirects to home page
+                flash('Account created for ' + new_user.username, category='success')
+                login_user(new_user)
+                print(f'user {new_user.username} created successfully')
+                return redirect(url_for('views.home'))
+
+            # END BLOCK
+    return render_template('auth/signup.html', endpoint='signup')
 
 
-@auth.route('/signin', methods=['GET', 'POST'], endpoint='signin')
+@auth.route('/signin', methods=['GET', 'POST'])
 def signin():
     if request.method == 'POST':
         # Retrieves data from HTML form
@@ -134,9 +151,9 @@ def signin():
         # Flashes error message if email does not exist
         else:
             flash('User with email does not exist!', category='error')
-    return render_template('auth.html')
+    return render_template('auth/signin.html', endpoint='signin')
 
-@auth.route('/logout')
+@auth.route('/logout', methods=['POST'])
 @login_required
 def logout():
     # Gets logged in user and flashes a message
@@ -162,7 +179,7 @@ def send_mail(user):
     mail.send(msg)
 
 
-@auth.route('/forgetpassword', methods=['POST'], endpoint='forgetpassword')
+@auth.route('/forgetpassword', methods=['POST'])
 def forgetpassword():
     # Retrieves data from Javascript fetch api
     email = request.form.get('forget_password_email')
@@ -179,9 +196,9 @@ def forgetpassword():
     # Handles if User associated with the email does not exist
     elif not user:
         flash('User with this email does not exist!', category='error')
-        return render_template('auth.html')
+        return render_template('auth/signin.html')
     
-    return render_template('auth.html')
+    return render_template('auth/signin.html', endpoint='forgetpassword')
 
 @auth.route('/forgetpassword/<token>', methods=['GET', 'POST'])
 def reset_token(token):

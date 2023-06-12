@@ -1,0 +1,22 @@
+{% extends 'admin/main.html' %}
+{% block stylesheet %}{{ url_for('static', filename='css/admin/edit_product.css') }}{% endblock %}
+{% block content %}
+
+    <section id="edit-product" class="w-full flex-as dir-col">
+        <!-- HEADER / TITLE -->
+        <h2 class="title header-md">Edit Product</h2>
+
+        <!-- EDIT PRODUCT FORM -->
+        <form class="product-form w-full flex-s-s dir-col">
+            <input name="name" class="input" type="text" placeholder="Name" required/>
+            <input name="desc" class="input" type="text" placeholder="Description" required/>
+            <input name="price_per_kg" class="input" type="number" placeholder="Price per Kg" required/>
+            <input name="min_price" class="input" type="number" placeholder="Min Price offered" required/>
+            <input name="image" class="input" type="file" placeholder="Image" />
+            <button type="submit" class="product-cta button w-600">Save Changes</button>
+        </form>
+    </section>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

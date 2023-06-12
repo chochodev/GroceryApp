@@ -1,0 +1,71 @@
+{% extends 'admin/main.html' %}
+{% block stylesheet %}{{ url_for('static', filename='css/admin/customers.css') }}{% endblock %}
+{% block content %}
+
+    <section id="customers" class="w-full flex-as dir-col">
+        <!-- SEARCH FORM -->
+        <form class="search-form" class="h-max w-full flex-c-s">
+            <input name="search-input" class="search-input" type="text" placeholder="Search" required/>
+            <button class="search-cta button">
+                <i class="fa fa-search icon"></i>
+            </button>
+        </form>
+
+        <section class="main w-full flex-c-s dir-col">
+            <!-- MAIN HEADER -->
+            <div class="title-section w-full flex dir-col">
+                <h2 class="title header-md">Customers</h2>
+                <p class="text text-sm">15 New Notifications</p>
+            </div>
+            <div class="customer-contents w-full flex-ac dir-col">
+                <!-- CUSTOMER CATEGORY -->
+                <div class="customer-links w-full flex-ac">
+                    <button id="all-customers-button" class="link w-max flex-c-c dir-col w-600 active">All Customers</button>
+                    <button id="unapproved-customers-button" class="link w-max flex-c-c dir-col w-600">Unapproved</button>
+                    <button id="approved-customers-button" class="link w-max flex-c-c dir-col w-600">Approved</button>
+                </div>
+
+                <!-- CUSTOMER HEADER -->
+                <table class="customers-table w-full flex dir-col">
+                    <thead class="customers-header">
+                        <tr class="customers-header-items w-full">
+                            <th class="text-sm w-600">Name</th>
+                            <th class="text-sm w-600">Address</th>
+                            <th class="text-sm w-600">Email</th>
+                            <th class="text-sm w-600">Phone</th>
+                            <th class="text-sm w-600">Gender</th>
+                        </tr>
+                    </thead>
+
+                    <!-- CUSTOMERS -->
+                    <tbody id="all-customers" class="customers w-full flex-ac dir-col">
+                        <tr class="customer w-full">
+                            <td class="text-sm">Mikey Chocho</td>
+                            <td class="text-sm">Opposite North gate, Futa</td>
+                            <td class="text-sm">chocho@gmail.com</td>
+                            <td class="text-sm">+234 903 910 8667</td>
+                            <td class="text-sm">M</td>
+                        </tr>
+                        <tr class="customer w-full">
+                            <td class="text-sm">Apata Peace</td>
+                            <td class="text-sm">Opposite North gate, Futa</td>
+                            <td class="text-sm">peace@gmail.com</td>
+                            <td class="text-sm">+234 903 910 8667</td>
+                            <td class="text-sm">F</td>
+                        </tr>
+                        <tr class="customer w-full">
+                            <td class="text-sm">Chocho Programmer</td>
+                            <td class="text-sm">Opposite North gate, Futa</td>
+                            <td class="text-sm">michochoprogrammer@gmail.com</td>
+                            <td class="text-sm">+234 903 910 8667</td>
+                            <td class="text-sm">M</td>
+                        </tr>
+                    </tbody>
+                </table>
+                    
+        </section>
+    </section>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

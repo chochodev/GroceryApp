@@ -1,20 +1,35 @@
 /* ORDER NOW SECTION */
 #home .order-now-section {
-  background-color: #f178a0;
+  background-color: var(--cta-clr);
   padding: 1rem;
+  min-height: 100vh;
 }
 
 #home .order-now-info {
   text-align: center;
-  margin: 0 auto;
   gap: 2vw;
   padding: calc(2vw + .5rem) .5rem;
 }
 
 #home .order-now-info > .title {
-  color: #b91160;
+  color: white;
 }
 
+#home .order-now-info > .info {
+  color: #d8d8d8;
+}
+
+#home .order-now-info .button {
+  background: var(--primary-clr);
+}
+
+#home .order-now-info .button:hover {
+  background: white;
+  color: var(--text-clr);
+  transition: .2s ease-in-out;
+}
+
+/* HOME GIF */
 #home .order-now-section .home-gif {
   border-radius: 20px;
   width: 50vw;
@@ -99,18 +114,25 @@
 
 /* BENEFITS SECTION */
 #home .benefits-container {
-  background-color: var(--primary-clr);
-  padding: 5rem calc(2vw);
+  background-color: var(--cta-clr);
   gap: 2rem;
 }
 
 #home .benefits-container .benefits {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
+  min-height: 100vh;
   margin: 1rem 0;
+  padding: 5rem calc(2vw);
   gap: 1rem;
+}
+
+/* FOR EVEN NUMBER BENEFIT CONTAINER */
+#home .benefits-container .benefits:nth-child(even) {
+  background: white;
+}
+
+#home .benefits-container .benefits:nth-child(even) > div .title,
+#home .benefits-container .benefits:nth-child(even) > div .info {
+  color: var(--text-clr);
 }
 
 #home .benefits-container .benefits .benefit-image {
@@ -127,11 +149,11 @@
 
 #home .benefits-container .benefits > div .title {
   margin: 0 0 calc(2vw + .5rem) 0;
-  color: var(--text-clr);
+  color: white;
 }
 
 #home .benefits-container .benefits > div .info {
-  color: var(--text-clr);
+  color: white;
 }
 
 @media (max-width: 920px) {

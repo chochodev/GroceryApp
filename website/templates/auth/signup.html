@@ -1,56 +1,79 @@
 {% extends "main.html" %}
 {% block stylesheet %}{{ url_for('static', filename='css/auth.css') }}{% endblock %}
 {% block title %}Authentication{% endblock %}
-{% set show_navbar = False %}
 
 {% block content %}
 
-<div id="authentication" class="authentication w-full flex-c-s dir-col">
+<div id="authentication" class="authentication w-full h-max">
+    <div class="show-div flex-c-c h-full dir-col">
+        <div class="show-div-logo flex-c-c">
+            <h2 class="title w-600">EdenFresh</h2>
+            {% include 'assets/logo.html' %}
+        </div>
+        <p class="info text-md flex-tc w-600">Welcome to ErenFresh Grocery store, get your groceries at affordable prices and negotiate on large groceries.</p>
+        <p class="info text-md flex-tc w-600">Welcome to ErenFresh Grocery store, get your groceries at affordable prices and negotiate on large groceries.</p>
+        <p class="info text-md flex-tc w-600">Welcome to ErenFresh Grocery store, get your groceries at affordable prices and negotiate on large groceries.</p>
+    </div>
     <!-- SIGN UP FORM -->
-    <form method="POST" action="/auth/signup" id="signup" class="form flex-c-c dir-col">
-        <h3 class="title text-lg w-600">Fill form to sign up</h3>
+    <form method="POST" action="/auth/signup" id="signup" class="form h-max flex-c-c dir-col">
+        <h3 class="title text-lg w-700">Fill form to sign up</h3>
 
         <!-- SIGNUP INPUTS SECTION -->
-        <div class="input">
-            <i class="icon fa fa-user"></i>
-            <input name="name" class="name" type="text" placeholder="(Firstname) (Surname)" required/>
+        <div class="input-container flex-s-s dir-col">
+            <label class="label w-600" for="fullname">Fullname</label>
+            <div class="input-div">
+                <i class="icon fa fa-user"></i>
+                <input id="fullname" name="name" class="name input" type="text" placeholder="(Firstname) (Surname)" required/>
+            </div>
         </div>
-        <div class="input">
-            <i class="icon fa fa-user"></i>
-            <input name="username" class="name" type="text" placeholder="(Username)" required/>
+        <div class="input-container flex-s-s dir-col">
+            <label class="label w-600" for="email">Email</label>
+            <div class="input-div">
+                <i class="icon fa fa-send-o"></i>
+                <input id="email" name="email" class="email input" type="email" placeholder="(Email)" required/>
+            </div>
         </div>
-        <div class="input">
-            <i class="icon fa fa-send-o"></i>
-            <input name="email" class="email" type="email" placeholder="(Email)" required/>
+        <div class="input-container flex-s-s dir-col">
+            <label class="label w-600" for="phone">Phone number</label>
+            <div class="input-div">
+                <i class="icon fa fa-phone"></i>
+                <input id="phone" name="phone" class="phone input" type="phone" placeholder="(Phone)" required/>
+            </div>
         </div>
-        <div class="input">
-            <i class="icon fa fa-send-o"></i>
-            <input name="phone" class="phone" type="phone" placeholder="(Phone)" required/>
+        <div class="input-container flex-s-s dir-col">
+            <label class="label w-600" for="address">Address</label>
+            <div class="input-div">
+                <i class="icon fa fa-map"></i>
+                <input id="address" name="address" class="address input" type="text" placeholder="(House No) (Street) (City)" required/>
+            </div>
         </div>
-        <div class="input w-full flex-c-c dir-col">
-            <div class="w-min flex">
+        <div class="input-container w-full flex-c-c dir-col">
+            <div class="gender-title flex-c-c">
                 <i class="icon fa fa-venus-mars"></i>
-                <p class="text-sm w-600">Gender</p>
+                <p class="w-600">Gender</p>
             </div>
            
             <div class="gender-options w-full flex-c-se">
-                <div>
+                <div class="input-div">
                     <input type="radio" name="gender" id="gender-male" value="male" required>
                     <label for="gender-male" class="text-sm w-600">Male</label>
                 </div>
-                <div>
+                <div class="input-div">
                     <input type="radio" name="gender" id="gender-female" value="female" required>
                     <label for="gender-female" class="text-sm w-600">Female</label>
                 </div>
             </div>
         </div>
-        <div class="input">
-            <i class="icon fa fa-lock"></i>
-            <input name="password" id="signup-password" class="name" type="password" placeholder="(Password)" required/>
+        <div class="input-container flex-s-s dir-col">
+            <label class="label w-600" for="password">Password</label>
+            <div class="input-div">
+                <i class="icon fa fa-lock"></i>
+                <input id="password" name="password" id="signup-password" class="password input" type="password" placeholder="(Password)" required/>
+            </div>
         </div>
 
         <!-- TERMS AND CONDITION SECTION -->
-        <div class="input">
+        <div class="terms-input-div w-full flex-c-s">
             <input name="terms-checkbox" class="checkbox" type="checkbox" required/>
             <small class="check-info">I agree to the<a href="#" class="link">terms and condition</a></small>
         </div>

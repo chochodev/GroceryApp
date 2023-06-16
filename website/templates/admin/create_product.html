@@ -7,12 +7,12 @@
         <h2 class="title header-md">Create Product</h2>
 
         <!-- CREATE PRODUCT FORM -->
-        <form class="product-form w-full flex-s-s dir-col">
+        <form method="POST" action="{{ url_for('admin_panel.create_product')}}" enctype="multipart/form-data" class="product-form w-full flex-s-s dir-col">
             <input name="name" class="input" type="text" placeholder="Name" required/>
             <input name="desc" class="input" type="text" placeholder="Description" required/>
             <input name="price_per_kg" class="input" type="number" placeholder="Price per Kg" required/>
             <input name="min_price" class="input" type="number" placeholder="Min Price offered" required/>
-            <input name="image" class="input" type="file" placeholder="Image" />
+            <input name="image" class="input" type="file" accept="image/*" placeholder="Image" />
             <button type="submit" class="product-cta button w-600">Create Product</button>
         </form>
     </section>

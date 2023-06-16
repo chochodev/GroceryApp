@@ -82,7 +82,7 @@
 
 /* TABLE HEAD */
 #orders .main .order-contents .orders-table .orders-header-items {
-    background: var(--primary-clr);
+    background: var(--cta-clr);
 }
 
 #orders .main .order-contents .orders-table .orders-header-items * {
@@ -123,10 +123,11 @@
 }
 
 #orders .main .order-contents .orders-table .order {
-    box-shadow: 0 0 2px 1px rgba(185, 16, 97, 0.25);
+    box-shadow: 0 0 3px 1px rgba(185, 16, 97, 0.25);
 }
 
 #orders .main .order-contents .orders-table .order:hover {
     cursor: pointer;
-    box-shadow: 0 0 10px 3px rgba(185, 16, 97, 0.25);
+    box-shadow: 0 0 3px 1px rgba(185, 16, 97, .5);
+    transition: .1s ease-in-out;
 }

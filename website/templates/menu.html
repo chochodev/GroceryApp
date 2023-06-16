@@ -1,91 +1,121 @@
 {% extends "main.html" %}
 {% block stylesheet %}{{ url_for('static', filename='css/menu.css') }}{% endblock %}
-{% block title %}Authentication{% endblock %}
-{% set show_navbar = True %}
+{% block title %}: Discover items{% endblock %}
 
 {% block content %}
 <section id="menu" class="w-full flex-c-c dir-col">
     <h1 class="title header-lg">Discover Items</h1>
-    <form class="search-form" class="w-full flex-c-c">
-      <input name="item" class="input" type="text" placeholder="Enter goods to search" required/>
-      <button class="search-cta button">Search</button>
-    </form>
-    <!-- --------------------PRODUCTS----------------- -->
+    <!-- PRODUCTS -->
     <p class="text-sm w-600">Are you allergic to something? Select the products you are allergic to, and they will disappear! <a href="{{ url_for('views.allergy') }}" class="allergy-link">here</a>
     </p>
+    <h2 class="title header-sm">Popular Items</h2>
     <section class="products-container w-full flex-c-se">
-        <div class="product">
-            <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="product-image" />
-            <div class="product-info flex dir-col">
-                <p class="name w-600 header-md">Red Onion</p>
-                <p class="w-600">Price: $5.10/kg</p>
-                <div class="quantity-container w-full">
-                    <label for="quantity-input" class="w-600">Quantity:</label>
-                    <input type="number" class="quantity-input w-600" min="1" step="1" />
-                </div>
-                <p id="totalPrice w-full" class="w-600">Total price: $0</p>
+        <!-- PRODUCT FORM -->
+        {% if products %}
+        {% for product in products %}
+        <form method="POST" action="order/{{ product.id }}" class="product h-max flex dir-col">
+            <div class="description w-full flex dir-col">
+                <img src="{{ product.image }}" class="img w-full"/>
+                <div class="product-info w-full flex-jsb">
+                    <div class="title">
+                        <h3 class="name w-600">{{ product.name }}</h3>
+                        <span class="text-sm w-600">In Stock</span>
+                    </div>
+                    <div class="price flex dir-col">
+                        <span id="normal-price{{ product.id }}" data-price="{{ product.normal_price }}" class="text-xsm w-600">
+                            ${{ product.normal_price }} x 
+                            <small id="kg-amount{{ product.id }}">1</small>
+                        </span>
+                        {# Inputs the amount of kg in a hidden input #}
+                        <input type="hidden" name="amount-in-kg" value="1" id="kg-amount-input{{ product.id }}"/>
+                        {# Shows the total from kg-total multiplied with normal-price #}
+                        <span id="normal-total{{ product.id }}" class="text-md w-700">${{ product.normal_price }}</span>
+                    </div>
+              </div>
             </div>
-            <form class="negotiation-form w-full flex-c-c">
-                <input type="number" class="negotiation-input" min="0" step="1" placeholder="Enter negotiated price" />
-                <button class="negotiation-button button">Offer</button>
-                <p id="negotiationResult"></p>
-            </form>
-        </div>
-        <div class="product">
-            <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="product-image" />
-            <div class="product-info flex dir-col">
-                <p class="name w-600 header-md">Red Onion</p>
-                <p class="w-600">Price: $5.10/kg</p>
-                <div class="quantity-container w-full">
-                    <label for="quantity-input" class="w-600">Quantity:</label>
-                    <input type="number" class="quantity-input w-600" min="1" step="1" />
+      
+            <div class="func">
+                {# QUANTITY IN KG #}
+                <div class="quantity flex-c-c">
+                    <label for="kg-total{{ product.id }}" class="good text-sm w-600">Quantity:</label>
+                    <div class="input-div h-max flex-c-c flex-tc">
+                        <span class="input-placeholder w-600">Kg</span>
+                        <input type="number" id="kg-total{{ product.id }}" min="1" value="1" class="input br-md w-full w-600" />
+                    </div>
                 </div>
-                <p id="totalPrice w-full" class="w-600">Total price: $0</p>
-            </div>
-            <form class="negotiation-form w-full flex-c-c">
-                <input type="number" class="negotiation-input" min="0" step="1" placeholder="Enter negotiated price" />
-                <button class="negotiation-button button">Offer</button>
-                <p id="negotiationResult"></p>
-            </form>
-        </div>
-        <div class="product">
-            <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="product-image" />
-            <div class="product-info flex dir-col">
-                <p class="name w-600 header-md">Red Onion</p>
-                <p class="w-600">Price: $5.10/kg</p>
-                <div class="quantity-container w-full">
-                    <label for="quantity-input" class="w-600">Quantity:</label>
-                    <input type="number" class="quantity-input w-600" min="1" step="1" />
+                {# TOTAL IN $ #}
+                <div class="total flex-c-c">
+                    <label for="pay-total{{ product.id }}" class="good text-sm w-600">Total:</label>
+                    <div class="input-div w-full h-max flex-c-c flex-tc">
+                        <span class="input-placeholder w-600">$</span>
+                        <input type="number" name="offer-price" id="pay-total{{ product.id }}" class="input br-md w-full w-600" />
+                    </div>
                 </div>
-                <p id="totalPrice w-full" class="w-600">Total price: $0</p>
-            </div>
-            <form class="negotiation-form w-full flex-c-c">
-                <input type="number" class="negotiation-input" min="0" step="1" placeholder="Enter negotiated price" />
-                <button class="negotiation-button button">Offer</button>
-                <p id="negotiationResult"></p>
-            </form>
-        </div>
-        <div class="product">
-            <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="product-image" />
-            <div class="product-info flex dir-col">
-                <p class="name w-600 header-md">Red Onion</p>
-                <p class="w-600">Price: $5.10/kg</p>
-                <div class="quantity-container w-full">
-                    <label for="quantity-input" class="w-600">Quantity:</label>
-                    <input type="number" class="quantity-input w-600" min="1" step="1" />
+                <div class="cta-div h-max w-full flex-c-sb flex-tc">
+                    <button  name="action" value="delete" class="cta one flex-c-se w-600 br-md">
+                        <i class="icon fa fa-trash"></i>
+                        <span class="text-sm">Remove</span>
+                    </button>
+                    <button  name="action" value="order" class="cta two flex-c-se br-md">
+                        <i class="icon2 fa fa-heart-o"></i>
+                        <span class="text-sm">Add to Cart</span>
+                    </button>
                 </div>
-                <p id="totalPrice w-full" class="w-600">Total price: $0</p>
             </div>
-            <form class="negotiation-form w-full flex-c-c">
-                <input type="number" class="negotiation-input" min="0" step="1" placeholder="Enter negotiated price" />
-                <button class="negotiation-button button">Offer</button>
-                <p id="negotiationResult"></p>
-            </form>
-        </div>
+        </form>
+        {% endfor %}
+        {% endif %}
     </section>
 </section>
 {% endblock %}
 
 
 {% block js %}
+<script>
+{% if products %}
+{% for product in products %}
+// Get the necessary elements for product with ID {{ product.id }}
+const productId{{ product.id }} = document.getElementById("{{ product.id }}");
+const kgTotalInput{{ product.id }} = document.getElementById("kg-total{{ product.id }}");
+const payTotalInput{{ product.id }} = document.getElementById("pay-total{{ product.id }}");
+const normalTotalElement{{ product.id }} = document.getElementById("normal-total{{ product.id }}");
+const normalPrice{{ product.id }} = document.getElementById("normal-price{{ product.id }}");
+const normalPriceNum{{ product.id }} = normalPrice{{ product.id }}.getAttribute("data-price");
+
+const kgAmount{{ product.id }} = document.getElementById("kg-amount{{ product.id }}");
+const kgAmountInput{{ product.id }} = document.getElementById("kg-amount-input{{ product.id }}");
+
+// Add event listener to the kgTotalInput
+kgTotalInput{{ product.id }}.addEventListener("input", () => {
+    // Get the value of kgTotalInput
+    const kgTotal = parseFloat(kgTotalInput{{ product.id }}.value);
+
+    // Shows the number to be multiplied by
+    if (kgTotal > 0) {
+        kgAmount{{ product.id }}.innerText = kgTotal;
+        kgAmountInput{{ product.id }}.value = kgTotal;
+    } else {
+        kgAmount{{ product.id }}.innerText = '1';
+        kgAmountInput{{ product.id }}.value = '0';
+    }
+    
+    // Calculate the total
+    const total = kgTotal * parseFloat(normalPriceNum{{ product.id }});
+    
+    // Set the total value to payTotalInput
+    payTotalInput{{ product.id }}.value = total.toFixed(2);
+    
+    console.log(`Total: ${total}`)
+    // Set the total value to normalTotalElement
+    if (kgTotalInput{{ product.id }}.value < 1) {
+        kgTotalInput{{ product.id }}.value = 0;
+        normalTotalElement{{ product.id }}.innerText = "$" + {{ product.normal_price }};
+    } else {
+        normalTotalElement{{ product.id }}.innerText = "$" + total.toFixed(2);
+    }
+});
+{% endfor %}
+{% endif %}
+
+</script>
 {% endblock %}

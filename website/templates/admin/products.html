@@ -3,14 +3,6 @@
 {% block content %}
 
     <section id="products" class="w-full flex-as dir-col">
-        <!-- SEARCH FORM -->
-        <form class="search-form" class="h-max w-full flex-c-s">
-            <input name="search-input" class="search-input" type="text" placeholder="Search" required/>
-            <button class="search-cta button">
-                <i class="fa fa-search icon"></i>
-            </button>
-        </form>
-
         <section class="main w-full flex-c-s dir-col">
             <!-- MAIN HEADER -->
             <div class="title-section w-full flex dir-col">
@@ -22,7 +14,7 @@
                 <div class="product-links w-full flex-ac">
                     <button id="all-products-button" class="link w-max flex-c-c dir-col w-600 active">All Products</button>
                     <button id="unapproved-products-button" class="link w-max flex-c-c dir-col w-600">Unapproved</button>
-                    <a href="{{ url_for('admin.product') }}" id="approved-products-button" class="button button-sm w-max flex-c-c dir-col w-600">New Product</a>
+                    <a href="{{ url_for('admin_panel.create_product') }}" id="approved-products-button" class="button button-sm w-max flex-c-c dir-col w-600 br-md">New Product</a>
                 </div>
 
                 <!-- PRODUCTS HEADER -->
@@ -39,26 +31,23 @@
 
                     <!-- PRODUCTS -->
                     <tbody id="all-products" class="products w-full flex-ac dir-col">
-                        <tr class="product w-full">
-                            <td class="text-sm">Red Onion</td>
-                            <td class="text-sm">It has some of this made up vitamin and minerals</td>
-                            <td class="text-sm">$30</td>
-                            <td class="text-sm">$24</td>
-                            <td class="text-sm">24kg</td>
+                        {% if products %}
+                        {% for product in products %}
+                        <tr class="product w-full" onclick="redirectToEditProduct('{{ product.id }}')">
+                            <td class="text-sm">{{ product.name }}</td>
+                            <td class="text-sm">{{ product.allergic_desc}}</td>
+                            <td class="text-sm">${{ product.normal_price}}</td>
+                            <td class="text-sm">${{ product.min_price }}</td>
+                            <td class="text-sm">-- kg</td>
                         </tr>
+                        {% endfor%}
+                        {% endif %}
                         <tr class="product w-full">
-                            <td class="text-sm">Red Onion</td>
-                            <td class="text-sm">It has some of this made up vitamin and minerals</td>
-                            <td class="text-sm">$30</td>
-                            <td class="text-sm">$24</td>
-                            <td class="text-sm">24kg</td>
-                        </tr>
-                        <tr class="product w-full">
-                            <td class="text-sm">Red Onion</td>
-                            <td class="text-sm">It has some of this made up vitamin and minerals</td>
-                            <td class="text-sm">$30</td>
-                            <td class="text-sm">$24</td>
-                            <td class="text-sm">24kg</td>
+                            <td class="text-sm">--</td>
+                            <td class="text-sm">--</td>
+                            <td class="text-sm">$ --</td>
+                            <td class="text-sm">$ --</td>
+                            <td class="text-sm">-- kg</td>
                         </tr>
                     </tbody>
                 </table>
@@ -68,4 +57,5 @@
 {% endblock %}
 
 {% block js %}
+<script src="{{ url_for('static', filename='js/admin/products.js') }}"></script>
 {% endblock %}

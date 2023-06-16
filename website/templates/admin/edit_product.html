@@ -6,17 +6,48 @@
         <!-- HEADER / TITLE -->
         <h2 class="title header-md">Edit Product</h2>
 
+        {% if product %}
         <!-- EDIT PRODUCT FORM -->
-        <form class="product-form w-full flex-s-s dir-col">
-            <input name="name" class="input" type="text" placeholder="Name" required/>
-            <input name="desc" class="input" type="text" placeholder="Description" required/>
-            <input name="price_per_kg" class="input" type="number" placeholder="Price per Kg" required/>
-            <input name="min_price" class="input" type="number" placeholder="Min Price offered" required/>
-            <input name="image" class="input" type="file" placeholder="Image" />
-            <button type="submit" class="product-cta button w-600">Save Changes</button>
+        <form id="edit-product-form" data-product-id="{{ product.id }}" enctype="multipart/form-data" class="product-form w-full flex-s-s dir-col">
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="name">Product name</label>
+                <div class="input-div">
+                    <i class="icon fa fa-apple-alt"></i>
+                    <input id="name" name="name" class="name input" type="text" placeholder="{{ product.name }}" value="{{ product.name }}" required/>
+                </div>
+            </div>
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="allergy">Description</label>
+                <div class="input-div">
+                    <i class="icon fa fa-file-text"></i>
+                    <input id="allegy" name="allergy" class="allergy input" type="text" placeholder="{{ product.allergic_desc }}" value="{{ product.allergic_desc }}" required/>
+                </div>
+            </div>
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="price">Price per Kg</label>
+                <div class="input-div">
+                    <i class="icon fa fa-dollar"></i>
+                    <input id="price" name="normal_price" class="price input" type="text" placeholder="{{ product.normal_price }}/kg" value="{{ product.normal_price }}" required/>
+                </div>
+            </div>
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="price2">Price per Kg(min)</label>
+                <div class="input-div">
+                    <i class="icon fa fa-dollar"></i>
+                    <input id="price2" name="min_price" class="price2 input" type="text" placeholder="{{ product.min_price }}/kg" value="{{ product.min_price }}" required/>
+                </div>
+            </div>
+            {# IMAGE EDIT SECTION #}
+            <input value="{{ product.image }}" name="image" class="input" type="file" placeholder="Image" />
+
+            <button id="del-button" class="product-cta button w-600 br-md">Delete Permanently</button>
+            <button type="submit" class="product-cta button w-600 br-md">Save Changes</button>
         </form>
+        {% endif %}
     </section>
 {% endblock %}
 
 {% block js %}
+<script src="{{ url_for('static', filename='js/admin/edit_product.js') }}"></script>
+<script src="{{ url_for('static', filename='js/admin/delete_product.js') }}"></script>
 {% endblock %}

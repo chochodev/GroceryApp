@@ -7,34 +7,49 @@ from itsdangerous import URLSafeTimedSerializer as Serializer
 
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    products = db.relationship('Product', backref='order')
+    customer_price = db.Column(db.String(20), nullable=False)
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    products = db.relationship('Product', secondary='order_product', backref='products_in_order')
+
+    def __repr__(self):
+        user = User.query.get(self.user_id)
+        user_name = user.name if user else "Unknown User"
+        product_names = [product.name for product in self.products]
+        return f"Order_id: '{self.id}', User: '{user_name}', Products: {product_names}'"
+
+    
+# Define the association table for the many-to-many relationship
+order_product = db.Table('order_product',
+    db.Column('order_id', db.Integer, db.ForeignKey('order.id'), primary_key=True),
+    db.Column('product_id', db.Integer, db.ForeignKey('product.id'), primary_key=True)
+)
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(150), nullable=False)
+    name = db.Column(db.String(150), nullable=False, unique=True)
     allergic_desc = db.Column(db.String(350), nullable=False)
     normal_price = db.Column(db.String(150), nullable=False)
     min_price = db.Column(db.String(150), nullable=False)
-    cart_id = db.Column(db.Integer, db.ForeignKey('order.id'))
+    image = db.Column(db.String(225))
+    # Add the relationship with the Order model
+    orders = db.relationship('Order', secondary='order_product', backref='products_in_order')
 
-    def __init__(self):
-        self.name = name
-    
     def __repr__(self):
-        return f"User('{self.name}', '{self.allergic_desc[0:30]}')"
+        return f"Product ('{self.name}', '{self.allergic_desc[0:30]}')"
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
-    username = db.Column(db.String(15), unique=True, nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
     email_verified = db.Column(db.Boolean, default=False)
+    address = db.Column(db.String(120), nullable=False)
     phone = db.Column(db.Integer, unique=True)
     gender = db.Column(db.String(15))
     password = db.Column(db.String(50), nullable=False)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
+    # Define the relationship with the Order model
+    order = db.relationship('Order', backref='user')
 
-    
     def __repr__(self):
-        return f"User('{self.name}', '{self.username}', '{self.email}')"
+        return f"User ('{self.name}', '{self.email}')"

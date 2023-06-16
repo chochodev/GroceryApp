@@ -1,136 +1,49 @@
 #authentication {
-    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: calc(1.5rem + 1vw);
-    height: max-content;
     min-height: 100vh;
-    background: var(--main-clr);
-    border-bottom: 1px solid #d1d1d1;
+    background: white;
 }
 
-/* NAVBAR FOR AUTHENTICATION */
-#authentication .auth-navbar {
-    padding: .65rem 3vw;
-    background: var(--surface-clr);
+/* FOR THE SHOW BEFORE SIGNING FORM */
+#authentication .show-div {
+    width: 100%;
+    gap: 1rem;
+    background: #0000000f;  
 }
 
-/* MENU LIST FOR LARGE SCREEN */
-#authentication .menu-list {
-    gap: calc(.5rem + .5vw);
-    position: relative;
-    z-index: 50;
+#authentication .show-div > * {
+    transform: translateY(-5rem);
 }
 
-#authentication .menu-list-2 {
-    background: var(--primary-clr);
+#authentication .show-div .show-div-logo {
+    gap: 1rem;
 }
 
-#authentication .menu-list .link,
-#authentication .menu-list-2 .link {
-    color: var(--text-color);
-    padding: .5rem .75rem;
-    border-radius: .25rem;
-    text-align: start;
+#authentication .show-div .show-div-logo .title {
+    font-size: 4rem;
+    color: #121212;
 }
 
-#authentication .menu-list .link:hover,
-#authentication .menu-list-2 .link:hover {
-    background: var(--link-bg-hover);
-    transition: background-color .2s ease-in-out !important;
-}
-
-#authentication .menu-list .items-2 {
-    gap: .5rem;
-}
-
-#authentication .menu-list .menu-bar .icon {
-    padding: .45rem .5rem;
-}
-
-#authentication .menu-list .menu-bar .icon.close {
-    display: none;
-}
-
-#authentication .menu-list .menu-bar:hover .icon {
-    background: var(--link-bg-hover);
-    transition: background-color .2s ease-in-out !important;
-}
-
-#authentication .screen-sm {
-    display: none;
-}
-
-/* MENU LIST FOR SMALL SCREEN */
-#authentication .menu-list-2 {
-    display: none;
-    position: absolute;
-    z-index: 40;
-    top: 0;
-    right: 0;
-    width: max-content;
-    min-width: 12rem;
-    height: 100vh;
-    min-height: 60rem;
-    gap: .25rem;
-    background: var(--main-clr);
-    padding: 3rem 1rem;
-    border-left: 1px solid var(--cta-border);
-
-    /* revealing menu onclick of the menu btn */
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0) scale(1);
-}
-
-#authentication .menu-list-2.close {
-    opacity: 0;
-    visibility: hidden;
-    user-select: none;
-    transform: translateX(.5rem) scale(.98);
-    transition: .25s cubic-bezier(0.25, 0.46, 0.45, 0.94) ease-in-out !important;
-}
-
-#authentication .menu-list-2 .buttons {
-    margin-top: 3rem;
-    gap: .75rem;
-}
-
-#authentication .menu-list-2 .buttons button:first-child {
-    background: var(--link-bg-hover);
-}
-
-/* FOR THE BLUR BACKGROUND SECTION */
-#signing-background-overlay {
-    display: none;
-    position: absolute;
-    z-index: 30;
-    top: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(255, 255, 255, 0.2);
-    border-top: 1px solid #d1d1d1;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(5px);
-}
-
-#signing-background-overlay.show-signing-background-overlay {
-    display: block !important;
+#authentication .show-div .info {
+    width: 80%;
+    color: #555555;
 }
 
 /* FOR THE FORM SECTION */
 #signup.form,
 #signin.form {
-    width: 30vw;
-    min-width: 30em;
+    width: 90%;
+    min-width: 23rem;
+    max-width: 35rem;
     gap: 1em;
-    padding: 1em 3em;
-    margin: 1rem 3rem;
-    background: var(--surface-clr);
+    padding: 1em 2em;
+    margin: 1rem auto;
+    background: white;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    border-right:  none;
-    box-shadow: 0 0 2px 2px rgba(187, 17, 96, .25);
-    border-radius: .5em;
+    outline: 1px solid rgba(185, 16, 97, .5);
 }
 
 #signin.form .signin-form {
@@ -138,55 +51,77 @@
 }
 
 .form .title {
-    color: var(--text-color);
+    color: var(--text-clr);
+    text-transform: uppercase;
 }
 
-.form .input {
+/* INPUT SECTION */
+.form .input-container {
+    display: flex;
+    gap: .5em;
+    align-items: start;
+    height: max-content;
+    width: 100%;
+}
+
+.form .input-container .label {
+    position: relative;
+    left: 0;
+}
+
+.form .input-div {
     position: relative;
     display: flex;
     gap: .5em;
-    text-align: center;
     align-items: center;
     height: max-content;
     width: 100%;
 }
 
-.form .input .icon {
+.form .input-container .input-div .icon {
     position: absolute;
     left: .5em;
     color: var(--main-color);
 }
 
-.form .input > input {
+.form .input-container .input-div .input {
     width: 100%;
     height: 2.5em;
-    background: #ededed;
     padding: 0 2.5em;
-    outline: 1px solid #d1d1d1;
     border-radius: .5em;
 }
 
-.form .input > input:focus {
+/* FOR GENDER TITLE */
+.form .input-container .gender-title {
+    gap: .5rem;
+}
+
+.form .input-container .input-div .input:focus {
     outline-width: 3px;
 }
 
-.form .input > input::placeholder {
+.form .input-container .input-div .input::placeholder {
     color: var(--text-color);
     font-weight: 600;
 }
 
-.form .input > input[type="checkbox"] {
+.form .input-container .input-div .input[type="checkbox"] {
     width: .8em;
     height: .8em;
     outline: none;
 }
 
-.form .input .check-info {
+/* FOR TERMS AND CONDITION */
+.form .terms-input-div {
+    gap: .25rem;
+}
+
+.form .input-container .input-div .check-info {
     color: var(--main-color);
 }
 
-.form .input .check-info .link,
-.form .input .check-info .link {
+.form .input-container .input-div .check-info .link,
+.form .input-container .input-div .check-info .link {
     color: var(--link-clr);
     margin-left: -8px;
 }
@@ -196,15 +131,33 @@
     gap: .5rem;
 }
 
+.forget-password-container .forget-input-container {
+    gap: .5rem;
+}
+
+.forget-password-container .forget-input-container .input {
+    width: 100%;
+    height: 2.5rem;
+    padding: 0 .25rem 0 .5rem;
+    background: #0000000f;
+}
+
+.forget-password-container .forget-input-container .input:focus {
+    border: none;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.15);
+    transition: .1s ease-in-out;
+}
+
 .forget-password-container .submit-forgetpassword {
+    height: 2.5rem;
     width: max-content;
     background: var(--cta-ghost);
     color: var(--link-clr);
-    padding: .5rem 1.5rem;
-    border-radius: .5rem;
+    padding: 0 1.5rem;
 }
 
 .forget-password-container .submit-forgetpassword:hover {
+    color: white;
     background: var(--cta-ghost-hover);
 }
 
@@ -235,6 +188,19 @@
     color: #e15a16;
 }
 
+
+@media (max-width: 830px) {
+    #authentication {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    #authentication .show-div {
+        padding: 5rem 0;
+    }
+    #authentication .show-div > * {
+        transform: translateY(0);
+    }
+}
 
 @media (max-width: 768px) {
     #authentication .menu-list .screen-md {

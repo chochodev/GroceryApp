@@ -114,6 +114,7 @@ body > .alert {
   padding: .5rem;
   display: flex;
   width: 100%;
+  height: max-content;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -384,7 +385,6 @@ body #footer {
   color: var(--main-link-clr);
   font-family: var(--main-link-font);
   padding: .25rem .75rem;
-  border-radius: .75rem;
   cursor: pointer;
 }
 .link:hover {
@@ -483,43 +483,57 @@ body #footer {
   font-weight: 500;
   font-size: .875rem;
   padding: .25rem .5rem;
-  border-radius: .25rem;
 }
 .button-md {
   font-weight: 600;
   font-size: 16px;
-  padding: 10px 20px;
-  border-radius: .45rem;
+  padding: 8px 12px;
 }
 .button-lg {
   font-weight: 600;
   font-size: 20px;
-  padding: 12px 23px;
-  border-radius: .5rem;
+  padding: 10px 18px;
 }
 .button-xl {
   font-weight: 600;
   font-size: 25px;
-  padding: 15px 25px;
-  border-radius: .5rem;
+  padding: 14px 22px;
 }
 
 .button:hover {
   box-shadow: 0px 0px 2px .5px var(--text-clr);
 }
 .button:focus {
+  background: none;
+  color: var(--text-clr);
   outline: 2px solid var(--link-hover);
+  box-shadow: none;
 }
-.button:active {
-  transform: translateY(1px);
-  background-color: var(--cta-clr);
+
+/************************ BORDER RADIUS STYLES *************************/
+.br-sm {
+  border-radius: .15rem;
 }
+.br-md {
+  border-radius: .25rem;
+}
+.br-lg {
+  border-radius: .5rem;
+}
+.br-xl {
+  border-radius: .75rem;
+}
+
 
 /************************ INPUT STYLES *************************/
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.input {
+  background: #0000000f;
 }
 
 .input-sm {
@@ -529,7 +543,6 @@ input[type=number]::-webkit-outer-spin-button {
   background: #fff;
   color: var(--sub-link-clr);
   font: 400 .8rem var(--main-header-font);
-  border: 1px solid #c9c9c9;
 }
 
 .input-sm::placeholder {
@@ -540,6 +553,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 .input:focus {
   border: none;
-  outline: 3px solid rgba(187, 17, 96, .25);
-  transition: .25s ease-in-out;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.15);
+  transition: .1s ease-in-out;
 }

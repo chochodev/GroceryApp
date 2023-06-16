@@ -1,9 +1,10 @@
 body {
     width: 100vw;
     min-height: 100vh;
-    height: 100%;
+    height: 100vh;
     display: grid;
     grid-template-columns: max-content 1fr;
+    overflow: hidden;
 }
 
 /* NAVBAR SECTION */
@@ -12,6 +13,7 @@ body {
     z-index: 100;
     min-height: 100vh;
     height: 100%;
+    box-shadow: 0 0 3px 1px rgba(185, 16, 97, .5);
 }
 
 /* MENU-BAR */
@@ -44,9 +46,14 @@ body {
 }
 
 #admin-navbar .nav-contents {
-    background: var(--surface-clr);
+    background: var(--cta-clr);
     gap: 2rem;
     padding: 2rem 1rem;
+}
+
+/* LOGO SECTION */
+#admin-navbar .logo .logo-title {
+    color: white;
 }
 
 /* NAV LINKS */
@@ -54,14 +61,19 @@ body {
     gap: 1rem;
 }
 
+#admin-navbar .nav-contents .nav-items .link {
+    color: white;
+    background: #ffffff1c;
+}
+
 #admin-navbar .nav-contents .nav-items .link:hover {
+    color: var(--link-clr);
     background: var(--link-bg-hover);
-    border-radius: .5rem;
+    transition: .2s ease-in-out;
 }
 
 #admin-navbar .nav-contents .nav-items .link.active {
-    box-shadow: 0 0 2px 3px rgba(185, 16, 97, .25);
-    color: var(--text-clr);
+    box-shadow: 0 0 2px 3px rgba(255, 255, 255, 0.35);
 }
 
 /* FOR BACKGROUND OVERLAY */
@@ -81,6 +93,32 @@ body {
 
 #signing-background-overlay.show-signing-background-overlay {
     display: block !important;
+}
+
+/* BLOCK CONTENTS */
+#block-content {
+    padding: 1rem 2rem;
+}
+
+/* FOR SEARCH FORM */
+#block-content .search-form {
+    position: relative;
+    padding: .5rem 0;
+}
+
+#block-content .search-form .input {
+    width: max-content;
+    min-width: 18rem;
+    padding: 0 .5rem;
+    height: 2.25rem;
+    border-radius: .25rem;
+}
+
+#block-content .search-form .search-cta {
+    position: absolute;
+    right: 0;
+    font-size: 1rem;
+    padding: 0 .5rem;
 }
 
 @media (max-width: 680px) {

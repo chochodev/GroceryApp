@@ -5,47 +5,40 @@
 
 {% block content %}
 
-<div id="authentication" class="authentication w-full flex-c-s dir-col">
-    {# {% with messages = get_flashed_messages(with_categories=true) %} 
-    {% if messages %} 
-    {% for category, message in messages %} 
-        {% if category == 'error' %}
-        <div class="alert error w-full flex-tc">
-        <p class='message text-sm w-600'>{{ message }}</p>
-        <button type="button" class="close button" data-dismiss="alert">
-            <i aria-hidden="true" class="fa fa-close icon"></i>
-        </button>
+<div id="authentication" class="authentication w-full h-max">
+    <div class="show-div flex-c-c h-full dir-col">
+        <div class="show-div-logo flex-c-c">
+            <h2 class="title w-600">EdenFresh</h2>
+            {% include 'assets/logo.html' %}
         </div>
-        {% else %}
-        <div class="alert success w-full flex-tc">
-        <p class='message text-sm w-600'>{{ message }}</p>
-        <button type="button" class="close button" data-dismiss="alert">
-            <i aria-hidden="true" class="fa fa-close icon"></i>
-        </button>
-        </div>
-        {% endif %} 
-    {% endfor %} 
-    {% endif %} 
-    {% endwith %} #}
+        <p class="info text-md flex-tc w-600">Welcome to ErenFresh Grocery store, get your groceries at affordable prices and negotiate on large groceries.</p>
+        <p class="info text-md flex-tc w-600">Welcome to ErenFresh Grocery store, get your groceries at affordable prices and negotiate on large groceries.</p>
+        <p class="info text-md flex-tc w-600">Welcome to ErenFresh Grocery store, get your groceries at affordable prices and negotiate on large groceries.</p>
+    </div>
 
-
-    <div id="signin" class="form flex-c-c dir-col">
+    <div id="signin" class="form h-max flex-c-c dir-col">
         <!-- LOGIN FORM -->
         <form method="POST" action="/auth/signin" class='signin-form w-full flex-c-c dir-col' >
             <h3 class="title text-lg w-600">Login account</h3>
 
             <!-- LOGIN INPUTS SECTION -->
-            <div class="input">
-                <i class="icon fa fa-send-o"></i>
-                <input name="email" class="email" type="email" placeholder="(Email)" required/>
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="email">Email</label>
+                <div class="input-div">
+                    <i class="icon fa fa-send-o"></i>
+                    <input id="email" name="email" class="email input" type="email" placeholder="(Email)" required/>
+                </div>
             </div>
-            <div class="input">
-                <i class="icon fa fa-lock"></i>
-                <input name="password" class="name" type="password" placeholder="(Password)" required/>
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="password">Password</label>
+                <div class="input-div">
+                    <i class="icon fa fa-lock"></i>
+                    <input id="password" name="password" id="signup-password" class="password input" type="password" placeholder="(Password)" required/>
+                </div>
             </div>
 
             <!-- KEEP USER LOGGED IN SECTION-->
-            <div class="input">
+            <div class="terms-input-div w-full flex-c-s">
                 <input name="login-remember" class="checkbox" type="checkbox" />
                 <small class="check-info">Keep me logged in for a week.</small>
             </div>
@@ -57,9 +50,9 @@
         <!-- FORGET PASSWORD SECTION -->
         <form method='POST' action='/forgetpassword' class='forget-password-container w-full flex-c-c dir-col'>
             <small class="check-info w-600">Forget password?</small>
-            <div id="forget_password_form" class="input">
-                <input id="forget_password_email" name="forget_password_email" class="email w-full" type="email" placeholder="(Enter valid email)" />
-                <button type='submit' class="submit-forgetpassword text-sm w-600" name="forget_password_form">Request</button>
+            <div id="forget_password_form" class="forget-input-container w-full flex-c-c">
+                <input id="forget_password_email" name="forget_password_email" class="email input br-lg" type="email" placeholder="(Enter valid email)" />
+                <button type='submit' class="submit-forgetpassword text-sm w-600 br-md" name="forget_password_form">Request</button>
             </div>
         </form>
     </div>

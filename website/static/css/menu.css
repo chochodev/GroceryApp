@@ -3,29 +3,12 @@
     gap: 1rem;
 }
 
+/* TITLE */
 #menu > .title {
     color: var(--text-clr);
 }
 
-#menu .search-form {
-    padding: .5rem 0;
-}
-
-#menu .search-form .input {
-    width: max-content;
-    min-width: 18rem;
-    padding: 0 .5rem;
-    height: 2.25rem;
-    border-radius: .25rem;
-    border: 2px solid var(--primary-clr);
-}
-
-#menu .search-form .search-cta {
-    border-radius: .25rem;
-    height: 2.25rem;
-    padding: 0 .5rem;
-}
-
+/* ALLERGY LINK */
 #menu .allergy-link {
     color: var(--text-clr);
     padding: 0 .25rem;
@@ -44,76 +27,170 @@
 }
 
 #menu .products-container .product {
-    max-height: 25rem;
-    width: 20rem;
-    background: var(--primary-bg-clr);
+    max-width: 16rem;
+    width: 100%;
+    background: white;
     border-radius: .5rem;
     overflow: hidden;
+    box-shadow: 0 2px 5px 2px rgba(0, 0, 0, .15);
 }
 
-#menu .products-container .product .product-info {
+#menu .products-container .product:hover {
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, .25);
+}
+  
+@media (max-width: 768px) {
+    #menu .products-container .product {
+        max-width: 12rem;
+    }
+}
+  
+#menu .products-container .product .description .img {
+    height: 10rem;
+    object-fit: cover;
+    box-shadow: var(--sh);
+}
+  
+#menu .products-container .product .description .product-info {
+    padding: .5rem;
+}
+  
+  /* TITLE */
+#menu .products-container .product .description .title {
+    width:max-content;
+    height: 100%;
+    padding: .25em .5em;
+}
+  
+#menu .products-container .product .description .title .name {
+    color: var(--text-clr);
+}
+  
+  
+/* PRICE */
+#menu .products-container .product .description .price {
+    color: var(--text-light);
+}
+  
+#menu .products-container .product .description .price > span:first-child small {
+    font-size: .7em;
+    color: var(--text-light);
+}
+  
+#menu .products-container .product .description .price > span:last-child {
+    color: var(--text);
+}
+    
+/*===================================================*/
+/* FUNC */
+#menu .products-container .product .func {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+  
+/* STATUS */
+#menu .products-container .product .func .total,
+#menu .products-container .product .func .quantity {
+    position: relative;
+    padding: .5rem .25rem;
+    margin: 0 .25rem;
     gap: .25rem;
+    border-radius: .25rem;
+    background: var(--main-clr);
+}
+
+#menu .products-container .product .func .input:focus {
+    outline: 1px solid rgba(185, 16, 97, .5);
+}
+
+/* INPUT PRICE AND AMOUNT */
+#menu .products-container .product .func .input-div {
+    position: relative;
+}
+
+#menu .products-container .product .func .total .input-placeholder,
+#menu .products-container .product .func .quantity .input-placeholder {
+    position: absolute;
+    left: 0;
+    width: 2rem;
+    background: var(--primary-bg-clr);
+    pointer-events: none;
+    color: var(--text-clr);
+    border-radius: .25rem 0 0 .25rem;
+}
+
+/* FOR THE PLACEHOLDER BACKGROUND */
+#menu .products-container .product .func .total .input-div:before,
+#menu .products-container .product .func .quantity .input-div:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 2rem;
+    background: var(--primary-bg-clr);
+    pointer-events: none;
+    border-radius: .25rem 0 0 .25rem;
+}
+
+#menu .product .func .total .input,
+#menu .product .func .quantity .input {
+    height: 2rem;
+    font-size: 1rem;
+    padding-left: 2.5rem;
+    color: var(--text-clr);
+}
+  
+#menu .product .func .status p.err {
+    color: var(--red);
+}
+  
+/* CALL TO ACTION BUTTONS */
+#menu .product .func .cta-div {
+    padding: 1rem .25rem;
+    height: 3rem;
+}
+  
+#menu .product .func .cta-div .cta {
+    position: relative;
+    padding: .25em;
+    background: var(--cta-clr);
+    gap: .5rem;
     padding: .5rem;
 }
 
-#menu .products-container .product .product-image {
-    width: 100%;
-    height: 10rem;
-    object-fit: cover;;
+#menu .product .func .cta-div .cta.one {
+    background: none;
 }
-
-#menu .products-container .product .name {
-    color: var(--text-clr);
-    margin: 0 auto 1rem;
-}
-
-#menu .products-container .product .quantity-input {
-    background: rgba(255, 255, 255, 0.5);
-    width: 2.5rem;
-    max-width: max-content;
-    height: 1.5rem;
-    border-bottom: 1px solid #000000;
-    border-radius: .25rem;
-    text-align: center;
-}
-
-#menu .products-container .product .negotiation-form {
-    margin-top: 2rem;
-    gap: .5rem;
-    padding: 0 1rem;
-    flex-wrap: wrap;
-}
-
-#menu .products-container .product .negotiation-input {
+  
+#menu .product .func .cta-div .cta .icon {
     width: max-content;
-    min-width: 10rem;
-    padding: 0 .5rem;
-    height: 2.25rem;
+    color: var(--red);
+    font-size: 1.2em;
+}
+
+#menu .product .func .cta-div .cta.two:hover {
+    background: var(--cta-hover);
+    transition: .2s ease-in-out;
+}
+
+#menu .product .func .cta-div .cta.two span {
+    color: white;
+}
+#menu .product .func .cta-div .cta.one:hover span {
+    display: block;
+}
+#menu .product .func .cta-div .cta.one span {
+    position: absolute;
+    left: 2rem;
+    background: var(--red);
+    color: white;
+    padding: .25rem .5rem;
     border-radius: .25rem;
-    border: 2px solid var(--primary-clr);
+    display: none;
 }
-
-#menu .products-container .product .negotiation-input:focus {
-    border: 2px solid var(--text-clr);
-}
-
-#menu .products-container .product .negotiation-button {
-    height: 2.25rem;
-    border-radius: .25rem;
-    padding: 0 .5rem;
-}
-
-
-@media (max-width: 768px) {
-    #menu .products-container {
-        gap: .5rem;
-    }
-    #menu .products-container .product {
-        width: 17rem;
-    }
-
-    #menu .products-container .product .negotiation-form {
-        margin-top: .8rem;
-        margin-bottom: .5rem;
-    }
+  
+#menu .product .func .cta-div .cta .icon2 {
+    color: white;
+    font-size: 1.2em;
 }

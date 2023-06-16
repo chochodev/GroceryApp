@@ -1,14 +1,16 @@
 {% extends 'main.html' %}
 {% block stylesheet %}{{ url_for('static', filename='css/home.css') }}{% endblock %}
 {% set show_navbar = True %}
+{% block title %}: Home{% endblock %}
+
 
 {% block content %}
 <section id='home' class='w-full'>
-  <section class="order-now-section flex-s-c">
-    <div class="order-now-info flex-c-s dir-col">
+  <section class="order-now-section flex-c-c">
+    <div class="order-now-info h-full flex-c-s dir-col">
       <h1 class="title header-xlx">Order Your Product Easy & Fast!</h1>
       <p class='info w-600 text-md'>Edenfresh is a global leader in online food delivery, connecting consumers through its platform.</p>
-      <a href="products.html" class="button button-md">Go to Menu</a>
+      <a href="products.html" class="button button-md br-md">Go to Menu</a>
     </div>
     <img src="{{ url_for('static', filename='images/logo_gif.gif') }}" alt="" class="home-gif" />
   </section>
@@ -48,7 +50,7 @@
   </section>
 
   <section class="benefits-container">
-    <section class="benefits flex-c-c">
+    <section class="benefits flex-c-sb flex-tc">
       <img src="{{ url_for('static', filename='images/comanda_acum_logo.jpeg') }}" alt="" class="benefit-image" />
       <div>
         <h1 class="title header-xlx">Order Anywhere, Anytime!</h1>
@@ -57,7 +59,7 @@
         </p>
       </div>
     </section>
-    <section class="benefits flex-c-c">
+    <section class="benefits flex-c-sb flex-tc">
       <div>
         <h1 class="title header-xlx">Deliver your products with the utmost safety!</h1>
         <p class="info w-600 text-md">
@@ -66,7 +68,7 @@
       </div>
       <img src="{{ url_for('static', filename='images/livreaza_logo.jpeg') }}" alt="" class="benefit-image" />
     </section>
-    <section class="benefits flex-c-c">
+    <section class="benefits flex-c-sb flex-tc">
       <img src="{{ url_for('static', filename='images/urmareste_logo.jpeg') }}" alt="" class="benefit-image" />
       <div>
         <h1 class="title header-xlx">Track your order in the easiest way!</h1>

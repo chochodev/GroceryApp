@@ -18,6 +18,12 @@ login_manager = LoginManager(app)
 # Create auth Blueprint
 auth = Blueprint('auth', __name__)
 
+# User roles
+ROLES = {
+    'admin': 1,
+    'customer': 2
+}
+
 def send_confirmation_email(user):
     serializer = Serializer(app.config['SECRET_KEY'])
     token = serializer.dumps(user)
@@ -53,7 +59,7 @@ def confirm_email(token):
         db.session.commit()
 
         # Flashes success message and redirects to home page
-        flash('Account created for ' + new_user.username, category='success')
+        flash('Account created for ' + new_user.name[0:30], category='success')
         login_user(new_user)
         return redirect(url_for('views.home'))
 
@@ -65,7 +71,6 @@ def signup():
             # Retrieves data from Postman payload
             data = request.get_json()
             name = data.get('name')
-            username = data.get('username')
             email = data.get('email')
             phone = data.get('phone')
             gender = data.get('gender')
@@ -75,9 +80,9 @@ def signup():
         else:
             # Retrieves data from HTML form
             name = request.form.get('name')
-            username = request.form.get('username')
             email = request.form.get('email')
             phone = request.form.get('phone')
+            address = request.form.get('address')
             gender = request.form.get('gender')
             password = request.form.get('password')
 
@@ -86,17 +91,17 @@ def signup():
         # Checks if user email exists
         if User.query.filter_by(email=email).first():
             flash(f'User with {email} already exist', category='error')
-        elif len(email) < 4:
-            flash('Email must be greater than 3 characters.', category='error')
-        elif len(name or username) < 2:
-            flash('Name and Username must be greater than 1 character.', category='error')
+        elif len(email) < 7:
+            flash('Email must be greater than 7 characters.', category='error')
+        elif len(address) < 10:
+            flash('Address must be greater than 10 characters.', category='error')
         elif len(password) < 7:
             flash('Password must be at least 7 characters.', category='error')
         else:
             # Encrypts the password and saves it in a variable
             hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
             # Saves user with the retrieved data to a variable
-            new_user = User(email=email, name=name, username=username, phone=phone, gender=gender, password=hashed_password)
+            new_user = User(email=email, name=name, phone=phone, address=address, gender=gender, password=hashed_password)
             
             ##########-------------- FOR PRODUCTION ---------------##########
             # Send the confirmation email
@@ -106,13 +111,14 @@ def signup():
             ##########-------------- FOR DEVELOPMENT ---------------##########
             # Adds new user to database
             if new_user:
+                new_user.role = ROLES['customer']
                 db.session.add(new_user)
                 db.session.commit()
 
                 # Flashes success message and redirects to home page
-                flash('Account created for ' + new_user.username, category='success')
+                flash('Account created for ' + new_user.name[0:30], category='success')
                 login_user(new_user)
-                print(f'user {new_user.username} created successfully')
+                print(f'user {new_user.name[0:30]} created successfully')
                 return redirect(url_for('views.home'))
 
             # END BLOCK
@@ -133,7 +139,7 @@ def signin():
         if user:
             # Validates the encrypted password
             if bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
-                flash(f'Logged in successfully as {user.username}', category='success')
+                flash(f'Logged in successfully as {user.name[0:30]}', category='success')
 
                 # Checks if user choose to stay logged in
                 if remember:
@@ -158,7 +164,7 @@ def signin():
 def logout():
     # Gets logged in user and flashes a message
     user = current_user
-    flash(f'Logged out from {user.username}', category='success')
+    flash(f'Logged out from {user.name[0:30]}', category='success')
     # Logs out user
     logout_user()
     # Redirect the user to signin page

@@ -7,26 +7,6 @@
     color: var(--text-clr);
 }
 
-/* FOR SEARCH FORM */
-#allergy .search-form {
-    padding: .5rem 0;
-}
-
-#allergy .search-form .input {
-    width: max-content;
-    min-width: 18rem;
-    padding: 0 .5rem;
-    height: 2.25rem;
-    border-radius: .25rem;
-    border: 2px solid var(--primary-clr);
-}
-
-#allergy .search-form .search-cta {
-    border-radius: .25rem;
-    height: 2.25rem;
-    padding: 0 .5rem;
-}
-
 /* PRODUCT */
 #allergy .allergies {
     gap: .75rem;

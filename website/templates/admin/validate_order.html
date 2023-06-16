@@ -1,102 +1,79 @@
-{% extends 'main.html' %}
+{% extends 'admin/main.html' %}
 {% block stylesheet %}{{ url_for('static', filename='css/admin/validate_order.css') }}{% endblock %}
 {% set show_navbar = True %}
 
 {% block content %}
 
-<div id="validate-order-page" class="w-full flex-c-c flex-tc dir-col">
-  <h1 class="w-max header-lg">Cart</h1>
-  <p class="info w-max w-600">All your cart items start here until you remove or buy them.</p>
-</div>
-<section id="validate-order" class="w-full flex-c-sb">
-
-  <div class="product-list w-full flex-c-se">
-    <div class="product h-max flex dir-col">
-      <div class="description w-full flex dir-col">
-        <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="img w-full"/>
-        <div class="product-info w-full flex-jsb">
-            <div class="title">
-                <h3 class="name w-600">Red Onion</h3>
-                <span class="text-sm w-600">In Stock</span>
-            </div>
-            <div class="price flex dir-col">
-                <span class="text-xsm w-600">&#8358;100<small> X 2</small></span>
-                <span class="text-md w-700">&#8358;200</span>
-            </div>
-        </div>
+<section id="validate-order" class="w-full flex-c-sb dir-col">    
+  <div class="order-title w-full flex-c-c flex-tc dir-col">
+    <h1 class="w-max header-lg">Order</h1>
+    <p class="info w-max w-600">Delete to reject the order.</p>
+  </div>
+  <table class="orders-table w-full flex dir-col">
+    <!-- ORDERS HEADER -->
+    <thead class="orders-header">
+        <tr class="orders-header-items w-full">
+            <th class="text-sm w-600">Product Name</th>
+            <th class="text-sm w-600">Price/kg</th>
+            <th class="text-sm w-600">Amount(kg)</th>
+            <th class="text-sm w-600">Total price</th>
+        </tr>
+    </thead>
+    <!-- ORDERS -->
+    <tbody class="orders w-full flex-ac dir-col">
+    {% if orders %}
+        {% for order in orders %}
+        <tr class="order w-full">
+            <td class="text-sm">{{ order.products[0].name }}</td>
+            <td class="text-sm">{{ order.user.address }}</td>
+            <td class="text-sm">{{ order.date }}</td>
+            <td class="text-sm">{{ order.products[0].normal_price }}</td>
+            <td class="text-sm">{{ order.status}}</td>
+        </tr>
+        {% endfor %}
+    {% endif %}
+        <tr class="order w-full">
+            <td class="text-sm"> Product info</td>
+            <td class="text-sm"> Product info</td>
+            <td class="text-sm"> Product info</td>
+            <td class="text-sm"> Product info</td>
+        </tr>
+        <tr class="order w-full">
+            <td class="text-sm"> Product info</td>
+            <td class="text-sm"> Product info</td>
+            <td class="text-sm"> Product info</td>
+            <td class="text-sm"> Product info</td>
+        </tr>
+        <tr class="order w-full">
+            <td class="text-sm"> -- --</td>
+            <td class="text-sm"> -- --</td>
+            <td class="text-sm"> -- --</td>
+            <td class="text-sm"> -- --</td>
+        </tr>
+    </tbody>
+  </table>
+  <div class="func w-full flex-c-c dir-col br-md">
+    <div class="price-info w-full flex-c-sb">
+      <div class="w-max flex-s-s br-md">
+        <p class="text-sm w-600">Total:</p>
+        <p class="text-sm w-600"> $430.35</p>
       </div>
-
-      <div class="func">
-        <div class="cta-div h-max w-full flex-c-sb flex-tc">
-            <a href="" class="cta one flex-c-se w-600">
-                <i class="icon fa fa-trash"></i>
-                <span class="text-sm">Remove</span>
-            </a>
-            <a href="" class="cta two button flex-c-se">
-              <i class="icon2 fa fa-heart-o"></i>
-                <span class="text-sm">Approve</span>
-            </a>
-        </div>
-      </div>
-    </div>
-    <div class="product h-max flex dir-col">
-      <div class="description w-full flex dir-col">
-        <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="img w-full"/>
-        <div class="product-info w-full flex-jsb">
-            <div class="title">
-                <h3 class="name w-600">Red Onion</h3>
-                <span class="text-sm w-600">In Stock</span>
-            </div>
-            <div class="price flex dir-col">
-                <span class="text-xsm w-600">&#8358;100<small> X 2</small></span>
-                <span class="text-md w-700">&#8358;200</span>
-            </div>
-        </div>
-      </div>
-
-      <div class="func">
-        <div class="cta-div h-max w-full flex-c-sb flex-tc">
-            <a href="" class="cta one flex-c-se w-600">
-                <i class="icon fa fa-trash"></i>
-                <span class="text-sm">Remove</span>
-            </a>
-            <a href="" class="cta two button flex-c-se">
-              <i class="icon2 fa fa-heart-o"></i>
-                <span class="text-sm">Approve</span>
-            </a>
-        </div>
+      <div class="w-max flex-e-e br-md">
+        <p class="text-sm w-600">Customer Offer: </p>
+        <p class="text-sm w-600">$400.35</p>
       </div>
     </div>
-    <div class="product h-max flex dir-col">
-      <div class="description w-full flex dir-col">
-        <img src="{{ url_for('static', filename='images/cascaval_afumat.png') }}" class="img w-full"/>
-        <div class="product-info w-full flex-jsb">
-            <div class="title">
-                <h3 class="name w-600">Red Onion</h3>
-                <span class="text-sm w-600">In Stock</span>
-            </div>
-            <div class="price flex dir-col">
-                <span class="text-xsm w-600">&#8358;100<small> X 2</small></span>
-                <span class="text-md w-700">&#8358;200</span>
-            </div>
-        </div>
-      </div>
-
-      <div class="func">
-        <div class="cta-div h-max w-full flex-c-sb flex-tc">
-            <a href="" class="cta one flex-c-se w-600">
-                <i class="icon fa fa-trash"></i>
-                <span class="text-sm">Remove</span>
-            </a>
-            <a href="" class="cta two button flex-c-se">
-              <i class="icon2 fa fa-heart-o"></i>
-                <span class="text-sm">Approve</span>
-            </a>
-        </div>
-      </div>
+    <div class="cta-div h-max w-full flex-c-sb flex-tc">
+        <a href="" class="cta one flex-c-se br-md">
+            <i class="icon fa fa-trash"></i>
+            <span class="text-sm w-600">Remove</span>
+        </a>
+        <a href="" class="cta two flex-c-se br-md">
+          <i class="icon2 fa fa-heart-o"></i>
+            <span class="text-sm w-600">Approve</span>
+        </a>
     </div>
   </div>
-
 </section>
 
 {% endblock %}

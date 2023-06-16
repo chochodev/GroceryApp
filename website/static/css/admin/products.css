@@ -82,7 +82,7 @@
 
 /* TABLE HEAD */
 #products .main .product-contents .products-table .products-header-items {
-    background: var(--primary-clr);
+    background: var(--cta-clr);
 }
 
 #products .main .product-contents .products-table .products-header-items * {
@@ -109,10 +109,10 @@
 }
 
 #products .main .product-contents .products-table .product {
-    box-shadow: 0 0 2px 1px rgba(185, 16, 97, 0.25);
+    box-shadow: 0 0 3px 1px rgba(185, 16, 97, 0.25);
 }
 
 #products .main .product-contents .products-table .product:hover {
     cursor: pointer;
-    box-shadow: 0 0 10px 3px rgba(185, 16, 97, 0.25);
+    box-shadow: 0 0 3px 1px rgba(185, 16, 97, 0.5);
 }

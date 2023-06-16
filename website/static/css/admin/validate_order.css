@@ -1,122 +1,104 @@
-#validate-order-page > * {
-  color: var(--text-clr);
-  margin: 0 auto;
-}
-
 #validate-order {
-  padding: .5rem;
+  padding: .5rem .25rem;
   gap: .5rem;
 }
 
-#validate-order .product-list {
-  gap: 1rem;
-  padding: .5em 1em;
-  background: var(--main-clr);
-  flex-wrap: wrap;
-}
-
-
-/* PRODUCT ITEMS */
-#validate-order .product-list .product {
-  gap: 1em;
-  max-width: 16rem;
-  width: 100%;
-  background: var(--primary-bg-clr);
-  border-radius: .5rem;
-  overflow: hidden;
-}
-
-@media (max-width: 768px) {
-  #validate-order .product-list .product {
-    max-width: 12rem;
-  }
-}
-
-#validate-order .product-list .product .description .img {
-  height: 10rem;
-  object-fit: cover;
-  box-shadow: var(--sh);
-}
-
-#validate-order .product-list .product .description .product-info {
-  padding: .5rem;
-}
-
-/* TITLE */
-#validate-order .product-list .product .description .title {
-  width:max-content;
-  height: 100%;
-  padding: .25em .5em;
-}
-
-#validate-order .product-list .product .description .title .name {
-  color: var(--text-clr);
-}
-
-/* PRICE */
-#validate-order .product-list .product .description .price {
-  color: var(--text-light);
-}
-
-#validate-order .product-list .product .description .price > span:first-child small {
-  font-size: .7em;
-  color: var(--text-light);
-}
-
-#validate-order .product-list .product .description .price > span:last-child {
-  color: var(--text);
-}
-
-/*===================================================*/
-/* FUNC */
-#validate-order .product-list .product .func {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  gap: .5em;
-}
-
-/* CALL TO ACTION BUTTONS */
-#validate-order .product-list .product .func .cta-div {
-  padding: 1rem .25rem;
-  height: 3rem;
-}
-
-#validate-order .product-list .product .func .cta-div .cta {
+/* ORDERS TABLE */
+#validate-order .orders-table {
   position: relative;
-  padding: .25em;
-  width: max-content;
-  border-radius: .25em;
-  border: 1px solid var(--text-light);
-  box-shadow: var(--sh);
+  gap: .5rem;
+  padding: 0 .5rem;
+  margin-bottom: 2rem;
 }
 
-#validate-order .product-list .product .func .cta-div .cta .icon {
-  width: max-content;
-  color: var(--red);
-  font-size: 1.2em;
+/* TABLE HEAD */
+#validate-order .orders-table .orders-header {
+  position: sticky;
+  top: 0;
+  padding: .25rem;
 }
-#validate-order .product-list .product .func .cta-div .cta.two {
-  gap: .5rem;
-  padding: .5rem;
+
+#validate-order .orders-table .orders-header-items {
+  background: var(--cta-clr);
 }
-#validate-order .product-list .product .func .cta-div .cta.two span {
+
+#validate-order .orders-table .orders-header-items * {
   color: white;
 }
-#validate-order .product-list .product .func .cta-div .cta.one:hover span {
-  display: block;
+
+/* TABLE VALUES */
+#validate-order .orders-table tr {
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr 1fr 1fr;
+  padding: .5rem;
+  border-radius: .25rem;
+  background: var(--main-clr);
 }
-#validate-order .product-list .product .func .cta-div .cta.one span {
-  position: absolute;
-  left: 2rem;
+
+#validate-order .orders-table th,
+#validate-order .orders-table td {
+  text-align: left;
+}
+
+/* ORDER SECTION */
+#validate-order .orders-table .orders {
+  gap: .25rem;
+  padding: .25rem;
+  max-height: 55vh;
+  border-radius: .25rem;
+  border-bottom: 1px solid rgba(185, 16, 97, .25);
+  overflow: scroll;
+}
+
+#validate-order .orders-table .orders .order {
+  box-shadow: 0 0 3px 1px rgba(185, 16, 97, 0.25);
+}
+
+#validate-order .orders-table .orders .order:hover {
+  cursor: pointer;
+  box-shadow: 0 0 3px 1px rgba(185, 16, 97, .5);
+  transition: .1s ease-in-out;
+}
+
+/* TOTAL CTA FUNCTIONS SECTION */
+#validate-order .func {
+  background: var(--cta-clr);
+  padding: .5rem;
+  gap: .5rem;
+}
+
+
+#validate-order .func .price-info > div {
+  gap: .25rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: .25rem;
+}
+
+#validate-order .func .price-info * {
+  color: white;
+}
+
+/* CTA SECTION */
+#validate-order .func .cta-div .cta {
+  padding: .25rem .5rem;
+  gap: .25rem;
+  background: var(--primary-clr);
+}
+
+#validate-order .func .cta-div .cta * {
+  color: var(--cta-clr);
+}
+
+#validate-order .func .cta-div .cta.one:hover,
+#validate-order .func .cta-div .cta.one:hover * {
   background: var(--red);
   color: white;
-  padding: .25rem .5rem;
-  border-radius: .25rem;
-  display: none;
+  transition: .2s ease-in-out;
 }
 
-#validate-order .product-list .product .func .cta-div .cta .icon2 {
+#validate-order .func .cta-div .cta.two:hover, 
+#validate-order .func .cta-div .cta.two:hover * {
+  background: var(--green);
   color: white;
-  font-size: 1.2em;
+  transition: .2s ease-in-out;
 }

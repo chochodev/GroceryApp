@@ -1,9 +1,14 @@
 from flask import Flask
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from os import path
+import os
 from flask_login import LoginManager
 from flask_mail import Mail
+import cloudinary
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
 
 db = SQLAlchemy()
@@ -18,6 +23,16 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
 
+    # Cloudinary configuration
+    cloudinary.config(
+        cloud_name='dyghyyxga',
+        api_key='214846422545113',
+        api_secret='h9UIuOhRj7aoBqFb2Uqw3c-S-LU'
+    )
+
+    CORS(app)
+
+    # Mailjet configuration
     app.config['MAIL_SERVER'] = ''
     app.config['MAIL_PORT'] = ''
     app.config['MAIL_USE_TLS'] = True
@@ -32,10 +47,17 @@ def create_app():
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/auth')
-    app.register_blueprint(admin, url_prefix='/admin')
+    app.register_blueprint(admin, url_prefix='/admin_panel')
 
 
     from .models import User, Product, Order
+
+    # Flask admin configuration
+    admin = Admin(app)
+
+    admin.add_view(ModelView(User, db.session))
+    admin.add_view(ModelView(Product, db.session))
+    admin.add_view(ModelView(Order, db.session))
 
     create_database(app)
         
@@ -53,4 +75,3 @@ def create_database(app):
     with app.app_context():
         if not path.exists('website/' + DB_NAME):
             db.create_all()
-            print('Created Database!')

@@ -3,13 +3,6 @@
 {% block content %}
 
     <section id="dashboard" class="w-full flex-as dir-col">
-        <form class="search-form" class="h-max w-full flex-c-s">
-            <input name="search-input" class="search-input" type="text" placeholder="Search" required/>
-            <button class="search-cta button">
-                <i class="fa fa-search icon"></i>
-            </button>
-        </form>
-
         <section class="main w-full flex-c-s dir-col">
             <div class="title-section w-full flex dir-col">
                 <h2 class="title header-md">Dashboard</h2>
@@ -20,21 +13,21 @@
                     <h3 class="name">Orders</h3>
                     <div class="info-div flex dir-col">
                         <p class="text1 text-sm w-600">15 new</p>
-                        <p class="text2 text-sm w-600">34 total</p>
+                        <p class="text2 text-sm w-600">{{ orders|length }} total</p>
                     </div>
                 </div>
                 <div class="content w-full flex-s-s dir-col">
                     <h3 class="name">Customers</h3>
                     <div class="info-div flex dir-col">
                         <p class="text1 text-sm w-600">15 new</p>
-                        <p class="text2 text-sm w-600">34 total</p>
+                        <p class="text2 text-sm w-600">{{ customers|length }} total</p>
                     </div>
                 </div>
                 <div class="content w-full flex-s-s dir-col">
                     <h3 class="name">Products</h3>
                     <div class="info-div flex dir-col">
-                        <p class="text1 text-sm w-600">15 sold</p>
-                        <p class="text2 text-sm w-600">34 approved</p>
+                        <p class="text1 text-sm w-600">15 selling</p>
+                        <p class="text2 text-sm w-600">{{ products|length }} total</p>
                     </div>
                 </div>
         </section>

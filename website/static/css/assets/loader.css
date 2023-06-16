@@ -1,0 +1,61 @@
+.custom-loader-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  gap: 2vh;
+  min-height: 100vh;
+  height: 100%;
+  min-width: 100vw;
+  width: 100%;
+  background: var(--surface-clr);
+}
+
+.custom-loader-bg .loader-logo {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  gap: calc(1vh + 1rem);
+}
+
+.custom-loader-bg .loader-logo .name {
+  color: var(--text-clr);
+  font-size: 3rem;
+}
+
+.custom-loader-bg .custom-loader {
+  width: 50px;
+  height: 50px;
+  display: grid;
+}
+
+.custom-loader-bg .custom-loader::before,
+.custom-loader-bg .custom-loader::after {    
+  content:"";
+  grid-area: 1/1;
+  --c: radial-gradient(farthest-side,#f178a0 92%,#0000);
+  background: 
+    var(--c) 50%  0, 
+    var(--c) 50%  100%, 
+    var(--c) 100% 50%, 
+    var(--c) 0    50%;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  animation: s2 0.5s infinite;
+}
+
+.custom-loader-bg .custom-loader::before {
+  margin:4px;
+  filter:hue-rotate(45deg);
+  background-size: 8px 8px;
+  animation-timing-function: linear
+}
+
+@keyframes s2{ 
+  100%{transform: rotate(.5turn)}
+}

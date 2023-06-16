@@ -26,28 +26,26 @@
   <body>
     {# HEADER SECTION #}
     <header id="admin-navbar" class="w-max flex-s-s dir-col">
-        <button id="menu-bar-btn" class="menu-bar screen-sm">
-            <i id="bars-icon" class="icon fa fa-bars text-lg"></i>
-            <i id="close-icon" class="icon close fa fa-times text-lg"></i>
-        </button>
+      <button id="menu-bar-btn" class="menu-bar screen-sm">
+          <i id="bars-icon" class="icon fa fa-bars text-lg"></i>
+          <i id="close-icon" class="icon close fa fa-times text-lg"></i>
+      </button>
 
-        {# NAVBAR SECTION #}
-        <nav id="nav-contents" class="nav-contents close h-full flex-s-s dir-col">
-          {# LOGO && TITLE SECTION #}
-          <div class="logo flex-c-c">
-              <h3 class="logo-title">
-                  <a href="index.html" class='header-md'>Edenfresh</a>
-              </h3>
-              {% include 'assets/logo.html' %}
-          </div>
-          {# NAV LINKS #}
-          <div class="nav-items w-full flex-js dir-col">
-              <a href="{{ url_for('admin.dashboard') }}" {% if endpoint == 'dashboard' %} class="link w-full active text-md w-600 button-md" {% else %} class="link w-full text-md w-600 button-md" {% endif %}>Dashboard</a>
-              <a href="{{ url_for('admin.orders') }}" {% if endpoint == 'orders' %} class="link w-full active text-md w-600 button-md" {% else %} class="link w-full text-md w-600 button-md" {% endif %}>Orders</a>
-              <a href="{{ url_for('admin.customers') }}" {% if endpoint == 'customers' %} class="link w-full active text-md w-600 button-md" {% else %} class="link w-full text-md w-600 button-md" {% endif %}>Customers</a>
-              <a href="{{ url_for('admin.products') }}" {% if endpoint == 'products' %} class="link w-full active text-md w-600 button-md" {% else %} class="link w-full text-md w-600 button-md" {% endif %}>Products</a>
-          </div>
-        </nav>
+      {# NAVBAR SECTION #}
+      <nav id="nav-contents" class="nav-contents close h-full flex-s-s dir-col">
+        {# LOGO && TITLE SECTION #}
+        <div class="logo flex-c-c">
+            <h2 class="logo-title header-lg">Edenfresh</h2>
+            {% include 'assets/logo.html' %}
+        </div>
+        {# NAV LINKS #}
+        <div class="nav-items w-full flex-js dir-col">
+            <a href="{{ url_for('admin_panel.dashboard') }}" {% if endpoint == 'dashboard' %} class="link w-full active text-md w-600 button-md br-md" {% else %} class="link w-full text-md w-600 button-md br-md" {% endif %}>Dashboard</a>
+            <a href="{{ url_for('admin_panel.orders') }}" {% if endpoint == 'orders' %} class="link w-full active text-md w-600 button-md br-md" {% else %} class="link w-full text-md w-600 button-md br-md" {% endif %}>Orders</a>
+            <a href="{{ url_for('admin_panel.customers') }}" {% if endpoint == 'customers' %} class="link w-full active text-md w-600 button-md br-md" {% else %} class="link w-full text-md w-600 button-md br-md" {% endif %}>Customers</a>
+            <a href="{{ url_for('admin_panel.products') }}" {% if endpoint == 'products' %} class="link w-full active text-md w-600 button-md br-md" {% else %} class="link w-full text-md w-600 button-md br-md" {% endif %}>Products</a>
+        </div>
+      </nav>
     </header>
 
     {# FLASHED MESSAGES #}
@@ -79,8 +77,16 @@
     <div id="signing-background-overlay"></div>
 
     {# PAGE CONTENTS #}
-    {% block content %}
-    {% endblock %}
+    <div id="block-content" class="w-full h-screen flex-s-s dir-col">
+      <form method='POST' class='search-form flex-c-c'>
+          <input name="search-data" class="input" type="text" placeholder="Search..." required/>
+          <button type="submit" class="search-cta">
+              <i class="icon fa fa-search"></i>
+          </button>
+      </form>
+      {% block content %}
+      {% endblock %}
+    </div>
 
     {# JS BLOCK #}
     <script src="{{ url_for('static', filename='js/admin/main.js') }}"></script>

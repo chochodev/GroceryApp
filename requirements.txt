@@ -5,3 +5,5 @@ Flask-Migrate
 flask-bcrypt
 flask-mail
 itsdangerous
+flask-cors
+flask-cloudinary

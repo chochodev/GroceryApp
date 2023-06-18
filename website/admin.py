@@ -81,10 +81,10 @@ def search():
 
         if not results:
             flash(f'No product with {search_data} found', category='error')
-            return redirect('views.home')
+            return redirect('admin_panel.dashboard')
 
         context = {'products': results, 'search_return': search_data}
-        return render_template('admin/products.html', **context, user=current_user, endpoint='search')
+        return render_template('admin/products.html', **context, endpoint='search')
 
 
 @admin.route('/customers', methods=['GET', 'POST'])

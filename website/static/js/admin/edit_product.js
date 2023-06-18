@@ -19,12 +19,12 @@ editProductForm.addEventListener('submit', function(event) {
     .then(response => {
         if (response.ok) {
             // Handle the success case
-            console.log('POST request successful');
+            console.log('UPDATE request successful');
             window.location.href = '/admin_panel/products'
             // Redirect to the desired page or perform any other action
         } else {
             // Handle the error case
-            console.log('PUT request failed');
+            console.log('UPDATE request failed');
             // Display an error message or perform any other action
         }
     })

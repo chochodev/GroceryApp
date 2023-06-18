@@ -1,6 +1,6 @@
 const allOrders = document.getElementById('all-orders');
-const approvedOrders = document.getElementById('unapproved-orders');
-const unApprovedOrders = document.getElementById('approved-orders');
+const approvedOrders = document.getElementById('approved-orders');
+const unApprovedOrders = document.getElementById('unapproved-orders');
 
 const allButton = document.getElementById('all-orders-button');
 const approvedButton = document.getElementById('approved-orders-button');

@@ -6,7 +6,7 @@
 
 /* FOR PRODUCT TITLE */
 #create-product .title {
-    margin: 2rem 1rem;
+    margin: 2rem 1rem 0 1rem;
 }
 
 /* FOR PRODUCT FORM */
@@ -15,20 +15,45 @@
     gap: 1rem;
 }
 
-#create-product .product-form .input {
-    width: max-content;
-    min-width: 18rem;
-    padding: 0 .5rem;
-    height: 2.25rem;
-    border-radius: .25rem;
-    border: 2px solid var(--primary-clr);
+
+/* INPUT SECTION */
+#create-product .input-container {
+    display: flex;
+    gap: .5em;
+    align-items: start;
+    height: max-content;
+    width: 100%;
 }
 
-#create-product .product-form .input:focus {
-    border: none;
-    box-shadow: 0 0 2px 3px rgba(185, 17, 96, .25);
+#create-product .input-container .label {
+    position: relative;
+    left: 0;
 }
 
+#create-product .input-div {
+    position: relative;
+    display: flex;
+    gap: .5em;
+    align-items: center;
+    height: max-content;
+    width: 100%;
+}
+
+#create-product .input-container .input-div .icon {
+    position: absolute;
+    left: .5em;
+    color: var(--main-color);
+}
+
+#create-product .input-container .input-div .input {
+    width: 100%;
+    max-width: 50rem;
+    height: 2.5em;
+    padding: 0 2.5em;
+    border-radius: .5em;
+}
+
+/* FOR BUTTONS */
 #create-product .product-form .product-cta {
     padding: .5rem;
     border-radius: .25rem;

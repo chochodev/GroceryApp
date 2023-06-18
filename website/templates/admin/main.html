@@ -54,7 +54,7 @@
     {% for category, message in messages %} 
     {% if category == 'error' %}
     {# ERROR CATEGORY MESSAGES #}
-    <div class="alert error w-full flex-tc">
+    <div class="alert-admin error w-full flex-c-c flex-tc">
       <p class='message text-sm w-600'>{{ message }}</p>
       <button type="button" id="flashed-messages-close-btn" class="close button" data-dismiss="alert">
         <i aria-hidden="true" class="fa fa-close icon"></i>
@@ -64,7 +64,7 @@
     {# SUCCESS CATEGORY MESSAGES #}
     <div class="alert success w-full flex-tc">
       <p class='message text-sm w-600'>{{ message }}</p>
-      <button type="button" id="flashed-messages-close-btn" class="close button" data-dismiss="alert">
+      <button type="button" id="flashed-messages-close-btn" class="close button flex-c-c" data-dismiss="alert">
         <i aria-hidden="true" class="fa fa-close icon"></i>
       </button>
     </div>

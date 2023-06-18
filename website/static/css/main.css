@@ -108,6 +108,7 @@ body {
   overflow-x: hidden;
 }
 
+/* FOR THE FLASH MESSAGES */
 body > .alert {
   position: relative;
   z-index: 20;
@@ -158,10 +159,12 @@ body > .alert .icon {
   color: white;
 }
 
+/* FOR BODY CONTENTS */
 body #main-content {
   margin-bottom: 1rem;
 }
 
+/* FOR FOOTER */
 body #footer {
   position: relative;
   bottom: 0;

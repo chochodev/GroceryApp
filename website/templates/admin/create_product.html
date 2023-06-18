@@ -7,13 +7,47 @@
         <h2 class="title header-md">Create Product</h2>
 
         <!-- CREATE PRODUCT FORM -->
-        <form method="POST" action="{{ url_for('admin_panel.create_product')}}" enctype="multipart/form-data" class="product-form w-full flex-s-s dir-col">
+        {# <form method="POST" action="{{ url_for('admin_panel.create_product')}}" enctype="multipart/form-data" class="product-form w-full flex-s-s dir-col">
             <input name="name" class="input" type="text" placeholder="Name" required/>
             <input name="desc" class="input" type="text" placeholder="Description" required/>
             <input name="price_per_kg" class="input" type="number" placeholder="Price per Kg" required/>
             <input name="min_price" class="input" type="number" placeholder="Min Price offered" required/>
             <input name="image" class="input" type="file" accept="image/*" placeholder="Image" />
             <button type="submit" class="product-cta button w-600">Create Product</button>
+        </form> #}
+        <form method="POST" action="{{ url_for('admin_panel.create_product')}}" enctype="multipart/form-data" class="product-form w-full flex-s-s dir-col">
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="name">Product name</label>
+                <div class="input-div">
+                    <i class="icon fa fa-apple-alt"></i>
+                    <input id="name" name="name" class="name input" type="text" placeholder="Name" required/>
+                </div>
+            </div>
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="allergy">Description</label>
+                <div class="input-div">
+                    <i class="icon fa fa-file-text"></i>
+                    <input id="allegy" name="desc" class="allergy input" type="text" placeholder="Description" required/>
+                </div>
+            </div>
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="price">Price per Kg</label>
+                <div class="input-div">
+                    <i class="icon fa fa-dollar"></i>
+                    <input id="price" name="price_per_kg" class="price input" type="text" placeholder="Price/kg" required/>
+                </div>
+            </div>
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="price2">Price per Kg(min)</label>
+                <div class="input-div">
+                    <i class="icon fa fa-dollar"></i>
+                    <input id="price2" name="min_price" class="price2 input" type="text" placeholder="Min Price/kg" required/>
+                </div>
+            </div>
+            {# IMAGE EDIT SECTION #}
+            <input name="image" class="input" type="file" placeholder="Image" />
+
+            <button type="submit" class="product-cta button w-600 br-md">Save Changes</button>
         </form>
     </section>
 {% endblock %}

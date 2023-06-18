@@ -4,7 +4,6 @@ const bgOverlay = document.getElementById('signing-background-overlay');
 // REMOVE STYLES AT VIEWPORT
 if (window.innerWidth > 768) {
     bgOverlay.classList.remove('show-signing-background-overlay');
-    console.log('above viewport')
 }
 
 
@@ -37,7 +36,6 @@ window.addEventListener('DOMContentLoaded', function() {
         menuList.classList.add('close');
         barsIcon.classList.remove('close');
         closeIcon.classList.add('close');
-        console.log('Above viewport');
       } else if (window.innerWidth < 768 && menubarBtn.classList.contains('close')) {
         bgOverlay.classList.add('show-signing-background-overlay');
       }

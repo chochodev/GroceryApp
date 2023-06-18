@@ -76,7 +76,9 @@ def dashboard():
 @login_required
 def search():
     if request.method == 'POST':
+        # Gets the search data
         search_data = request.form.get('search-data')
+        # Checks if a product has such name or allergic description
         results = Product.query.filter((Product.name.ilike(f'%{search_data}%')) | (Product.allergic_desc.ilike(f'%{search_data}%'))).all()
 
         if not results:
@@ -121,6 +123,7 @@ def order(order_id):
         total_customer_price = float(total_customer_price) + float(order.customer_price)
     
     if request.method == 'POST':
+        # Gets action attribute sent from the page
         if request.form.get('action') == 'approve':
             for order in orders:
                 order.status = 'approved'
@@ -131,6 +134,7 @@ def order(order_id):
                 flash(f'Order approved, dispatch rider to {order.user.address} for delivery')
                 return redirect('admin_panel.orders')
 
+        # Gets action attribute sent from the page
         elif request.form.get('action') == 'reject':
             for order in orders:
                 order.status = 'rejected'

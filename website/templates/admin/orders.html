@@ -7,7 +7,6 @@
             <!-- MAIN HEADER -->
             <div class="title-section w-full flex dir-col">
                 <h2 class="title header-md">Orders</h2>
-                <p class="text text-sm">15 New Notifications</p>
             </div>
             <div class="order-contents w-full flex-ac dir-col">
                 <!-- ORDERS CATEGORY -->
@@ -29,46 +28,56 @@
                         </tr>
                     </thead>
 
-                    {% if orders %}
                     <!-- ORDERS -->
                     <tbody id="all-orders" class="orders w-full flex-ac dir-col">
+                    {% if orders %}
                         {% for order in orders %}
                         <tr class="order w-full">
                             <td class="text-sm">{{ order.products[0].name }}</td>
                             <td class="text-sm">{{ order.user.address }}</td>
                             <td class="text-sm">{{ order.date }}</td>
-                            <td class="text-sm">{{ order.products[0].normal_price }}</td>
+                            <td class="text-sm">${{ order.products[0].normal_price }}</td>
                             <td class="text-sm">{{ order.status}}</td>
                         </tr>
                         {% endfor %}
-                    </tbody>
-                    <tbody id="unapproved-orders" class="orders w-full flex-ac dir-col">
-                        {% for order in orders %}
-                        {% if order.status == 'pending' %}
-                        <tr class="order w-full">
-                            <td class="text-sm">{{ order.products[0].name }}</td>
-                            <td class="text-sm">{{ order.user.address }}</td>
-                            <td class="text-sm">{{ order.date }}</td>
-                            <td class="text-sm">{{ order.products[0].normal_price }}</td>
-                            <td class="text-sm">{{ order.status }}</td>
-                        </tr>
-                        {% endif %}
-                        {% endfor %}
-                    </tbody>
-                    <tbody id="approved-orders" class="orders w-full flex-ac dir-col">
-                        {% for order in orders %}
-                        {% if order.status == 'approved' %}
-                        <tr class="order w-full">
-                            <td class="text-sm">{{ order.products[0].name }}</td>
-                            <td class="text-sm">{{ order.user.address }}</td>
-                            <td class="text-sm">{{ order.date }}</td>
-                            <td class="text-sm">{{ order.products[0].normal_price }}</td>
-                            <td class="text-sm">{{ order.status }}</td>
-                        </tr>
-                        {% endif %}
-                        {% endfor %}
-                    </tbody>
                     {% endif %}
+                    </tbody>
+
+                    <tbody id="unapproved-orders" class="orders w-full flex-ac dir-col">
+                    {% if pending_orders %}
+                        {% for order in pending_orders %}
+                        <tr class="order w-full">
+                            <td class="text-sm">{{ order.products[0].name }}</td>
+                            <td class="text-sm">{{ order.user.address }}</td>
+                            <td class="text-sm">{{ order.date }}</td>
+                            <td class="text-sm">${{ order.products[0].normal_price }}</td>
+                            <td class="text-sm">{{ order.status }}</td>
+                                                    
+                            <!-- Form to redirect to page for processing the order -->
+                            <td class="">
+                                <form action="./process-order/{{ order.id }}" method="post">
+                                    <input type="hidden" name="action" value="process">
+                                    <button type="submit">Process Order</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
+
+                    <tbody id="approved-orders" class="orders w-full flex-ac dir-col">
+                    {% if approved_orders %}
+                        {% for order in approved_orders %}
+                        <tr class="order w-full">
+                            <td class="text-sm">{{ order.products[0].name }}</td>
+                            <td class="text-sm">{{ order.user.address }}</td>
+                            <td class="text-sm">{{ order.date }}</td>
+                            <td class="text-sm">${{ order.products[0].normal_price }}</td>
+                            <td class="text-sm">{{ order.status }}</td>
+                        </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
                 </table>
                     
         </section>

@@ -13,6 +13,7 @@
         <!-- PRODUCT FORM -->
         {% if products %}
         {% for product in products %}
+        {% if product.allergy_status == False %}
         <form method="POST" action="order/{{ product.id }}" class="product h-max flex dir-col">
             <div class="description w-full flex dir-col">
                 <img src="{{ product.image }}" class="img w-full"/>
@@ -63,6 +64,7 @@
                 </div>
             </div>
         </form>
+        {% endif %}
         {% endfor %}
         {% endif %}
     </section>

@@ -1,9 +1,9 @@
-from flask import Flask, Blueprint, render_template, redirect, url_for, request, current_app, jsonify, flash, send_from_directory
+from flask import Blueprint, render_template, redirect, url_for, request, flash
 from .models import User, Product, Order
-from werkzeug.utils import secure_filename
+from flask_login import login_required, current_user
 from . import db
+from sqlalchemy import func
 import cloudinary
-import json
 from cloudinary import uploader
 
 admin = Blueprint('admin_panel', __name__)
@@ -16,6 +16,7 @@ ROLES = {
 
 #################### yet to be implemented ####################
 @admin.route('/admin/create/<int:user_id>', methods=['POST'])
+@login_required
 def create_admin(user_id):
     # Gets the user with the id
     user = User.query.get(user_id)
@@ -33,33 +34,119 @@ def create_admin(user_id):
     # Redirect to a suitable location (e.g., admin dashboard)
     return redirect(url_for('admin.dashboard'))
 
+
 @admin.route('/dashboard', methods=['GET', 'POST'])
+@login_required
 def dashboard():
     customers = User.query.all()
     products = Product.query.all()
     orders = Order.query.all()
+
+    # To find all customer with items in cart
+    active_customers = 0
+    for customer in customers:
+        if len(customer.orders) > 0:
+            active_customers = active_customers + 1
     
-    print(len(orders))
-    context = {'customers':customers, 'products':products, 'orders':orders}
+    # Get all selling products
+    selling_products = 0
+    for product in products:
+        # Get all products associated with the order
+        if product.products_in_order:
+            selling_products = selling_products + 1
+
+    # To find all pending orders
+    pending_orders = 0 
+    for order in orders:
+        if order.status == 'pending':
+            pending_orders = pending_orders + 1
+            
+    context = {
+        'customers':customers, 
+        'products':products, 
+        'orders':orders,
+        'active_customers':active_customers,
+        'selling_products':selling_products,
+        'pending_orders':pending_orders
+    }
     return render_template('/admin/dashboard.html', **context, endpoint='dashboard')
 
-@admin.route('/customers', methods=['GET', 'POST'])
-def customers():
+
+@admin.route('/search', methods=['GET', 'POST'])
+@login_required
+def search():
     if request.method == 'POST':
-        pass
+        search_data = request.form.get('search-data')
+        results = Product.query.filter((Product.name.ilike(f'%{search_data}%')) | (Product.allergic_desc.ilike(f'%{search_data}%'))).all()
+
+        if not results:
+            flash(f'No product with {search_data} found', category='error')
+            return redirect('views.home')
+
+        context = {'products': results, 'search_return': search_data}
+        return render_template('admin/products.html', **context, user=current_user, endpoint='search')
+
+
+@admin.route('/customers', methods=['GET', 'POST'])
+@login_required
+def customers():
     customers = User.query.all()
+
     context = {'customers':customers}
     return render_template('/admin/customers.html', **context, endpoint='customers')
 
 @admin.route('/orders', methods=['GET', 'POST'])
+@login_required
 def orders():
     # Retrieve all orders from the database
     orders = Order.query.all()
-    
-    context = {'orders':orders}
+    pending_orders = Order.query.filter_by(status='pending').all()
+    approved_orders = Order.query.filter_by(status='approved').all()
+        
+    context = {'orders':orders, 'pending_orders':pending_orders, 'approved_orders':approved_orders}
     return render_template('/admin/orders.html', **context, endpoint='orders')
 
+
+@admin.route('/process-order/<int:order_id>', methods=['GET', 'POST'])
+@login_required
+def order(order_id):
+    # Gets the order with the id of order_id
+    orders = Order.query.filter_by(id=order_id).all()
+        
+    # For calculating all the order prices
+    total_normal_price = 0
+    total_customer_price = 0
+    for order in orders:
+        total_normal_price = float(total_normal_price) + float(order.normal_price)
+        total_customer_price = float(total_customer_price) + float(order.customer_price)
+    
+    if request.method == 'POST':
+        if request.form.get('action') == 'approve':
+            for order in orders:
+                order.status = 'approved'
+                # Updates the order status in database
+                db.session.add(order)
+                db.session.commit()
+
+                flash(f'Order approved, dispatch rider to {order.user.address} for delivery')
+                return redirect('admin_panel.orders')
+
+        elif request.form.get('action') == 'reject':
+            for order in orders:
+                order.status = 'rejected'
+                # Updates the order status in database
+                db.session.add(order)
+                db.session.commit()
+
+                flash(f'Order rejected')
+                return redirect('admin_panel.orders')
+        
+    context = {'orders':orders, 'total_normal_price':total_normal_price, 'total_customer_price':total_customer_price}
+    return render_template('admin/order.html', **context, endpoint='order')    
+
+
 @admin.route('/products', methods=['GET', 'POST'])
+@login_required
 def products():
     if request.method == 'POST':
         pass
@@ -69,6 +156,7 @@ def products():
         context = {'products':products}
         return render_template('/admin/products.html', **context, endpoint='products')
 
+
 def upload_image(image, product_id):
     if image:
         # Upload the image to Cloudinary
@@ -76,7 +164,9 @@ def upload_image(image, product_id):
         return result
     return None
 
+
 @admin.route('/create-product', methods=['GET', 'POST'])
+@login_required
 def create_product():
     if request.method == 'POST':
         # Retrieves data from HTML form
@@ -94,13 +184,11 @@ def create_product():
             db.session.add(new_product)
             db.session.commit()
 
-            print(f'upload function about to be called')
-
             # Calls and initiates the upload image function
             result = upload_image(image, new_product.id)
             if result:
                 new_product.image = result['secure_url']
-                print('Image URL: ' + result['secure_url'])
+
                 # Flashes success message and redirects to home page
                 flash(f'New product {new_product.name} successfully created', category='success')
                 db.session.commit()
@@ -125,14 +213,14 @@ def edit_product(sent_product_id):
 
         # Retrieves data from HTML form
         name = request.form.get('name')
-        desc = request.form.get('desc')
-        price_per_kg = request.form.get('price_per_kg')
+        allergic_desc = request.form.get('allergy')
+        normal_price = request.form.get('normal_price')
         min_price = request.form.get('min_price')
         image = request.files.get('image')
 
         product.name = name
-        product.allergic_desc = desc
-        product.normal_price = price_per_kg
+        product.allergic_desc = allergic_desc
+        product.normal_price = normal_price
         product.min_price = min_price
         db.session.commit()
 
@@ -160,6 +248,7 @@ def edit_product(sent_product_id):
 
 
 @admin.route('/delete-product/<int:sent_product_id>', methods=['POST'])
+@login_required
 def delete_product(sent_product_id):
     product = Product.query.get(sent_product_id)
     if product:
@@ -170,6 +259,7 @@ def delete_product(sent_product_id):
 
 
 @admin.route('/validate-order', methods=['GET', 'POST'])
+@login_required
 def validate_order():
     
     return render_template('admin/validate_order.html', endpoint='validate_order')

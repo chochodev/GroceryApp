@@ -17,8 +17,8 @@
             {% include 'assets/logo.html' %}
         </div>
         <div class="menu-list flex-c-sb">
-            <form method='POST' class='search-form flex-c-c'>
-                <input name="search-data" class="input" type="text" placeholder="Search..." required/>
+            <form method='POST' action="/search" class='search-form flex-c-c'>
+                <input name="search-data" class="input" type="text" value="{{ search_return }}" placeholder="Search..." required/>
                 <button type="submit" class="search-cta">
                     <i class="icon fa fa-search"></i>
                 </button>
@@ -26,15 +26,13 @@
             
             <div class="items-2 flex-ac screen-md">
                 <a href="{{ url_for('views.home') }}" {% if endpoint == 'home' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Home</a>
+                <a href="{{ url_for('views.menu') }}" {% if endpoint == 'menu' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Menu</a>
 
                 {# Hides these buttons if user is not Logged in #}
                 {% if user and user.is_authenticated %}
-                <a href="{{ url_for('views.menu') }}" {% if endpoint == 'menu' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Menu</a>
                 <a href="{{ url_for('views.orders') }}" {% if endpoint == 'order' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Order Now</a>
                 <a href="{{ url_for('views.allergy') }}" {% if endpoint == 'allergy' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Allergy</a>
                 {% endif %}
-
-                <a href="{{ url_for('views.aboutus') }}" {% if endpoint == 'aboutus' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>About Us</a>
 
                 {# Hides these buttons if user is not Logged in #}
                 {% if user and user.is_authenticated %}
@@ -54,15 +52,13 @@
     <nav id="menu-list" class="menu-list-2 close flex dir-col screen-sm">
         <div class="items flex dir-col">
             <a href="{{ url_for('views.home') }}" {% if endpoint == 'home' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Home</a>
+            <a href="{{ url_for('views.menu') }}" {% if endpoint == 'menu' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Menu</a>
 
             {# Hides these buttons if user is not Logged in #}
             {% if user and user.is_authenticated %}
-            <a href="{{ url_for('views.menu') }}" {% if endpoint == 'menu' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Menu</a>
             <a href="{{ url_for('views.orders') }}" {% if endpoint == 'order' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Order Now</a>
             <a href="{{ url_for('views.allergy') }}" {% if endpoint == 'allergy' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Allergy</a>
             {% endif %}
-
-            <a href="{{ url_for('views.aboutus') }}" {% if endpoint == 'aboutus' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>About Us</a>
 
             {# Hides these buttons if user is not Logged in #}
             {% if user and user.is_authenticated %}

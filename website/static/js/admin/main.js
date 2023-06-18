@@ -20,7 +20,6 @@ const bgOverlay = document.getElementById('signing-background-overlay');
 // REMOVE STYLES AT VIEWPORT
 if (window.innerWidth > 680) {
     bgOverlay.classList.remove('show-signing-background-overlay');
-    console.log('above viewport')
 }
 
 // FOR THE TOGGLING TO MENUBAR TOGGLE MENU LIST
@@ -53,7 +52,6 @@ window.addEventListener('DOMContentLoaded', function() {
         menuContent.classList.add('close');
         barsIcon.classList.remove('close');
         closeIcon.classList.add('close');
-        console.log('Above viewport');
       } else if (window.innerWidth < 680 && menubarBtn.classList.contains('close')) {
         bgOverlay.classList.add('show-signing-background-overlay');
       }

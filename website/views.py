@@ -87,7 +87,8 @@ def orders():
     total_customer_price = 0
     for order in orders:
         total_normal_price = float(total_normal_price) + float(order.normal_price)
-        total_customer_price = float(total_customer_price) + float(order.customer_price)
+        # print(f'Customer_price: {order.customer_price}')
+        # total_customer_price = float(total_customer_price) + float(order.customer_price)
 
     context = {
         'orders':orders, 

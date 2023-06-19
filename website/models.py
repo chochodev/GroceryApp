@@ -8,8 +8,8 @@ from itsdangerous import URLSafeTimedSerializer as Serializer
 
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    normal_price = db.Column(db.String(20), nullable=False)
-    customer_price = db.Column(db.String(20), nullable=False)
+    normal_price = db.Column(db.Integer, nullable=False)
+    customer_price = db.Column(db.Integer, nullable=False)
     status = db.Column(db.String(20), default='unattended', nullable=False)
     # allergy_status = db.Column(db.Boolean, default=False)
 
@@ -51,6 +51,7 @@ class Product(db.Model):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
+    is_admin = db.Column(Bol)
     name = db.Column(db.String(50))
     email = db.Column(db.String(50), unique=True, nullable=False)
     email_verified = db.Column(db.Boolean, default=False)

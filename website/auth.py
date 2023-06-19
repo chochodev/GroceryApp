@@ -18,12 +18,20 @@ login_manager = LoginManager(app)
 # Create auth Blueprint
 auth = Blueprint('auth', __name__)
 
-# User roles
-ROLES = {
-    'admin': 1,
-    'customer': 2
-}
 
+# Redirects customer that tries to access admin pages
+def check_admin():
+    if not current_user.role == 'admin':
+        # User is not an admin, redirect to home page
+        return redirect(url_for('views.home'))
+
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        check_admin()
+
+
+# For sending emails
 def send_confirmation_email(user):
     serializer = Serializer(app.config['SECRET_KEY'])
     token = serializer.dumps(user)
@@ -52,7 +60,6 @@ def confirm_email(token):
         flash('The confirmation link is invalid or has expired.', category='error')
         return redirect(url_for('auth.signin'))
     
-    # new_user = User.query.filter_by(email=user.email).first()
     if new_user:
         # Adds the new user to the database
         db.session.add(new_user)

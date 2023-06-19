@@ -8,13 +8,7 @@ from cloudinary import uploader
 
 admin = Blueprint('admin_panel', __name__)
 
-# User roles
-ROLES = {
-    'admin': 1,
-    'customer': 2
-}
 
-#################### yet to be implemented ####################
 @admin.route('/admin/create/<int:user_id>', methods=['POST'])
 @login_required
 def create_admin(user_id):

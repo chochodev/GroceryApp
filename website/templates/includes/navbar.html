@@ -32,6 +32,9 @@
                 {% if user and user.is_authenticated %}
                 <a href="{{ url_for('views.orders') }}" {% if endpoint == 'order' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Order Now</a>
                 <a href="{{ url_for('views.allergy') }}" {% if endpoint == 'allergy' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Allergy</a>
+                {% if user.role == 'admin' %}
+                <a href="{{ url_for('admin_panel.dashboard') }}" {% if endpoint == 'dashboard' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Admin</a>
+                {% endif %}
                 {% endif %}
 
                 {# Hides these buttons if user is not Logged in #}

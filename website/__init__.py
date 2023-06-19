@@ -6,6 +6,7 @@ from os import path
 import os
 from flask_login import LoginManager
 from flask_mail import Mail
+from .models import User, Product, Order
 import cloudinary
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
@@ -71,7 +72,12 @@ def create_app():
 
     return app
 
+
 def create_database(app):
     with app.app_context():
         if not path.exists('website/' + DB_NAME):
             db.create_all()
+            # Create an admin user
+            admin_user = User(username='admin', address='Opposite North Gate', phone='23452345234', email='admin@email.com', password='ilovethis', is_admin=True)
+            db.session.add(admin_user)
+            db.session.commit()

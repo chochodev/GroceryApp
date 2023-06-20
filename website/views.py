@@ -161,7 +161,7 @@ def allergy():
     return render_template('allergy.html', user=current_user, **context, endpoint='allergy')
 
 
-# FOR ALLERGY PAGE 
+# FOR ACCOUNT PAGE 
 @views.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
@@ -177,11 +177,10 @@ def account():
         user.address = address
         user.phone = phone
 
-        db.session.add(user)
         db.session.commit()
 
         flash(f'Account updated successfully', category='success')
-        return redirect('view.home')
+        return redirect(url_for('views.home'))
     
     return render_template('account.html', user=current_user, endpoint='account')
 

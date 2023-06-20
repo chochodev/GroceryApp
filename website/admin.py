@@ -5,12 +5,14 @@ from . import db
 from sqlalchemy import func
 import cloudinary
 from cloudinary import uploader
+from .decorators import admin_required
 
 admin = Blueprint('admin_panel', __name__)
 
 
 @admin.route('/dashboard', methods=['GET', 'POST'])
 @login_required
+@admin_required
 def dashboard():
     customers = User.query.all()
     products = Product.query.all()
@@ -48,6 +50,7 @@ def dashboard():
 
 @admin.route('/search', methods=['GET', 'POST'])
 @login_required
+@admin_required
 def search():
     if request.method == 'POST':
         # Gets the search data
@@ -65,6 +68,7 @@ def search():
 
 @admin.route('/customers', methods=['GET', 'POST'])
 @login_required
+@admin_required
 def customers():
     customers = User.query.all()
 
@@ -73,6 +77,7 @@ def customers():
 
 @admin.route('/orders', methods=['GET', 'POST'])
 @login_required
+@admin_required
 def orders():
     # Retrieve all orders from the database
     orders = Order.query.all()
@@ -85,6 +90,7 @@ def orders():
 
 @admin.route('/process-order/<int:order_id>', methods=['GET', 'POST'])
 @login_required
+@admin_required
 def order(order_id):
     # Gets the order with the id of order_id
     orders = Order.query.filter_by(id=order_id).all()
@@ -125,6 +131,7 @@ def order(order_id):
 
 @admin.route('/products', methods=['GET', 'POST'])
 @login_required
+@admin_required
 def products():
     if request.method == 'POST':
         pass
@@ -145,6 +152,7 @@ def upload_image(image, product_id):
 
 @admin.route('/create-product', methods=['GET', 'POST'])
 @login_required
+@admin_required
 def create_product():
     if request.method == 'POST':
         # Retrieves data from HTML form
@@ -227,6 +235,7 @@ def edit_product(sent_product_id):
 
 @admin.route('/delete-product/<int:sent_product_id>', methods=['POST'])
 @login_required
+@admin_required
 def delete_product(sent_product_id):
     product = Product.query.get(sent_product_id)
     if product:
@@ -238,6 +247,7 @@ def delete_product(sent_product_id):
 
 @admin.route('/validate-order', methods=['GET', 'POST'])
 @login_required
+@admin_required
 def validate_order():
     
     return render_template('admin/validate_order.html', endpoint='validate_order')

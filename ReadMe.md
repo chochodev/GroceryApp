@@ -5,14 +5,25 @@ GroceryApp is a Flask-based application for managing and selling grocery.
 ## Installation
 
 1. Create a virtual environment using the following command:
+  ```
+  python3 -m venv env
+  ```
+  or 
+  ```
+  python -m venv env
+  ```
 
 2. Activate the virtual environment:
 
 - For Windows:
-
+  In Powershell terminal of the root directory
   ```
   cd env
   Scripts\activate
+  ```
+  In Command Prompt terminal of the root directory
+  ```
+  env\Scripts\activate
   ```
 
 - For macOS/Linux:

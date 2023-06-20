@@ -9,26 +9,6 @@ from cloudinary import uploader
 admin = Blueprint('admin_panel', __name__)
 
 
-@admin.route('/admin/create/<int:user_id>', methods=['POST'])
-@login_required
-def create_admin(user_id):
-    # Gets the user with the id
-    user = User.query.get(user_id)
-        
-    if user:
-        # Assign the admin role to the user
-        user.role = ROLES['admin']
-        # Commit the changes to the database
-        db.session.commit()
-        
-        flash(f'User {user.name[0:30]} has been assigned the admin role.', category='success')
-    else:
-        flash(f'User with ID {user_id} not found.', category='error')
-    
-    # Redirect to a suitable location (e.g., admin dashboard)
-    return redirect(url_for('admin.dashboard'))
-
-
 @admin.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():

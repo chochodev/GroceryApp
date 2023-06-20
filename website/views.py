@@ -161,6 +161,31 @@ def allergy():
     return render_template('allergy.html', user=current_user, **context, endpoint='allergy')
 
 
+# FOR ALLERGY PAGE 
+@views.route('/account', methods=['GET', 'POST'])
+@login_required
+def account():
+    user = current_user
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        address = request.form.get('address')
+        phone = request.form.get('phone')
+
+        user.name = name
+        user.email = email
+        user.address = address
+        user.phone = phone
+
+        db.session.add(user)
+        db.session.commit()
+
+        flash(f'Account updated successfully', category='success')
+        return redirect('view.home')
+    
+    return render_template('account.html', user=current_user, endpoint='account')
+
+
 # FOR ABOUT US PAGE
 @views.route('/aboutus', methods=['GET', 'POST'])
 def aboutus():

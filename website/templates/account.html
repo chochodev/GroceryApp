@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+{% block stylesheet %}{{ url_for('static', filename='css/account.css') }}{% endblock %}
+{% block content %}
+
+    <section id="account-settings" class="w-full flex-c-s dir-col">
+        <!-- HEADER / TITLE -->
+        <h2 class="title header-md">Account Settings</h2>
+
+        <!-- CREATE ACCOUNT FORM -->
+        <form method="POST" class="account-form w-max flex-c-c dir-col">
+            <div class="input-container flex-s-c dir-col">
+                <label class="label w-600" for="name">Account name</label>
+                <div class="input-div">
+                    <i class="icon fa fa-user"></i>
+                    <input id="name" name="name" class="name input" type="text" value="{{ user.name }}" placeholder="{{ user.name }}" required/>
+                </div>
+            </div>
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="email">Email</label>
+                <div class="input-div">
+                    <i class="icon fa fa-send"></i>
+                    <input id="email" name="desc" class="email input" type="text" value="{{ user.email }}" placeholder="{{ user.email }}" required/>
+                </div>
+            </div>
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="address">Address</label>
+                <div class="input-div">
+                    <i class="icon fa fa-address-card"></i>
+                    <input id="address" name="address" class="address input" type="text" value="{{ user.address }}" placeholder="{{ user.address }}" required/>
+                </div>
+            </div>
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="phone">Phone</label>
+                <div class="input-div">
+                    <i class="icon fa fa-phone"></i>
+                    <input id="phone" name="phone" class="phone input" type="text" value="{{ user.phone }}" placeholder="{{ user.phone}}" required/>
+                </div>
+            </div>
+
+            <button type="submit" class="account-cta button w-600 br-md">Save Changes</button>
+        </form>
+    </section>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

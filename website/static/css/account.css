@@ -1,0 +1,60 @@
+#account-settings {
+    min-height: 100vh;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+/* FOR account TITLE */
+#account-settings .title {
+    margin: 2rem 1rem 0 1rem;
+}
+
+/* FOR ACCOUNT FORM */
+#account-settings .account-form {
+    padding: .5rem 0;
+    gap: 1rem;
+}
+
+
+/* INPUT SECTION */
+#account-settings .input-container {
+    display: flex;
+    gap: .5em;
+    align-items: start;
+    height: max-content;
+    /* width: 100%; */
+}
+
+#account-settings .input-container .label {
+    position: relative;
+    left: 0;
+}
+
+#account-settings .input-div {
+    position: relative;
+    display: flex;
+    gap: .5em;
+    align-items: center;
+    height: max-content;
+    width: 100%;
+}
+
+#account-settings .input-container .input-div .icon {
+    position: absolute;
+    left: .5em;
+    color: var(--main-color);
+}
+
+#account-settings .input-container .input-div .input {
+    width: 90vw;
+    max-width: 50rem;
+    height: 2.5em;
+    padding: 0 2.5em;
+    border-radius: .5em;
+}
+
+/* FOR BUTTONS */
+#account-settings .account-form .account-cta {
+    padding: .5rem;
+    border-radius: .25rem;
+}

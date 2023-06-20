@@ -118,7 +118,6 @@ def signup():
             ##########-------------- FOR DEVELOPMENT ---------------##########
             # Adds new user to database
             if new_user:
-                new_user.role = ROLES['customer']
                 db.session.add(new_user)
                 db.session.commit()
 
@@ -128,7 +127,6 @@ def signup():
                 print(f'user {new_user.name[0:30]} created successfully')
                 return redirect(url_for('views.home'))
 
-            # END BLOCK
     return render_template('auth/signup.html', endpoint='signup')
 
 

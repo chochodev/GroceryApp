@@ -54,7 +54,7 @@
     </div>
     {% else %}
     {# SUCCESS CATEGORY MESSAGES #}
-    <div class="alert success w-full flex-tc">
+    <div class="alert-admin success w-full flex-tc">
       <p class='message text-sm w-600'>{{ message }}</p>
       <button type="button" id="flashed-messages-close-btn" class="close button flex-c-c" data-dismiss="alert">
         <i aria-hidden="true" class="fa fa-close icon"></i>
@@ -64,9 +64,6 @@
     {% endfor %} 
     {% endif %} 
     {% endwith %}
-
-    <!-- BACKGROUND OVERLAY ON FOCUS -->
-    <div id="signing-background-overlay"></div>
 
     {# PAGE CONTENTS #}
     <div id="block-content" class="w-full h-screen flex-s-s dir-col">

@@ -1,0 +1,118 @@
+{% extends 'main.html' %}
+{% block stylesheet %}{{ url_for('static', filename='css/orders.css') }}{% endblock %}
+{% block content %}
+
+    <section id="orders" class="w-full flex-as dir-col">
+        <section class="main w-full flex-c-s dir-col">
+          <!-- MAIN HEADER -->
+          <div class="title-section w-full flex dir-col">
+              <h2 class="title header-md">Orders</h2>
+          </div>
+          <div class="order-contents w-full flex-ac dir-col">
+            <!-- ORDERS CATEGORY -->
+            <div class="order-links w-full flex-ac">
+                <button id="all-orders-button" class="link w-max flex-c-c dir-col w-600 active">Cart</button>
+                <button id="unapproved-orders-button" class="link w-max flex-c-c dir-col w-600">Unapproved</button>
+                <button id="approved-orders-button" class="link w-max flex-c-c dir-col w-600">Approved</button>
+            </div>
+
+            <!-- ORDERS HEADER -->
+            <table class="orders-table w-full flex dir-col">
+              <thead class="orders-header">
+                  <tr class="orders-header-items w-full">
+                      <th class="text-sm w-600">Product Name</th>
+                      <th class="text-sm w-600">Date</th>
+                      <th class="text-sm w-600">Price</th>
+                      <th class="text-sm w-600">Your offer</th>
+                  </tr>
+              </thead>
+              {% if orders %}
+              <tbody id="all-orders" class="orders w-full flex-ac dir-col">
+                {% for order in orders %}
+                {% if order.status == 'unattended' %}
+                <tr class="order w-full">
+                    <td class="text-sm">{{ order.products[0].name }}</td>
+                    <td class="text-sm">{{ order.date }}</td>
+                    <td class="text-sm">{{ order.normal_price }}</td>
+                    <td class="text-sm">{{ order.customer_price }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+              </tbody>
+              {% endif %}
+              
+              <tbody id="unapproved-orders" class="orders w-full flex-ac dir-col">
+                {% for order in rejected_orders %}
+                <tr class="order w-full">
+                    <td class="text-sm">{{ order.products[0].name }}</td>
+                    <td class="text-sm">{{ order.date }}</td>
+                    <td class="text-sm">{{ order.normal_price }}</td>
+                    <td class="text-sm">{{ order.customer_price }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              <tbody id="approved-orders" class="orders w-full flex-ac dir-col">
+                {% for order in approved_orders %}
+                <tr class="order w-full">
+                    <td class="text-sm">{{ order.products[0].name }}</td>
+                    <td class="text-sm">{{ order.date }}</td>
+                    <td class="text-sm">{{ order.normal_price }}</td>
+                    <td class="text-sm">{{ order.customer_price }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <div class="func w-full flex-c-c dir-col br-md">
+              <div class="price-info w-full flex-c-sb">
+                <div class="w-max flex-s-s br-md">
+                  <p class="text-sm w-600">Total:</p>
+                  <p class="text-sm w-600">${{ total_normal_price }}</p>
+                </div>
+                <div class="w-max flex-e-e br-md">
+                  <p class="text-sm w-600">Your Offer: </p>
+                  <p class="text-sm w-600">${{ total_customer_price }}</p>
+                </div>
+              </div>
+              
+              <div class="cta-div h-max w-full flex-c-sb flex-tc">
+                <div class="cta one flex-c-se br-md">
+                  <i class="icon fa fa-trash"></i>
+                  <button onclick="sendAction('delete')" class="text-sm w-600">Delete</button>
+                </div>
+                <!-- make the button cover the div -->
+                <div class="cta two flex-c-se br-md">
+                  <i class="icon2 fa fa-heart-o"></i>
+                  <button onclick="sendAction('order')" class="text-sm w-600">Order</button>
+                </div>
+              </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}
+
+{% block js %}
+<script>
+  // Makes a post request to send the action to be performed specified in name attr.
+  function sendAction(action) {
+    fetch('/orders', {
+      method: 'POST',
+      body: JSON.stringify({ action }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      // Handle the response
+      // ...
+      window.location.href = '/menu'
+      console.log(response.data)
+    })
+    .catch(error => {
+      // Handle any errors
+      // ...
+      console.log(error)
+    });
+  }
+</script>
+<script src="{{ url_for('static', filename='js/admin/orders.js') }}"></script>
+{% endblock %}

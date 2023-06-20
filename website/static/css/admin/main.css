@@ -50,6 +50,7 @@ body > .alert-admin {
 
 body > .alert-admin .close {
     position: absolute;
+    top: .15rem;
     right: .5rem;
     background: none;
     width: 1.5rem;

@@ -32,7 +32,7 @@
                 {% if user and user.is_authenticated %}
                 {# For customer only #}
                 {% if user.role == 'customer' %}
-                <a href="{{ url_for('views.orders') }}" {% if endpoint == 'order' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Cart</a>
+                <a href="{{ url_for('views.cart') }}" {% if endpoint == 'cart' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Cart</a>
                 <a href="{{ url_for('views.account') }}" {% if endpoint == 'account' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Account</a>
                 {% endif %}
 
@@ -67,7 +67,7 @@
             {% if user and user.is_authenticated %}
             {# For customer only #}
             {% if user.role == 'customer' %}
-            <a href="{{ url_for('views.orders') }}" {% if endpoint == 'order' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Cart</a>
+            <a href="{{ url_for('views.cart') }}" {% if endpoint == 'cart' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Cart</a>
             <a href="{{ url_for('views.account') }}" {% if endpoint == 'account' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Account</a>
             {% endif %}
 

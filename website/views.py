@@ -51,11 +51,12 @@ def search():
 # FOR ORDERS PAGE
 @views.route('/orders/', methods=['GET', 'POST'])
 @login_required
-def orders():
+def cart():
     # Gets the current user
     user = current_user
     # Gets the variaties of orders
     orders = Order.query.join(Order.user).filter(User.id == user.id).all()
+    print(f'Orders: {orders}')
     approved_orders = Order.query.filter_by(user_id=user.id, status='approved').all()
     rejected_orders = Order.query.filter_by(user_id=user.id, status='rejected').all()
 
@@ -87,8 +88,8 @@ def orders():
     total_customer_price = 0
     for order in orders:
         total_normal_price = float(total_normal_price) + float(order.normal_price)
-        # print(f'Customer_price: {order.customer_price}')
-        # total_customer_price = float(total_customer_price) + float(order.customer_price)
+        print(f'Customer_price: {order.customer_price}')
+        total_customer_price = float(total_customer_price) + float(order.customer_price)
 
     context = {
         'orders':orders, 
@@ -97,7 +98,7 @@ def orders():
         'approved_orders':approved_orders, 
         'rejected_orders':rejected_orders
     }
-    return render_template('orders.html', user=user, **context, endpoint='order')
+    return render_template('cart.html', user=user, **context, endpoint='cart')
 
 
 # FOR ORDER REQUEST

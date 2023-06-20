@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+{% block stylesheet %}{{ url_for('static', filename='css/account.css') }}{% endblock %}
+{% block content %}
+
+    <section id="account-settings" class="w-full flex-c-s dir-col">
+        <!-- HEADER / TITLE -->
+        <h2 class="title header-md">Account Settings</h2>
+
+        <!-- ACCOUNT SETTINGS ACCOUNT FORM -->
+        <form method="POST" class="account-form w-max flex-s-s dir-col">
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="name">Name</label>
+                <div class="input-div">
+                    <i class="icon fa fa-user"></i>
+                    <input id="name" name="name" class="name input" type="text" placeholder="Name" required/>
+                </div>
+            </div>
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="email">Email</label>
+                <div class="input-div">
+                    <i class="icon fa fa-send"></i>
+                    <input id="email" name="email" class="email input" type="text" placeholder="Email" required/>
+                </div>
+            </div>
+            <div class="input-container flex-s-s dir-col">
+                <label class="label w-600" for="address">Address</label>
+                <div class="input-div">
+                    <i class="icon fa fa-address-card"></i>
+                    <input id="address" name="address" class="address input" type="text" placeholder="Address" required/>
+                </div>
+            </div>
+
+            <button type="submit" class="account-cta button w-600 br-md">Save Changes</button>
+        </form>
+    </section>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

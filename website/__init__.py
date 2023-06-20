@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from os import path
 import os
-import bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
 import cloudinary
@@ -61,14 +60,6 @@ def create_app():
     admin.add_view(ModelView(Order, db.session))
 
     create_database(app)
-    with app.app_context():
-        if len(User.query.all()) < 1:
-                # Create admin user on database initialization
-                # Encrypts the password and saves it in a variable
-                hashed_password = bcrypt.hashpw('ilovethis'.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-                admin_user = User(role='admin', name='Admin', email='admin@gmail.com', address='Opposite North gate', gender='male', password=hashed_password)
-                db.session.add(admin_user)
-                db.session.commit()
         
     login_manager = LoginManager()
     login_manager.login_view = 'auth.signin'
@@ -76,6 +67,7 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(id):
+        print(f'Id: {id} \t id type: ')
         return User.query.get(int(id))
 
     return app

@@ -224,3 +224,13 @@
         display: flex;
     }
 }
+
+
+@media (max-width: 480px) {
+    #navbar .logo {
+        height: 2rem;
+    }
+    #navbar .logo .logo-title {
+        font-size: 1.15rem;
+    }
+}

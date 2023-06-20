@@ -112,7 +112,7 @@ def order(order_id):
                 db.session.commit()
 
                 flash(f'Order approved, dispatch rider to {order.user.address} for delivery')
-                return redirect('admin_panel.orders')
+                return redirect(url_for('admin_panel.orders'))
 
         # Gets action attribute sent from the page
         elif request.form.get('action') == 'reject':

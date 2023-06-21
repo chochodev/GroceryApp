@@ -212,8 +212,14 @@
     #authentication .menu-list .screen-sm {
         display: flex;
     }
-
     #authentication .menu-list-2 {
         display: flex;
+    }
+
+    /* FOR THE FORM SECTION ON SMALL SCREEN */
+    #signup.form,
+    #signin.form {
+        min-width: 0;
+        padding: 1rem 1rem;
     }
 }

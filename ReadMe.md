@@ -37,7 +37,7 @@ GroceryApp is a Flask-based application for managing and selling grocery.
     ```
     pip install -r requirements.txt
     ```
-    This will install Flask, Flask-Login, Flask-SQLAlchemy and Flask-Migrate.
+    This will install Flask, Flask-Login, Flask-SQLAlchemy, Flask-Migrate and all other libraries and packages.
 
 ## Running the Application
 
@@ -46,6 +46,11 @@ To run the server, execute the following command:
     ```
     & "C:\Users\MY PC\Documents\Projects\Flask\GroceryApp\env\Scripts\python.exe" "C:\Users\MY PC\Documents\Projects\Flask\GroceryApp\main.py"
     ```
+    or
+    ```
+    python main.py
+    ```
+    after activating the virtual environment (env)
 
 This will start the Flask application and make it accessible at `http://localhost:5000`.
 
@@ -77,7 +82,26 @@ bash
 ```
 flask db upgrade
 ```
-This will update the database schema according to the changes made in the models.
+This will update the database schema based on the changes in the models.
+
+Note: Ignore any warning messages during the migration process and proceed.
+
+4. If you encounter any migration issues while using the development server after updating the `models.py` file, it is recommended to delete specific folders in your project's root directory to resolve the issues. 
+
+   Note: This will delete all the data in the database
+
+   Delete the following folders:
+
+   - `__pycache__`
+   - `instance`
+   - `migrations`
+
+   Please exercise caution when deleting these folders, as they contain important files related to migrations and database configurations.
+
+   After deleting the folders, you may need to recreate the database and perform the migration again.
+
+   It's essential to have a backup of your data before proceeding with any database-related actions.
+
 
 License
 

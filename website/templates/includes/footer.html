@@ -19,10 +19,9 @@
         <div class="foot link-c w-full w-max flex-sb dir-col">
             <p class="title header-sm w-600">Quick Links</p>
             <div class="foot-content flex dir-col">
-                <a href="" class="link w-600">Services</a>
-                <a href="" class="link w-600">About Us</a>
-                <a href="" class="link w-600">Contact Us</a>
-                <a href="" class="link w-600">Download</a>
+                <a href="{{ url_for('views.allergy') }}" class="link w-600">Allergies</a>
+                <a href="{{ url_for('views.account') }}" class="link w-600">Account</a>
+                <a href="{{ url_for('auth.logout') }}" class="link w-600">Logout</a>
             </div>
         </div>
         <div class="foot link-d w-full w-max flex-sb dir-col">
@@ -30,8 +29,7 @@
             <div class="foot-content flex dir-col">
                 <a href="" class="link w-600">Privacy Policy</a>
                 <a href="" class="link w-600">Terms of Use</a>
-                <a href="" class="link w-600">Conditions</a>
-                <a href="" class="link w-600">Location</a>
+                <a href="{{ url_for('views.aboutus') }}" class="link w-600">About Us</a>
             </div>
         </div>
     </div>

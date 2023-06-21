@@ -21,10 +21,11 @@ window.addEventListener('DOMContentLoaded', function() {
     [menubarBtn, ...menuLinks, bgOverlay].forEach(clickItem => {
         clickItem.addEventListener('click', () => {
             myArray.forEach(item => {
-                console.log('works!!')
                 item.classList.toggle('close');
                 bgOverlay.classList.toggle('show-signing-background-overlay');
                 applyFunctionBasedOnWidth();
+                // Closing the search bar on click 
+                SearchBar.classList.remove('display-search-bar');
             });
         });
     });
@@ -47,3 +48,12 @@ window.addEventListener('DOMContentLoaded', function() {
     // Call the function on window resize
     window.addEventListener('resize', applyFunctionBasedOnWidth);
 });
+
+
+// FOR TOGGLING SEARCH BAR ON SMALL SCREEN 
+const toggleSearchBtn = document.getElementById('toggle-search-bar');
+const SearchBar = document.getElementById('search-bar');
+
+toggleSearchBtn.addEventListener('click', () => {
+  SearchBar.classList.toggle('display-search-bar');
+})

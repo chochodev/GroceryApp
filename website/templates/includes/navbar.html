@@ -2,7 +2,7 @@
     {# Hides these buttons if user is not Logged in and Shows these buttons in signin or signup page #}
     {% if (user and not user.is_authenticated) or endpoint in ['signin', 'signup'] %}
     <div class='logout w-full flex-c-sb'>
-        <p class='text w-full text-sm w-600'>Shop for groceries comfortably now.</p>
+        <p class='text w-full text-sm w-600'>Shop for groceries now.</p>
         <div class='links flex-c-se'>
             <a href="{{ url_for('auth.signin') }}" class="signin-button link br-md text-md w-600 button button-sm">Login</a>
             <a href="{{ url_for('auth.signup') }}" class="signin-button link br-md text-md w-600 button button-sm">SignUp</a>
@@ -16,7 +16,16 @@
             <h3 class="logo-title">Edenfresh</h3>
             {% include 'assets/logo.html' %}
         </div>
+        <form method='POST' action="/search" id="search-bar" class='search-form search-form-sm w-full flex-c-c'>
+            <input name="search-data" class="input" type="text" value="{{ search_return }}" placeholder="Search..." required/>
+            <button type="submit" class="search-cta">
+                <i class="icon fa fa-search"></i>
+            </button>
+        </form>
         <div class="menu-list flex-c-sb">
+            <button id="toggle-search-bar" class="toggle-search-bar flex-c-c">
+                <i class="icon fa fa-search"></i>
+            </button>
             <form method='POST' action="/search" class='search-form flex-c-c'>
                 <input name="search-data" class="input" type="text" value="{{ search_return }}" placeholder="Search..." required/>
                 <button type="submit" class="search-cta">
@@ -77,7 +86,7 @@
             {% endif %}
 
             {% endif %}
-
+            {#################### Add onclick show search bar in small screen #####################}
             {# Hides these buttons if user is not Logged in #}
             {% if user and user.is_authenticated %}
             <a href="{{ url_for('auth.logout') }}" {% if endpoint == 'logout' %} class="link active text-md w-600 button-md" {% else %} class="link text-md w-600 button-md" {% endif %}>Logout</a>
@@ -90,5 +99,5 @@
 </header>
 
 {% block js %}
-<script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+<script src="{{ url_for('static', filename='js/include/navbar.js') }}"></script>
 {% endblock %}

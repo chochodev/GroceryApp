@@ -120,6 +120,7 @@
 
 #home .benefits-container .benefits {
   min-height: 100vh;
+  max-height: 49.125rem;
   margin: 1rem 0;
   padding: 5rem calc(2vw);
   gap: 1rem;
@@ -165,6 +166,7 @@
 @media (max-width: 768px) {
   #home .benefits-container .benefits {
     flex-direction: column;
+    max-height: none;
   }
   #home .benefits-container .benefits:nth-child(2) {
     flex-direction: column-reverse;

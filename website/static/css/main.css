@@ -99,7 +99,7 @@ html {
 body {
   position: relative;
   background: #fff;
-  min-height: 100vh;
+  min-height: 49.125rem;
   width: 100%;
   height: 100%;
   display: flex;

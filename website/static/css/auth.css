@@ -203,6 +203,9 @@
 }
 
 @media (max-width: 768px) {
+    #authentication .show-div .show-div-logo .title {
+        font-size: 3rem;
+    }
     #authentication .menu-list .screen-md {
         display: none;
     }

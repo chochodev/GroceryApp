@@ -31,6 +31,7 @@
 
 /* MAIN NAVBAR SECTION */
 #navbar .auth-navbar {
+    position: relative;
     padding: .65rem 3vw;
     background: white;
 }
@@ -40,6 +41,12 @@
 }
 
 /* FOR SEARCH FORM */
+/* For toggling the search bar on small screen */
+#navbar .auth-navbar .toggle-search-bar,
+#navbar .auth-navbar .search-form-sm {
+    display: none;
+}
+/* For the search form */
 #navbar .auth-navbar .search-form {
     position: relative;
     padding: .5rem 0;
@@ -226,11 +233,50 @@
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 490px) {
     #navbar .logo {
         height: 2rem;
     }
     #navbar .logo .logo-title {
         font-size: 1.15rem;
+    }
+    #navbar .logo .logo-image {
+        height: 2.25rem;
+    }
+
+    /* FOR THE SEARCH BAR ON SMALL SCREEN */
+    #navbar .auth-navbar .toggle-search-bar {
+        display: flex;
+        width: 1.8rem;
+        height: 1.8rem;
+        background: #d1d1d1;
+        border-radius: 50%;
+    }
+    #navbar .auth-navbar .toggle-search-bar:hover,
+    #navbar .auth-navbar .toggle-search-bar:focus {
+        border-radius: 50%;
+        background: #c5c5c5;
+    }
+    /* For large screen search bar */
+    #navbar .auth-navbar .search-form {
+        display: none;
+    }
+    /* For small screen search bar */
+    #navbar .auth-navbar .search-form-sm {
+        display: none;
+        width: calc(100% - 2rem);
+        z-index: 120;
+        position: absolute;
+        top: calc(100% - .5rem);
+        margin: 0 auto;
+    }
+    #navbar .auth-navbar .search-form-sm.display-search-bar {
+        display: flex;
+        top: calc(100% - .5rem);
+        transition: .2s ease-in-out;
+    }
+    #navbar .auth-navbar .search-form-sm .input {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.2) !important;
     }
 }

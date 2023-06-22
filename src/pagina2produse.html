@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Autentificare</title>
+  </head>
+  <body>
+    <header class="header-container">
+      <div class="header-left-section">
+        <h3 class="logo-title"><a href="index.html">Edenfresh</a></h3>
+        <img src="resources/photos/logo_aplicatie_bun.jpeg" alt="" srcset="" />
+      </div>
+      <nav class="header-right-section">
+        <ul class="nav-items">
+          <li><a href="index.html">Alergeni</a></li>
+          <li><a href="index.html">Acasa</a></li>
+          <li>Plaseaza comanda</li>
+          <li><a href="formular.html"> Inregistrare</a></li>
+        </ul>
+      </nav>
+    </header>
+    <input type="text" class="searchInput" placeholder="Caută un produs..." />
+    <button class="searchButton">Caută</button>
+    <ul class="searchResults"></ul>
+    <script src="script.js"></script>
+    <!-- ---------------------------------------------------------PPRODUSE------------------------------------------------------------------------------------ -->
+    <!-- <p>
+      Esti alergic la ceva? Selecteaza produsule la care esti alergic si ele
+      v-or disparea!
+      <span><a href="alergeni.html">aici</a></span>
+    </p> -->
+    <main class="products-container">
+      <div class="product">
+        <p style="font-weight: bold">Varza murata</p>
+        <img
+          src="./resources/photos/varza_murata.jpg"
+          width="300px"
+          height="45%"
+        />
+        <p>Preț: 15 lei/kg</p>
+        <input
+          type="number"
+          class="negotiationInput"
+          min="0"
+          step="1"
+          placeholder="Introduceți prețul negociat"
+        />
+        <button class="negotiationButton">Trimite oferta</button>
+        <p id="negotiationResult"></p>
+        <div class="quantity-container">
+          <label for="quantityInput">Cantitate:</label>
+          <input type="number" class="quantityInput" min="1" step="1" />
+        </div>
+        <p id="totalPrice">Preț total: $0</p>
+      </div>
+      <div class="product">
+        <p style="font-weight: bold">Ceapa verde</p>
+        <img
+          src="./resources/photos/ceapa_verde.jpg"
+          width="300px"
+          height="40%"
+        />
+        <p>Preț: 3,50 lei/kg</p>
+        <input
+          type="number"
+          class="negotiationInput"
+          min="0"
+          step="1"
+          placeholder="Introduceți prețul negociat"
+        />
+        <button class="negotiationButton">Trimite oferta</button>
+        <p id="negotiationResult"></p>
+        <div class="quantity-container">
+          <label for="quantityInput">Cantitate:</label>
+          <input type="number" class="quantityInput" min="1" step="1" />
+        </div>
+        <p id="totalPrice">Preț total: $0</p>
+      </div>
+      <div class="product">
+        <p style="font-weight: bold">Zmeura</p>
+        <img src="./resources/photos/zmeura.jpg" width="300px" height="35%" />
+        <p>Preț: 23,50 lei/kg</p>
+        <input
+          type="number"
+          class="negotiationInput"
+          min="0"
+          step="1"
+          placeholder="Introduceți prețul negociat"
+        />
+        <button class="negotiationButton">Trimite oferta</button>
+        <p id="negotiationResult"></p>
+        <div class="quantity-container">
+          <label for="quantityInput">Cantitate:</label>
+          <input type="number" class="quantityInput" min="1" step="1" />
+        </div>
+        <p id="totalPrice">Preț total: $0</p>
+      </div>
+      <div class="product">
+        <p style="font-weight: bold">Caise</p>
+        <img src="./resources/photos/caise.jpg" width="300px" height="55%" />
+        <p>Preț: 35 lei/kg</p>
+        <input
+          type="number"
+          class="negotiationInput"
+          min="0"
+          step="1"
+          placeholder="Introduceți prețul negociat"
+        />
+        <button class="negotiationButton">Trimite oferta</button>
+        <p id="negotiationResult"></p>
+
+        <div class="quantity-container">
+          <label for="quantityInput">Cantitate:</label>
+          <input type="number" class="quantityInput" min="1" step="1" />
+        </div>
+        <p id="totalPrice">Preț total: $0</p>
+      </div>
+      <div class="product">
+        <p style="font-weight: bold">Rosii</p>
+        <img src="./resources/photos/rosii.jpg" width="300px" height="40%" />
+        <p>Preț: 8,50 lei/kg</p>
+        <input
+          type="number"
+          class="negotiationInput"
+          min="0"
+          step="1"
+          placeholder="Introduceți prețul negociat"
+        />
+        <button class="negotiationButton">Trimite oferta</button>
+        <p id="negotiationResult"></p>
+        <div class="quantity-container">
+          <label for="quantityInput">Cantitate:</label>
+          <input type="number" class="quantityInput" min="1" step="1" />
+        </div>
+        <p id="totalPrice">Preț total: $0</p>
+      </div>
+      <div class="product">
+        <p style="font-weight: bold">Usturoi</p>
+        <img src="./resources/photos/usturoi.jpg" width="300px" height="35%" />
+        <p>Preț: 10,50 lei/kg</p>
+        <input
+          type="number"
+          class="negotiationInput"
+          min="0"
+          step="1"
+          placeholder="Introduceți prețul negociat"
+        />
+        <button class="negotiationButton">Trimite oferta</button>
+        <p id="negotiationResult"></p>
+        <div class="quantity-container">
+          <label for="quantityInput">Cantitate:</label>
+          <input type="number" class="quantityInput" min="1" step="1" />
+        </div>
+        <p id="totalPrice">Preț total: $0</p>
+      </div>
+      <div class="product">
+        <p style="font-weight: bold">Castraveti</p>
+        <img
+          src="./resources/photos/castraveti.jpg"
+          width="300px"
+          height="40%"
+        />
+        <p>Preț: 13,20 lei/kg</p>
+        <input
+          type="number"
+          class="negotiationInput"
+          min="0"
+          step="1"
+          placeholder="Introduceți prețul negociat"
+        />
+        <button class="negotiationButton">Trimite oferta</button>
+        <p id="negotiationResult"></p>
+        <div class="quantity-container">
+          <label for="quantityInput">Cantitate:</label>
+          <input type="number" class="quantityInput" min="1" step="1" />
+        </div>
+        <p id="totalPrice">Preț total: $0</p>
+      </div>
+      <div class="product">
+        <p style="font-weight: bold">Porumb</p>
+        <img src="./resources/photos/porumb.jpeg" width="300px" height="45%" />
+        <p>Preț: 11 lei/kg</p>
+        <input
+          type="number"
+          class="negotiationInput"
+          min="0"
+          step="1"
+          placeholder="Introduceți prețul negociat"
+        />
+        <button class="negotiationButton">Trimite oferta</button>
+        <p class="negotiationResult"></p>
+        <div class="quantity-container">
+          <label for="quantityInput">Cantitate:</label>
+          <input type="number" class="quantityInput" min="1" step="1" />
+        </div>
+        <p id="totalPrice">Preț total: $0</p>
+      </div>
+      <div class="product">
+        <p style="font-weight: bold">Ridichi</p>
+        <img src="./resources/photos/ridichi.jpeg" width="300px" height="40%" />
+        <p>Preț: 4,10 lei/kg</p>
+        <input
+          type="number"
+          class="negotiationInput"
+          min="0"
+          step="1"
+          placeholder="Introduceți prețul negociat"
+        />
+        <button class="negotiationButton">Trimite oferta</button>
+        <p id="negotiationResult"></p>
+        <div class="quantity-container">
+          <label for="quantityInput">Cantitate:</label>
+          <input type="number" class="quantityInput" min="1" step="1" />
+        </div>
+        <p id="totalPrice">Preț total: $0</p>
+      </div>
+      <div class="product">
+        <p style="font-weight: bold">Cartofi albi</p>
+        <img
+          src="./resources/photos/cartofi-albi.jpg"
+          width="300px"
+          height="40%"
+        />
+        <p>Preț: 5,70 lei/kg</p>
+        <input
+          type="number"
+          class="negotiationInput"
+          min="0"
+          step="1"
+          placeholder="Introduceți prețul negociat"
+        />
+        <button class="negotiationButton">Trimite oferta</button>
+        <p id="negotiationResult"></p>
+        <div class="quantity-container">
+          <label for="quantityInput">Cantitate:</label>
+          <input type="number" class="quantityInput" min="1" step="1" />
+        </div>
+        <p id="totalPrice">Preț total: $0</p>
+      </div>
+      <div class="pagination">
+        <a href="./produse.html" class="page-link">1</a>
+        <a href="#" class="page-link">2</a>
+        <a href="./pagina3produse.html" class="page-link">3</a>
+        <a href="#" class="page-link">4</a>
+        <a href="#" class="page-link">5</a>
+        <!-- adaugă sau elimină link-uri pentru a numerota paginile -->
+      </div>
+    </main>
+  </body>
+</html>

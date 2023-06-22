@@ -15,8 +15,8 @@
     max-width: 66rem;
     padding: .5rem;
     height: max-content;
-    background: var(--primary-bg-clr);
     border-radius: .5rem;
+    box-shadow: 0 0 3px 1px rgba(185, 16, 97, .25);
 }
 
 #allergy .product .info,

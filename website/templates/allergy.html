@@ -11,10 +11,9 @@
     {% for product in products %}
     <div class="product w-full flex-ts" data-allergens="proteins">
       <h3 class="title">{{ product.name }}</h3>
-      <p class="info text-sm w-600">
-        <b>Properties:</b> {{ product.allergic_desc}}
+      <p class="info text-sm">Properties: {{ product.allergic_desc}}
       </p>
-      <button onclick="removeProduct( {{product.id }} )" class="text-sm">Remove</button>
+      <button onclick="removeProduct( {{product.id }} )" class="text-sm button">Remove</button>
     </div>
     {% endfor %}
     {% else %}

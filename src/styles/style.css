@@ -1,0 +1,390 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f178a0;
+}
+
+.logo-title > a {
+  color: #b91160;
+  text-decoration: none;
+  font-size: 2.5rem;
+}
+
+.logo-title > a:visited {
+  color: #b91160;
+}
+
+.logo-title > a:active {
+  color: #b91160;
+}
+
+.header-left-section {
+  display: flex;
+  padding-left: 3rem;
+  align-items: center;
+  cursor: pointer;
+  color: #b91160;
+}
+
+.header-left-section img {
+  height: 3rem;
+  width: auto;
+}
+
+.header-right-section {
+  padding-right: 3rem;
+}
+
+.nav-items {
+  display: flex;
+  column-gap: 0.5rem;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.nav-items > li {
+  background-color: #f178a0;
+  padding: 0.5rem;
+  width: 180px;
+  text-align: center;
+  color: #b91160;
+  border-radius: 10px;
+  transition: all 0.25s;
+}
+
+.nav-items > li:hover {
+  background-color: #b91160;
+  color: white;
+  cursor: pointer;
+  transform: translateY(-3px);
+}
+
+.order-now-section {
+  background-color: #f178a0;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-now-info {
+  text-align: center;
+  margin: auto;
+}
+
+.order-now-info > h1 {
+  color: #b91160;
+  font-size: 3em;
+}
+
+.order-now-info > button {
+  outline: none;
+  border: none;
+  background-color: #b91160;
+  padding: 1rem 2rem 1rem 2rem;
+  color: white;
+  border-radius: 10px;
+}
+
+.order-now-section > img {
+  border-radius: 20px;
+}
+
+.why-us {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.why-us-title {
+  font-size: 3rem;
+  color: #b91160;
+}
+
+.why-us-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5rem;
+}
+
+.why-us-3 > article {
+  text-align: center;
+  flex: 0 1 25%;
+  height: 20rem;
+  padding: 2rem;
+
+  /* border: 1px solid black; */
+}
+
+.why-us-3 > article > h1,
+.why-us-3 > article > p:last-child {
+  color: #b91160;
+}
+
+.why-us-3 > article > img {
+  height: 5rem;
+}
+
+.why-us-3 > article:hover {
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.benefits-container {
+  background-color: #f178a0;
+  padding: 5rem;
+}
+
+.benefits {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.benefits > div {
+  /* background-color: aliceblue; */
+  padding: 5rem;
+}
+
+.benefits > div > h1 {
+  color: #b91160;
+  font-size: 3rem;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.footer .top {
+  background-color: var(--white);
+  display: grid;
+}
+
+.login-form {
+  /* background-color: #f178a0; */
+  padding: 10rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.login-form > div {
+  padding: 5rem;
+  background-color: #f178a0;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  column-gap: 3rem;
+  margin: auto;
+  border-radius: 20px;
+}
+
+/* Stilul de bază pentru elementul input */
+.modern-input {
+  margin-bottom: 1rem;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.login-form > div > label {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+}
+
+.login-form > div {
+  text-align: center;
+}
+
+/* Stil pentru când elementul input primește focus */
+.modern-input:focus {
+  border-color: #b91160;
+  box-shadow: 0 0 5px #f178a0;
+}
+
+/* Stil pentru elementul input atunci când este hover */
+.modern-input:hover {
+  border-color: #b91160;
+}
+
+/* Stil pentru elementul input atunci când este activat */
+.modern-input:active {
+  border-color: #e74c3c;
+}
+
+.modern-button {
+  width: 50%;
+  margin: 1rem auto;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+.forgot-password {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.forgot-password h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.forgot-password p {
+  margin-bottom: 20px;
+}
+
+.forgot-password input[type='email'] {
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.forgot-password button {
+  padding: 10px 20px;
+  background-color: #b91160;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.forgot-password button:hover {
+  background-color: #ce82bb;
+}
+
+p {
+  /* color: #b91160; */
+  font-weight: bold;
+  font-style: italic;
+}
+
+.products-container {
+  /* background-color: #b91160; */
+  width: 100%;
+  height: 200px;
+  display: block;
+  flex-direction: column;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 10px;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.product {
+  color: #b91160;
+  display: block;
+  height: 250%; /* sau orice înălțime dorești */
+  width: 100%;
+  margin: 15px; /* sau orice margini dorești */
+  background-color: #f178a0;
+  /* border: px solid #b91160; */
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.searchInput {
+  padding: 5px;
+  width: 250px;
+  border: 1px solid #f178a0;
+}
+
+.searchButton {
+  padding: 5px 25px;
+  background-color: #b91160;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.searchResults {
+  display: none;
+  list-style-type: none;
+  padding: 0;
+}
+
+input[type='number'] {
+  width: 50%;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #b91160;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.negotiationResult {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.quantity-container {
+  display: block;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.quantity-container label {
+  margin-right: 10px;
+}
+
+.quantity-container input {
+  width: 50px;
+}
+
+.totalPrice {
+  font-weight: bold;
+}
+
+.allergenInput {
+  padding: 5px;
+  width: 250px;
+  border: 1px solid #f178a0;
+}
+
+.allergens {
+  font-weight: bold;
+  margin-bottom: 30px;
+  font-size: large;
+  color: #b91160;
+}
+
+.allergens label {
+  margin-right: 20px;
+}
+
+.filtered {
+  padding: 5px;
+  width: 250px;
+  border: 1px solid #f178a0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.page-link {
+  margin-right: 5px;
+  padding: 5px 10px;
+  text-decoration: none;
+  background-color: #b91160;
+  color: #ffffff;
+  border: 1px solid #f178a0;
+  border-radius: 4px;
+}
+
+.page-link:hover {
+  background-color: #ce82bb;
+}

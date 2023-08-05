@@ -10,7 +10,7 @@
     <div class="order-now-info h-full flex-c-s dir-col">
       <h1 class="title header-xlx">Order Your Product Easy & Fast!</h1>
       <p class='info w-600 text-md'>Edenfresh is a global leader in online food delivery, connecting consumers through its platform.</p>
-      <a href="products.html" class="button button-md br-md">Go to Menu</a>
+      <a href="{{ url_for('views.menu') }}" class="button button-md br-md">Go to Menu</a>
     </div>
     <img src="{{ url_for('static', filename='images/logo_gif.gif') }}" alt="" class="home-gif" />
   </section>

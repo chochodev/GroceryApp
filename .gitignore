@@ -5,4 +5,4 @@ instance/
 build/
 website/static/fontawesome/
 .env
-./main.py
+main.py

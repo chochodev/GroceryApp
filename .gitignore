@@ -5,4 +5,3 @@ instance/
 build/
 website/static/fontawesome/
 .env
-requirements.txt

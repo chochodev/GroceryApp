@@ -20,6 +20,13 @@ DB_NAME=os.getenv('DB_NAME')
 migrate = Migrate()
 mail = Mail()
 
+# ::::::::::::::::: create database function
+def create_database(app):
+    with app.app_context():
+        if not path.exists('website/' + DB_NAME):
+            db.create_all()
+
+# ::::::::::::::::: create app function
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
@@ -99,8 +106,3 @@ def create_app():
         return User.query.get(int(id))
 
     return app
-
-def create_database(app):
-    with app.app_context():
-        if not path.exists('website/' + DB_NAME):
-            db.create_all()

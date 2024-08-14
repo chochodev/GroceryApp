@@ -20,7 +20,8 @@
 }
 
 #home .order-now-info .button {
-  background: var(--primary-clr);
+  background: var(--surface-clr);
+  color: var(--text-clr);
 }
 
 #home .order-now-info .button:hover {
@@ -69,7 +70,7 @@
 
 #home .why-us .title {
   font-size: 3rem;
-  color: #b91160;
+  color: var(--text-clr);
 }
 
 #home .why-us .info {
@@ -90,7 +91,7 @@
 }
 
 #home .why-us .why-us-3 .content * {
-  color: #b91160;
+  color: var(--text-clr);
 }
 
 #home .why-us .why-us-3 .content .image-div {

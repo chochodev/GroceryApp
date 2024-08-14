@@ -38,7 +38,7 @@
 .custom-loader-bg .custom-loader::after {    
   content:"";
   grid-area: 1/1;
-  --c: radial-gradient(farthest-side,#f178a0 92%,#0000);
+  --c: radial-gradient(farthest-side,var(--primary-clr) 92%,#0000);
   background: 
     var(--c) 50%  0, 
     var(--c) 50%  100%, 

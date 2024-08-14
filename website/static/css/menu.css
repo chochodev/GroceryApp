@@ -1,5 +1,5 @@
 #menu {
-    padding: calc(2vw + .5rem);
+    padding: 2rem;
     gap: 1rem;
 }
 
@@ -23,7 +23,6 @@
 #menu .products-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    padding: 1rem;
     gap: 4rem 2rem;
 }
 
@@ -52,6 +51,9 @@
 }
 
 @media (max-width: 680px) {
+    #menu {
+        padding: 1rem;
+    }
     #menu .products-container {
         grid-template-columns: 1fr;
     }

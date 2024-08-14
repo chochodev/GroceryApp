@@ -72,14 +72,14 @@
 }
 
 .order-now-info > h1 {
-  color: #b91160;
+  color: var(--text-clr);
   font-size: 3em;
 }
 
 .order-now-info > button {
   outline: none;
   border: none;
-  background-color: #b91160;
+  background-color: var(--background-clr);
   padding: 1rem 2rem 1rem 2rem;
   color: white;
   border-radius: 10px;
@@ -97,7 +97,7 @@
 
 .why-us-title {
   font-size: 3rem;
-  color: #b91160;
+  color: var(--text-clr);
 }
 
 .why-us-3 {
@@ -118,7 +118,7 @@
 
 .why-us-3 > article > h1,
 .why-us-3 > article > p:last-child {
-  color: #b91160;
+  color: var(--text-clr);
 }
 
 .why-us-3 > article > img {
@@ -147,7 +147,7 @@
 }
 
 .benefits > div > h1 {
-  color: #b91160;
+  color: var(--text-clr);
   font-size: 3rem;
 }
 
@@ -202,18 +202,18 @@ footer {
 
 /* Stil pentru când elementul input primește focus */
 .modern-input:focus {
-  border-color: #b91160;
+  border-color: var(--background-clr);
   box-shadow: 0 0 5px #f178a0;
 }
 
 /* Stil pentru elementul input atunci când este hover */
 .modern-input:hover {
-  border-color: #b91160;
+  border-color: var(--background-clr);
 }
 
 /* Stil pentru elementul input atunci când este activat */
 .modern-input:active {
-  border-color: #e74c3c;
+  border-color: var(--background-deep-clr);
 }
 
 .modern-button {
@@ -248,7 +248,7 @@ footer {
 
 .forgot-password button {
   padding: 10px 20px;
-  background-color: #b91160;
+  background-color: var(--cta-clr);
   color: white;
   border: none;
   cursor: pointer;

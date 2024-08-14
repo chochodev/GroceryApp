@@ -9,7 +9,7 @@
     <p class="text-sm w-600">Are you allergic to something? Select the products you are allergic to, and they will disappear! <a href="{{ url_for('views.allergy') }}" class="allergy-link">here</a>
     </p>
     <h2 class="title header-sm">Popular Items</h2>
-    <section class="products-container w-full flex-c-se">
+    <section class="products-container w-full">
         <!-- PRODUCT FORM -->
         {% if products %}
         {% for product in products %}
@@ -53,11 +53,21 @@
                     </div>
                 </div>
                 <div class="cta-div h-max w-full flex-c-sb flex-tc">
-                    <button  name="action" value="delete" class="cta one flex-c-se w-600 br-md">
+                    <button 
+                        name="action" 
+                        value="delete" 
+                        class="cta one flex-c-se w-600 br-md"
+                        aria-label="Delete Item from Cart"
+                    >
                         <i class="icon fa fa-trash"></i>
                         <span class="text-sm">Remove</span>
                     </button>
-                    <button  name="action" value="order" class="cta two flex-c-se br-md">
+                    <button  
+                        name="action" 
+                        value="order" 
+                        class="cta two flex-c-se br-md"
+                        aria-label="Add Item from Cart"
+                    >
                         <i class="icon2 fa fa-heart-o"></i>
                         <span class="text-sm">Add to Cart</span>
                     </button>

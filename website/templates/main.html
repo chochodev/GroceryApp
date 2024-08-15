@@ -3,14 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    
     {# For the page logo favicon.ico #}
     <link rel="icon" href="{{ url_for('static', filename='images/logo.webp') }}" type="image/png" />
     
     {# For the universal styles #}
     <!-- Preload critical CSS -->
     <link rel="preload" href="{{ url_for('static', filename='css/main.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <link rel="preload" href="{% block stylesheet %}{% endblock %}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="preload" href="{{ url_for('static', filename='css/assets/logo.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="preload" href="{{ url_for('static', filename='css/assets/loader.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="preload" href="{{ url_for('static', filename='css/includes/navbar.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
@@ -19,13 +18,14 @@
     <!-- Fallback for non-JS browsers -->
     <noscript>
       <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-      <link rel="stylesheet" href="{% block stylesheet %}{% endblock %}" />
       <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/logo.css') }}" />
       <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/loader.css') }}" />
       <link rel="stylesheet" href="{{ url_for('static', filename='css/includes/navbar.css') }}" />
       <link rel="stylesheet" href="{{ url_for('static', filename='css/includes/footer.css') }}" />
     </noscript>
-
+    
+    <!-- :::::::::::::::::::::: block stylesheet -->
+    <link rel="stylesheet" href="{% block stylesheet %}{% endblock %}" />
 
     <!-- FONTAWESOME ONLINE LINK -->
     <script src="https://kit.fontawesome.com/78fe799ed6.js" crossorigin="anonymous" defer></script>

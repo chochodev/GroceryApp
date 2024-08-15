@@ -9,6 +9,7 @@
   text-align: center;
   gap: 2vw;
   padding: calc(2vw + .5rem) .5rem;
+  width: 50%;
 }
 
 #home .order-now-info > .title {
@@ -34,9 +35,9 @@
 #home .order-now-section .home-gif-div {
   position: relative;
   border-radius: 20px;
-  width: 55vw;
+  width: 50%;
   max-width: 50rem;
-  height: 25rem;
+  height: 32rem;
   overflow: hidden;
 }
 
@@ -65,6 +66,9 @@
     flex-direction: column;
     padding-top: 1rem;
   }
+  #home .order-now-info {
+    width: max-content;
+  }
   #home .order-now-section .order-now-info .title {
     font-size: 3.125rem;
   }
@@ -72,6 +76,7 @@
     width: 100%;
     max-width: max-content;
     margin: 0 auto;
+    height: 25rem;
   }
 }
 

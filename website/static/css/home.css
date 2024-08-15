@@ -2,7 +2,7 @@
 #home .order-now-section {
   background-color: var(--cta-clr);
   padding: 1rem;
-  min-height: 50rem;
+  min-height: 45rem;
 }
 
 #home .order-now-info {
@@ -85,7 +85,7 @@
 
 /* WHY US SECTION */
 #home .why-us {
-  min-height: 50rem;
+  min-height: 45rem;
   gap: calc(2vw + 2rem);
   padding: 3rem calc(2vw + 1rem);
 }
@@ -142,7 +142,7 @@
 }
 
 #home .benefits-container .benefits {
-  min-height: 50rem;
+  min-height: 45rem;
   max-height: 49.125rem;
   margin: 1rem 0;
   padding: 5rem calc(2vw);

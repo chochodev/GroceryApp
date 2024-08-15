@@ -2,7 +2,7 @@
 #home .order-now-section {
   background-color: var(--cta-clr);
   padding: 1rem;
-  min-height: 100vh;
+  min-height: 50rem;
 }
 
 #home .order-now-info {
@@ -31,11 +31,33 @@
 }
 
 /* HOME GIF */
-#home .order-now-section .home-gif {
+#home .order-now-section .home-gif-div {
+  position: relative;
   border-radius: 20px;
-  width: 50vw;
+  width: 55vw;
   max-width: 50rem;
-  height: auto;
+  height: 25rem;
+  overflow: hidden;
+}
+
+.home-gif-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 50rem;
+  height: 100%;
+}
+
+#home .order-now-section .home-gif {
+  position: relative;
+  z-index: 2;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 50rem;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media (max-width: 920px) {
@@ -46,7 +68,7 @@
   #home .order-now-section .order-now-info .title {
     font-size: 3.125rem;
   }
-  #home .order-now-section .home-gif {
+  #home .order-now-section .home-gif-div {
     width: 100%;
     max-width: max-content;
     margin: 0 auto;
@@ -63,7 +85,7 @@
 
 /* WHY US SECTION */
 #home .why-us {
-  min-height: 100vh;
+  min-height: 50rem;
   gap: calc(2vw + 2rem);
   padding: 3rem calc(2vw + 1rem);
 }
@@ -120,7 +142,7 @@
 }
 
 #home .benefits-container .benefits {
-  min-height: 100vh;
+  min-height: 50rem;
   max-height: 49.125rem;
   margin: 1rem 0;
   padding: 5rem calc(2vw);

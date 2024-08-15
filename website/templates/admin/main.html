@@ -7,10 +7,20 @@
     {# For the page logo favicon.ico #}
     <link rel="icon" href="{{ url_for('static', filename='images/logo.webp') }}" type="image/png" />
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/main.css') }}" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/logo.css') }}" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="{% block stylesheet %}{% endblock %}" media="print" onload="this.media='all'" />
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="{{ url_for('static', filename='css/main.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="preload" href="{{ url_for('static', filename='css/admin/main.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="preload" href="{{ url_for('static', filename='css/assets/logo.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="preload" href="{% block stylesheet %}{% endblock %}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+
+    <!-- Fallback for non-JS browsers -->
+    <noscript>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/main.css') }}" />
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/logo.css') }}" />
+      <link rel="stylesheet" href="{% block stylesheet %}{% endblock %}" />
+    </noscript>
+
     
     <!-- FONTAWESOME ONLINE LINK -->
     <script src="https://kit.fontawesome.com/78fe799ed6.js" crossorigin="anonymous" defer></script>

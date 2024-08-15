@@ -2,6 +2,8 @@
 {% block stylesheet %}{{ url_for('static', filename='css/home.css') }}{% endblock %}
 {% set show_navbar = True %}
 {% block title %}: Home{% endblock %}
+<!-- Import picture component -->
+{% from "components/picture.html" import picture %}
 
 
 {% block content %}
@@ -61,7 +63,17 @@
 
   <section class="benefits-container">
     <section class="benefits flex-c-sb flex-tc">
-      <img src="{{ url_for('static', filename='images/comanda_acum_logo.jpeg') }}" alt="" class="benefit-image" />
+      <!-- :::::::::::::::::::: IMAGE -->
+      {{ picture(
+        sources=[
+          ('images/comanda_acum_logo.avif', '(min-width: 800px)'),
+          ('images/comanda_acum_logo.webp', '(min-width: 600px)')
+        ],
+        fallback_src='images/comanda_acum_logo.jpeg',
+        alt='Order convenience',
+        class_name='benefit-image'
+        )
+      }}
       <div>
         <h1 class="title header-xlx">Order Anywhere, Anytime!</h1>
         <p class="info w-600 text-md">

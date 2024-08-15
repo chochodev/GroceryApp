@@ -1,0 +1,13 @@
+{# templates/picture_component.html #}
+{% macro picture(sources, fallback_src, alt='', class_name='') %}
+  <picture>
+    {% for src, media in sources %}
+      <source srcset="{{ url_for('static', filename=src) }}" media="{{ media }}">
+    {% endfor %}
+    <img
+      src="{{ url_for('static', filename=fallback_src) }}"
+      alt="{{ alt }}"
+      class="{{ class_name }}"
+    />
+  </picture>
+{% endmacro %}

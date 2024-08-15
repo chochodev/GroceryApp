@@ -1,4 +1,3 @@
-{# templates/picture_component.html #}
 {% macro picture(base_name, formats, fallback_src, alt='', class_name='', sizes='') %}
   <picture>
     {% for format, media_queries in formats.items() %}

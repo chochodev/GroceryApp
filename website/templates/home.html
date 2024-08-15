@@ -91,11 +91,38 @@
         <p class="info w-600 text-md">
           We take responsibility for protecting and maintaining the integrity of the products throughout the delivery process, regardless of distance or destination. We strive to deliver your products with the highest possible safety so that you can enjoy a worry-free shopping experience.
         </p>
-      </div>
-      <img src="{{ url_for('static', filename='images/livreaza_logo.jpeg') }}" alt="" class="benefit-image" />
+      </div>      
+      <!-- :::::::::::::::::::: IMAGE -->
+      {{ picture(
+        base_name='images/livreaza_logo',
+        formats={
+          'avif': {'1x': '', '2x': '(min-width: 800px)'},
+          'webp': {'1x': '', '2x': '(max-width: 800px)'},
+          'jpeg': {'1x': '', '2x': ''}
+        },
+        fallback_src='images/livreaza_logo.jpeg',
+        alt='fast delivery speed',
+        class_name='benefit-image',
+        sizes='(max-width: 600px) 320px, 640px'
+        )
+      }}
     </section>
     <section class="benefits flex-c-sb flex-tc">
-      <img src="{{ url_for('static', filename='images/urmareste_logo.jpeg') }}" alt="" class="benefit-image" />
+      <!-- ::::::::::::::::::::: IMAGE -->
+      {{ picture(
+        base_name='images/urmareste_logo',
+        formats={
+          'avif': {'1x': '', '2x': '(min-width: 800px)'},
+          'webp': {'1x': '', '2x': '(max-width: 800px)'},
+          'jpeg': {'1x': '', '2x': ''}
+        },
+        fallback_src='images/urmareste_logo.jpeg',
+        alt='Trackable order',
+        class_name='benefit-image',
+        sizes='(max-width: 600px) 320px, 640px'
+        )
+      }}
+      
       <div>
         <h1 class="title header-xlx">Track your order in the easiest way!</h1>
         <p class="info w-600 text-md">

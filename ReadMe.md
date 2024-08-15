@@ -208,3 +208,11 @@ To logout, the user should click on the logout icon on the nav link or the logou
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+
+## Copyright
+Copyright (c) 2024-present Emmanuel Michael. All rights reserved.
+
+<b>The code, design and articles in this repository are intellectual property of the individual mentioned above (unless otherwise stated) and as such CANNOT be copied, modified, sublicensed or redistributed without permission from the author.</b>
+
+For more information, contact chochodeveloper@gmail.com.

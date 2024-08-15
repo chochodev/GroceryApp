@@ -168,6 +168,7 @@
 #home .benefits-container .benefits .benefit-image {
   width: 50vw;
   height: auto;
+  max-height: 35rem;
   border-radius: .5rem;
 }
 

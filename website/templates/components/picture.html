@@ -1,13 +1,31 @@
 {# templates/picture_component.html #}
-{% macro picture(sources, fallback_src, alt='', class_name='') %}
+{% macro picture(base_name, formats, fallback_src, alt='', class_name='', sizes='') %}
   <picture>
-    {% for src, media in sources %}
-      <source srcset="{{ url_for('static', filename=src) }}" media="{{ media }}">
+    {% for format, media_queries in formats.items() %}
+      {% set srcset = [] %}
+      {% for resolution, media_query in media_queries.items() %}
+        {% if resolution == '1x' %}
+          {% set srcset = srcset.append(url_for('static', filename=base_name ~ '.' ~ format) ~ ' 1x') %}
+        {% elif resolution == '2x' %}
+          {% set srcset = srcset.append(url_for('static', filename=base_name ~ '@2x.' ~ format) ~ ' 2x') %}
+        {% endif %}
+      {% endfor %}
+      <source 
+        srcset="{{ srcset | join(', ') }}" 
+        media="{{ media_query }}" 
+        type="image/{{ format }}"
+      >
+    {% endfor %}
+    {% set fallback_srcset = [] %}
+    {% for format in formats.keys() %}
+      {% set fallback_srcset = fallback_srcset.append(url_for('static', filename=base_name ~ '.' ~ format) ~ ' 1x') %}
     {% endfor %}
     <img
       src="{{ url_for('static', filename=fallback_src) }}"
+      srcset="{{ fallback_srcset | join(', ') }}"
       alt="{{ alt }}"
       class="{{ class_name }}"
+      sizes="{{ sizes }}"
     />
   </picture>
 {% endmacro %}

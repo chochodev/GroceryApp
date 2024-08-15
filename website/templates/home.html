@@ -65,15 +65,19 @@
     <section class="benefits flex-c-sb flex-tc">
       <!-- :::::::::::::::::::: IMAGE -->
       {{ picture(
-        sources=[
-          ('images/comanda_acum_logo.avif', '(min-width: 800px)'),
-          ('images/comanda_acum_logo.webp', '(min-width: 600px)')
-        ],
+        base_name='images/comanda_acum_logo',
+        formats={
+          'avif': {'1x': '', '2x': '(min-width: 800px)'},
+          'webp': {'1x': '', '2x': '(max-width: 800px)'},
+          'jpeg': {'1x': '', '2x': ''}
+        },
         fallback_src='images/comanda_acum_logo.jpeg',
         alt='Order convenience',
-        class_name='benefit-image'
+        class_name='benefit-image',
+        sizes='(max-width: 600px) 320px, 640px'
         )
       }}
+  
       <div>
         <h1 class="title header-xlx">Order Anywhere, Anytime!</h1>
         <p class="info w-600 text-md">

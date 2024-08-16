@@ -68,7 +68,7 @@
     padding-top: 1rem;
   }
   #home .order-now-info {
-    width: max-content;
+    width: 100%;
   }
   #home .order-now-section .order-now-info .title {
     font-size: 3.125rem;

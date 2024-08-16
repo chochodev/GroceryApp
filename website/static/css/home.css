@@ -170,6 +170,7 @@
   height: auto;
   max-height: 35rem;
   border-radius: .5rem;
+  object-fit: cover;
 }
 
 #home .benefits-container .benefits > div {

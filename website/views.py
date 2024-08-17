@@ -87,9 +87,11 @@ def cart():
     total_normal_price = 0
     total_customer_price = 0
     for order in orders:
-        total_normal_price = float(total_normal_price) + float(order.normal_price)
-        print(f'Customer_price: {order.customer_price}')
-        total_customer_price = float(total_customer_price) + float(order.customer_price)
+        total_normal_price += float(order.normal_price)
+        if order.customer_price and order.customer_price.replace('.', '', 1).isdigit():
+            total_customer_price += float(order.customer_price)
+        else:
+            total_customer_price += 0.0
 
     context = {
         'orders':orders, 

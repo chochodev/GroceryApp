@@ -14,7 +14,7 @@ body {
     z-index: 100;
     min-height: 45rem;
     height: 100%;
-    box-shadow: 0 0 3px 1px rgba(185, 16, 97, .5);
+    box-shadow: 0 0 3px 1px rgba(235, 255, 144, .5);
 }
 
 /* MENU-BAR */
@@ -111,17 +111,17 @@ body > .alert-admin .icon {
 
 #admin-navbar .nav-contents .nav-items .link {
     color: white;
-    background: #ffffff1c;
+    background: #dbdbdb40;
 }
 
 #admin-navbar .nav-contents .nav-items .link:hover {
-    color: var(--link-clr);
-    background: var(--link-bg-hover);
+    background: #ffffff3e;
     transition: .2s ease-in-out;
 }
 
 #admin-navbar .nav-contents .nav-items .link.active {
-    box-shadow: 0 0 2px 3px rgba(255, 255, 255, 0.35);
+    color: var(--link-clr);
+    background: var(--cta-hover-2);
 }
 
 /* FOR BACKGROUND OVERLAY */

@@ -95,7 +95,8 @@ This will update the database schema based on the changes in the models.
 
 Note: Ignore any warning messages during the migration process and proceed.
 
-4. If you encounter any migration issues while using the development server after updating the `models.py` file, it is recommended to delete specific folders in your project's root directory to resolve the issues. 
+## Migration issues
+If you encounter any migration issues while using the development server after updating the `models.py` file, it is recommended to delete specific folders in your project's root directory to resolve the issues. 
 
 Note: This will delete all the data in the database
 

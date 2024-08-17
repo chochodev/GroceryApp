@@ -11,15 +11,14 @@
     <link rel="preload" href="{{ url_for('static', filename='css/main.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="preload" href="{{ url_for('static', filename='css/admin/main.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="preload" href="{{ url_for('static', filename='css/assets/logo.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <link rel="preload" href="{% block stylesheet %}{% endblock %}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
 
     <!-- Fallback for non-JS browsers -->
     <noscript>
       <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
       <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/main.css') }}" />
       <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/logo.css') }}" />
-      <link rel="stylesheet" href="{% block stylesheet %}{% endblock %}" />
     </noscript>
+    <link rel="stylesheet" href="{% block stylesheet %}{% endblock %}" />
 
     
     <!-- FONTAWESOME ONLINE LINK -->

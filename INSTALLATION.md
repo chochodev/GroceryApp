@@ -33,6 +33,21 @@
     ```
     This will install Flask, Flask-Login, Flask-SQLAlchemy, Flask-Migrate and all other libraries and packages.
 
+4. Add Environment Variables:
+
+- Create a file called .env in the root directory with these params filled
+  ```
+  SECRET_KEY=<bunch_of_random_characters>
+  DB_NAME=database.db
+  ADMIN_EMAIL=<default_admin_email>
+  ADMIN_PASSWORD=<default_admin_password>
+
+  # :::::::::::::::::::::::::: cloudinary
+  CLOUDINARY_CLOUD_NAME=<cloudinary_cloud_name>
+  CLOUDINARY_API_KEY=<cloudinary_api_key>
+  CLOUDINARY_API_SECRET=<cloudinary_api_secret>
+  ```
+
 ## Running the Application
 
 To run the server, execute the following command:

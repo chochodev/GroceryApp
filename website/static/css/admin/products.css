@@ -82,11 +82,13 @@
 
 /* TABLE HEAD */
 #products .main .product-contents .products-table .products-header-items {
+    padding: 0.75rem 0.5rem;
     background: var(--cta-clr);
 }
 
 #products .main .product-contents .products-table .products-header-items * {
     color: white;
+    /* font-size: 1rem; */
 }
 
 /* TABLE VALUES */
@@ -105,14 +107,16 @@
 
 /* ORDER SECTION */
 #products .main .product-contents .products-table .products {
-    gap: .25rem;
+    gap: .5rem;
 }
 
 #products .main .product-contents .products-table .product {
-    box-shadow: 0 0 3px 1px rgba(185, 16, 97, 0.25);
+    padding: 0.75rem 0.5rem;
+    outline: 1px solid var(--primary-clr);
 }
 
 #products .main .product-contents .products-table .product:hover {
     cursor: pointer;
-    box-shadow: 0 0 3px 1px rgba(185, 16, 97, 0.5);
+    outline: 1px solid var(--background-deep-clr);
+    transition: .2s ease-in-out;
 }

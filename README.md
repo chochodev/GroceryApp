@@ -1,7 +1,9 @@
 # What is Karpos
 
 Karpos is a Flask-based e-commerce application for managing and selling grocery.
-It has the functionalities of basic e-commerce website such as browsing products in the menu, searching for products, negotiating prices, adding products to cart, ordering for products...
+It has the functionalities of basic e-commerce website such as browsing products in the menu, searching for products, negotiating prices, adding products to cart, ordering for products and so on.
+
+Live: [karpos](https://karpos.onrender.com/)
 
 ## Installation
 For installing the packages, follow the guide on [installation](INSTALLATION.md)

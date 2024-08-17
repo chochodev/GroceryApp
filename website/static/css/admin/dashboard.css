@@ -20,7 +20,7 @@
 
 #dashboard .search-form .search-input:focus {
     border: none;
-    box-shadow: 0 0 2px 3px rgba(185, 17, 96, .25);
+    box-shadow: 0 0 2px 3px rgba(235, 255, 144, .25);
 }
 
 #dashboard .search-form .search-cta {
@@ -54,15 +54,18 @@
 }
 
 #dashboard .main .brief-contents .content {
+    gap: 1rem;
     max-width: 15rem;
     padding: 1rem;
     border-radius: .5rem;
     background: var(--main-clr);
-    box-shadow: 0 5px 10px 3px rgba(185, 16, 97, .15);
+    box-shadow: 0 5px 10px 3px rgba(235, 255, 144, .15);
+    border: 1px solid var(--background-deep-clr);
 }
 
 #dashboard .main .brief-contents .content .name {
-    color: var(--text-clr)
+    color: var(--text-clr);
+    font-weight: 600;
 }
 
 #dashboard .main .brief-contents .content .info-div > * {

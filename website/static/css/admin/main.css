@@ -121,7 +121,7 @@ body > .alert-admin .icon {
 
 #admin-navbar .nav-contents .nav-items .link.active {
     color: var(--link-clr);
-    background: var(--cta-hover-2);
+    background: var(--cta-ghost);
 }
 
 /* FOR BACKGROUND OVERLAY */

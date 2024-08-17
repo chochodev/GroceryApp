@@ -48,7 +48,7 @@
             <a href="{{ url_for('admin_panel.orders') }}" {% if endpoint == 'orders' %} class="link w-full active text-md w-600 button-md br-md" {% else %} class="link w-full text-md w-600 button-md br-md" {% endif %}>Orders</a>
             <a href="{{ url_for('admin_panel.customers') }}" {% if endpoint == 'customers' %} class="link w-full active text-md w-600 button-md br-md" {% else %} class="link w-full text-md w-600 button-md br-md" {% endif %}>Customers</a>
             <a href="{{ url_for('admin_panel.products') }}" {% if endpoint == 'products' %} class="link w-full active text-md w-600 button-md br-md" {% else %} class="link w-full text-md w-600 button-md br-md" {% endif %}>Products</a>
-            <a href="{{ url_for('views.home') }}" {% if endpoint == 'products' %} class="link w-full active text-md w-600 button-md br-md" {% else %} class="link w-full text-md w-600 button-md br-md" {% endif %}>Home</a>
+            <a href="{{ url_for('views.home') }}" class="link w-full text-md w-600 button-md br-md">Home</a>
         </div>
       </nav>
     </header>
